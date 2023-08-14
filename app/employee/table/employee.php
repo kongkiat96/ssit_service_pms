@@ -93,8 +93,8 @@ if (isset($_POST['search'])) {
                     <td>User Login</td>
                     <td>ชื่อ - นามสกุล</td>
                     <td>ตำแหน่ง</td>
-                    <!-- <td>แผนก</td>
-                    <td>บริษัท</td> -->
+                    <td>สังกัด / ฝ่าย</td>
+                    <!-- <td>บริษัท</td> -->
                     <td>E-mail</td>
                     <td>จัดการ</td>
                 </tr>
@@ -125,17 +125,17 @@ if (isset($_POST['search'])) {
                         </td>
 
 
-                        <!-- <td>
-                            <?php if (@$showmember->user_department != NULL) {
+                        <td align="center">
+                            <?php if (@$showmember->department_id != NULL) {
 
-                                echo @prefixConvertorDepartment($showmember->user_department);
+                                echo @prefixConvertorDepartment($showmember->department_id);
                             } else {
                                 echo '<strong><div style="color: #E81600">-</div></strong>';
                             }
                             ?>
                         </td>
 
-                        <td><?php echo @prefixConvertorCompany($showmember->department_id); ?></td> -->
+                        <!-- <td><?php echo @prefixConvertorCompany($showmember->department_id); ?></td> -->
                         <td><?php echo $getuser->email; ?></td>
                         <td>
                             <a href="#" data-bs-toggle="modal" data-bs-target="#edit_employee" data-whatever="<?php echo @$showmember->card_key; ?>" class="btn btn-sm btn-info" data-top="toptitle" data-placement="top" title="แก้ไขรายการนี้"><i class="fa fa-edit"></i></a>

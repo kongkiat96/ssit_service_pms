@@ -28,21 +28,18 @@
 
 
 
-        <!-- <div class="col-md-6 col-sm-12">
-            <label for="department">แผนก</strong></label>
+        <div class="col-md-4 col-sm-12 mb-3">
+            <label for="department" class="mb-2"><strong>สังกัด / ฝ่าย</strong></label>
             <select name="department" id="department" class="form-control select2" required style="width: 100%;">
                 <option value="">--- เลือกข้อมูล ---</option>
                 <?php
-                //$getprefix = $getdata->my_sql_select($connect, NULL, "department_name");
-                //while ($showprefix = mysqli_fetch_object($getprefix)) {
-                //    echo '<option value="' . $showprefix->id . '">' . $showprefix->department_name . '</option>';
-                //}
+                $getprefix = $getdata->my_sql_select($connect, NULL, "department_name", "department_status = '1'");
+                while ($showprefix = mysqli_fetch_object($getprefix)) {
+                    echo '<option value="' . $showprefix->id . '">' . $showprefix->department_name . '</option>';
+                }
                 ?>
             </select>
-            <div class="invalid-feedback">
-                เลือก แผนก.
-            </div>
-        </div> -->
+        </div>
 
         <div class="col-md-4 col-sm-12 mb-3">
             <label for="position" class="mb-2"><strong>ตำแหน่ง</strong></label>
@@ -88,7 +85,7 @@
         <div class="col-12 text-center">
 
             <button class="btn btn-success btn-next" type="submit" name="save_employee">
-            <i class="bx bx-save bx-sm"></i> บันทึกข้อมูล</span>
+                <i class="bx bx-save bx-sm"></i> บันทึกข้อมูล</span>
             </button>
 
 

@@ -47,25 +47,28 @@ echo @$alert;
     <div class="card-body">
         <div class="row">
             <div class="col-md-2 col-sm-12 mb-3">
-                <label for="prefix_name">คำนำหน้า</label>
+                <label class="mb-2" for="prefix_name">คำนำหน้า</label>
                 <input type="text" class="form-control" id="prefix_name" value="<?php echo @prefixConvertor($getemployee_info->title_name); ?>" readonly>
             </div>
             <div class="col-md-5 col-sm-12 mb-3">
-                <label for="name">ชื่อ</label>
+                <label class="mb-2" for="name">ชื่อ</label>
                 <input type="text" class="form-control" id="name" value="<?php echo $getemployee_info->name; ?>" readonly>
             </div>
             <div class="col-md-5 col-sm-12 mb-3">
-                <label for="lastname">นามสกุล</label>
+                <label class="mb-2" for="lastname">นามสกุล</label>
                 <input type="text" class="form-control" id="lastname" value="<?php echo $getemployee_info->lastname; ?>" readonly>
             </div>
             <hr class="sidebar-divider d-none d-md-block">
-            <div class="col-md-6 col-sm-12 mb-3">
-                <label for="position">ตำแหน่ง</label>
+            <div class="col-md-4 col-sm-12 mb-3">
+                <label class="mb-2" for="position">ตำแหน่ง</label>
                 <input type="text" class="form-control" id="position" value="<?php echo $getemployee_info->user_position; ?>" readonly>
             </div>
-
-            <div class="col-md-6 col-sm-12 mb-3">
-                <label for="mail">E-mail</label>
+            <div class="col-md-4 col-sm-12 mb-3">
+                <label class="mb-2" for="department">ตำแหน่ง</label>
+                <input type="text" class="form-control" id="department" value="<?php echo @prefixConvertorDepartment($getemployee_info->department_id); ?>" readonly>
+            </div>
+            <div class="col-md-4 col-sm-12 mb-3">
+                <label class="mb-2" for="mail">E-mail</label>
                 <?php if ($getmember_info->email != NULL) { ?>
                     <input type="text" class="form-control" id="mail" value="<?php echo $getmember_info->email; ?>" readonly>
                 <?php } else { ?>

@@ -18,6 +18,7 @@ if (isset($_POST['save_employee'])) {
                     title_name='" . htmlspecialchars($_POST['prefixname']) . "',
                     name = '" . htmlspecialchars($_POST['name']) . "',
                     lastname = '" . htmlspecialchars($_POST['lastname']) . "',
+                    department_id = '" . htmlspecialchars($_POST['department']) . "',
                     user_position='" . htmlspecialchars($_POST['position']) . "'"
                 );
 
@@ -53,6 +54,7 @@ if (isset($_POST['save_edit_employee'])) {
             "title_name='" . htmlspecialchars($_POST['ed_prefix']) . "',
             name = '" . htmlspecialchars($_POST['ed_name']) . "',
             lastname = '" . htmlspecialchars($_POST['ed_lastname']) . "',
+            department_id = '" . htmlspecialchars($_POST['ed_department']) . "',
             user_position = '" . htmlspecialchars($_POST['ed_position']) . "'",
             "card_key='" . htmlspecialchars($_POST['card_key']) . "'"
         );

@@ -11,6 +11,21 @@ $guest_detail = $getdata->my_sql_query($connect, NULL, "bm_guest", "room='" . ht
     <h5 class="modal-title" id="exampleModalLabel4">แสดงรายการข้อมูลผู้เข้าพัก : <strong><?php echo @prefixConvertor($guest_detail->prefix_name) . $guest_detail->fname . ' ' . $guest_detail->lname; ?></strong></h5>
     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 </div>
+<div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel4">รายการห้องพัก :
+        <strong>
+            <?php
+            if ($guest_detail->sys_procress == '1') {
+                echo @building($guest_detail->building) . ' ' . @prefixConvertorService($guest_detail->floor) . ' ห้อง ' . @prefixConvertorServiceList($guest_detail->room);
+            } elseif ($guest_detail->sys_procress == '2') {
+                echo '<span class="badge bg-label-danger">ยกเลิกข้อมูล</span>';
+            } elseif ($guest_detail->sys_procress == '0') {
+                echo '<span class="badge bg-label-primary">ข้อมูลไม่สมบูรณ์</span>';
+            }
+            ?>
+        </strong>
+    </h5>
+</div>
 <div class="modal-body">
     <div id="accordionPopoutIcon" class="accordion mt-3 accordion-popout">
         <div class="accordion-item card">
@@ -51,7 +66,7 @@ $guest_detail = $getdata->my_sql_query($connect, NULL, "bm_guest", "room='" . ht
                                         </div>
                                         <div class="card-body">
                                             <div class="row mb-3">
-                                                <div class="col-sm-6 col-md-4 text-end">
+                                                <div class="col-sm-6 col-md-4 text-start">
                                                     <label for=""><strong>หมายเลขโทรศัพท์ :</strong></label>
                                                 </div>
                                                 <div class="col-6 text-center">
@@ -59,7 +74,7 @@ $guest_detail = $getdata->my_sql_query($connect, NULL, "bm_guest", "room='" . ht
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
-                                                <div class="col-sm-6 col-md-4 text-end">
+                                                <div class="col-sm-6 col-md-4 text-start">
                                                     <label for=""><strong>ตำแหน่งงาน :</strong></label>
                                                 </div>
                                                 <div class="col-6 text-center">
@@ -67,7 +82,7 @@ $guest_detail = $getdata->my_sql_query($connect, NULL, "bm_guest", "room='" . ht
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
-                                                <div class="col-sm-6 col-md-4 text-end">
+                                                <div class="col-sm-6 col-md-4 text-start">
                                                     <label for=""><strong>ประเภทบุคลากร :</strong></label>
                                                 </div>
                                                 <div class="col-6 text-center">
@@ -76,7 +91,7 @@ $guest_detail = $getdata->my_sql_query($connect, NULL, "bm_guest", "room='" . ht
                                             </div>
                                             <?php if ($guest_detail->status_guest == '3') { ?>
                                                 <div class="row mb-3">
-                                                    <div class="col-sm-6 col-md-4 text-end">
+                                                    <div class="col-sm-6 col-md-4 text-start">
                                                         <label for=""><strong>วันสิ้นสุดสัญญา :</strong></label>
                                                     </div>
                                                     <div class="col-6 text-center">
@@ -90,7 +105,7 @@ $guest_detail = $getdata->my_sql_query($connect, NULL, "bm_guest", "room='" . ht
 
 
                                             <div class="row mb-3">
-                                                <div class="col-sm-6 col-md-4 text-end">
+                                                <div class="col-sm-6 col-md-4 text-start">
                                                     <label for=""><strong>ฝ่าย :</strong></label>
                                                 </div>
                                                 <div class="col-6 text-center">
@@ -98,7 +113,7 @@ $guest_detail = $getdata->my_sql_query($connect, NULL, "bm_guest", "room='" . ht
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
-                                                <div class="col-sm-6 col-md-4 text-end">
+                                                <div class="col-sm-6 col-md-4 text-start">
                                                     <label for=""><strong>สำนัก :</strong></label>
                                                 </div>
                                                 <div class="col-6 text-center">
@@ -106,7 +121,7 @@ $guest_detail = $getdata->my_sql_query($connect, NULL, "bm_guest", "room='" . ht
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
-                                                <div class="col-sm-6 col-md-4 text-end">
+                                                <div class="col-sm-6 col-md-4 text-start">
                                                     <label for=""><strong>วันที่เข้าพัก :</strong></label>
                                                 </div>
                                                 <div class="col-6 text-center">
@@ -120,7 +135,7 @@ $guest_detail = $getdata->my_sql_query($connect, NULL, "bm_guest", "room='" . ht
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
-                                                <div class="col-sm-6 col-md-4 text-end">
+                                                <div class="col-sm-6 col-md-4 text-start">
                                                     <label for=""><strong>วันที่ออกห้องพัก :</strong></label>
                                                 </div>
                                                 <div class="col-6 text-center">
@@ -134,7 +149,7 @@ $guest_detail = $getdata->my_sql_query($connect, NULL, "bm_guest", "room='" . ht
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
-                                                <div class="col-sm-6 col-md-4 text-end">
+                                                <div class="col-sm-6 col-md-4 text-start">
                                                     <label for=""><strong>จำนวนบริวาร :</strong></label>
                                                 </div>
                                                 <div class="col-6 text-center">
@@ -149,7 +164,7 @@ $guest_detail = $getdata->my_sql_query($connect, NULL, "bm_guest", "room='" . ht
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
-                                                <div class="col-sm-6 col-md-4 text-end">
+                                                <div class="col-sm-6 col-md-4 text-start">
                                                     <label for=""><strong>ผู้บันทึกข้อมูล :</strong></label>
                                                 </div>
                                                 <div class="col-6 text-center">

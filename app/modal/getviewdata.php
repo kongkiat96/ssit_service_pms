@@ -11,6 +11,21 @@ $guest_detail = $getdata->my_sql_query($connect, NULL, "bm_guest", "room='" . ht
     <h5 class="modal-title" id="exampleModalLabel4">แสดงรายการข้อมูลผู้เข้าพัก : <strong><?php echo @prefixConvertor($guest_detail->prefix_name) . $guest_detail->fname . ' ' . $guest_detail->lname; ?></strong></h5>
     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 </div>
+<div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel4">รายการห้องพัก :
+        <strong>
+            <?php
+            if ($guest_detail->sys_procress == '1') {
+                echo @building($guest_detail->building) . ' ' . @prefixConvertorService($guest_detail->floor) . ' ห้อง ' . @prefixConvertorServiceList($guest_detail->room);
+            } elseif ($guest_detail->sys_procress == '2') {
+                echo '<span class="badge bg-label-danger">ยกเลิกข้อมูล</span>';
+            } elseif ($guest_detail->sys_procress == '0') {
+                echo '<span class="badge bg-label-primary">ข้อมูลไม่สมบูรณ์</span>';
+            }
+            ?>
+        </strong>
+    </h5>
+</div>
 <div class="modal-body">
     <div class="text-end">
         <hr class="mt-2">
@@ -63,7 +78,7 @@ $guest_detail = $getdata->my_sql_query($connect, NULL, "bm_guest", "room='" . ht
                                         </div>
                                         <div class="card-body">
                                             <div class="row mb-3">
-                                                <div class="col-sm-6 col-md-4 text-end">
+                                                <div class="col-sm-6 col-md-4 text-start">
                                                     <label for=""><strong>หมายเลขโทรศัพท์ :</strong></label>
                                                 </div>
                                                 <div class="col-6 text-center">
@@ -71,7 +86,7 @@ $guest_detail = $getdata->my_sql_query($connect, NULL, "bm_guest", "room='" . ht
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
-                                                <div class="col-sm-6 col-md-4 text-end">
+                                                <div class="col-sm-6 col-md-4 text-start">
                                                     <label for=""><strong>ตำแหน่งงาน :</strong></label>
                                                 </div>
                                                 <div class="col-6 text-center">
@@ -79,7 +94,7 @@ $guest_detail = $getdata->my_sql_query($connect, NULL, "bm_guest", "room='" . ht
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
-                                                <div class="col-sm-6 col-md-4 text-end">
+                                                <div class="col-sm-6 col-md-4 text-start">
                                                     <label for=""><strong>ประเภทบุคลากร :</strong></label>
                                                 </div>
                                                 <div class="col-6 text-center">
@@ -88,7 +103,7 @@ $guest_detail = $getdata->my_sql_query($connect, NULL, "bm_guest", "room='" . ht
                                             </div>
                                             <?php if ($guest_detail->status_guest == '3') { ?>
                                                 <div class="row mb-3">
-                                                    <div class="col-sm-6 col-md-4 text-end">
+                                                    <div class="col-sm-6 col-md-4 text-start">
                                                         <label for=""><strong>วันสิ้นสุดสัญญา :</strong></label>
                                                     </div>
                                                     <div class="col-6 text-center">
@@ -102,7 +117,7 @@ $guest_detail = $getdata->my_sql_query($connect, NULL, "bm_guest", "room='" . ht
 
 
                                             <div class="row mb-3">
-                                                <div class="col-sm-6 col-md-4 text-end">
+                                                <div class="col-sm-6 col-md-4 text-start">
                                                     <label for=""><strong>ฝ่าย :</strong></label>
                                                 </div>
                                                 <div class="col-6 text-center">
@@ -110,7 +125,7 @@ $guest_detail = $getdata->my_sql_query($connect, NULL, "bm_guest", "room='" . ht
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
-                                                <div class="col-sm-6 col-md-4 text-end">
+                                                <div class="col-sm-6 col-md-4 text-start">
                                                     <label for=""><strong>สำนัก :</strong></label>
                                                 </div>
                                                 <div class="col-6 text-center">
@@ -118,7 +133,7 @@ $guest_detail = $getdata->my_sql_query($connect, NULL, "bm_guest", "room='" . ht
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
-                                                <div class="col-sm-6 col-md-4 text-end">
+                                                <div class="col-sm-6 col-md-4 text-start">
                                                     <label for=""><strong>วันที่เข้าพัก :</strong></label>
                                                 </div>
                                                 <div class="col-6 text-center">
@@ -132,7 +147,7 @@ $guest_detail = $getdata->my_sql_query($connect, NULL, "bm_guest", "room='" . ht
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
-                                                <div class="col-sm-6 col-md-4 text-end">
+                                                <div class="col-sm-6 col-md-4 text-start">
                                                     <label for=""><strong>วันที่ออกห้องพัก :</strong></label>
                                                 </div>
                                                 <div class="col-6 text-center">
@@ -146,7 +161,7 @@ $guest_detail = $getdata->my_sql_query($connect, NULL, "bm_guest", "room='" . ht
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
-                                                <div class="col-sm-6 col-md-4 text-end">
+                                                <div class="col-sm-6 col-md-4 text-start">
                                                     <label for=""><strong>จำนวนบริวาร :</strong></label>
                                                 </div>
                                                 <div class="col-6 text-center">
@@ -161,7 +176,7 @@ $guest_detail = $getdata->my_sql_query($connect, NULL, "bm_guest", "room='" . ht
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
-                                                <div class="col-sm-6 col-md-4 text-end">
+                                                <div class="col-sm-6 col-md-4 text-start">
                                                     <label for=""><strong>ผู้บันทึกข้อมูล :</strong></label>
                                                 </div>
                                                 <div class="col-6 text-center">
@@ -197,52 +212,52 @@ $guest_detail = $getdata->my_sql_query($connect, NULL, "bm_guest", "room='" . ht
                                 while ($showlist = mysqli_fetch_object($getdetail)) {
                                     $i++
                                 ?>
-                                    
-                                        <div class="col-sm-12 col-md-4">
-                                            <div class="card">
-                                                <div class="card-header">
-                                                    <?php
-                                                    if ($showlist->pic == null) {
-                                                        echo '<img class="img-thumbnail mx-auto" src="../resource/guest/file_pic_now/no-img.png" width="100%">';
-                                                    } else {
-                                                        echo '<img class="img-thumbnail mx-auto" src="../resource/guest/delevymo/' . $showlist->pic . '" width="50%">';
-                                                    }
-                                                    ?>
 
-                                                </div>
-                                                <div class="card-body">
-                                                    <div class="card-title"><strong>ลำดับที่ : </strong><?php echo $i; ?></div>
-                                                    <div class="row">
-                                                        <div class="col-md-6 col-sm-12 text-end mb-2">
-                                                            ชื่อ - นามสกุล :
-                                                        </div>
-                                                        <div class="col-md-6 col-sm-12">
-                                                            <label for=""> <?php echo @prefixConvertor($showlist->prefix_name) . ' ' . $showlist->fname . ' ' . $showlist->lname; ?></label>
-                                                        </div>
-                                                        <!-- <div class="row m-1"> -->
-                                                        <div class="col-md-6 col-sm-12 text-end mb-2">
-                                                            ความสัมพันธ์ :
-                                                        </div>
-                                                        <div class="col-md-6 col-sm-12">
-                                                            <label for=""><?php echo @relation($showlist->relation); ?></label>
-                                                        </div>
-                                                        <!-- </div> -->
-
-                                                        <!-- <div class="row m-1"> -->
-                                                        <div class="col-md-6 col-sm-12 text-end mb-2">
-                                                            หมายเลขโทรศัพท์ :
-                                                        </div>
-                                                        <div class="col-md-6 col-sm-12">
-                                                            <label for=""><?php echo $showlist->tel; ?></label>
-                                                        </div>
-                                                        <!-- </div> -->
-                                                    </div>
-
-
-                                                </div>
+                                    <div class="col-sm-12 col-md-4">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <?php
+                                                if ($showlist->pic == null) {
+                                                    echo '<img class="img-thumbnail mx-auto" src="../resource/guest/file_pic_now/no-img.png" width="100%">';
+                                                } else {
+                                                    echo '<img class="img-thumbnail mx-auto" src="../resource/guest/delevymo/' . $showlist->pic . '" width="50%">';
+                                                }
+                                                ?>
 
                                             </div>
+                                            <div class="card-body">
+                                                <div class="card-title"><strong>ลำดับที่ : </strong><?php echo $i; ?></div>
+                                                <div class="row">
+                                                    <div class="col-md-6 col-sm-12 text-end mb-2">
+                                                        ชื่อ - นามสกุล :
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <label for=""> <?php echo @prefixConvertor($showlist->prefix_name) . ' ' . $showlist->fname . ' ' . $showlist->lname; ?></label>
+                                                    </div>
+                                                    <!-- <div class="row m-1"> -->
+                                                    <div class="col-md-6 col-sm-12 text-end mb-2">
+                                                        ความสัมพันธ์ :
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <label for=""><?php echo @relation($showlist->relation); ?></label>
+                                                    </div>
+                                                    <!-- </div> -->
+
+                                                    <!-- <div class="row m-1"> -->
+                                                    <div class="col-md-6 col-sm-12 text-end mb-2">
+                                                        หมายเลขโทรศัพท์ :
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <label for=""><?php echo $showlist->tel; ?></label>
+                                                    </div>
+                                                    <!-- </div> -->
+                                                </div>
+
+
+                                            </div>
+
                                         </div>
+                                    </div>
 
                                 <?php
                                 }

@@ -60,19 +60,16 @@ require_once 'procress/datasave.php';
             <form method="post" enctype="multipart/form-data" id="wizard-validation-form">
                 <!-- Account Details -->
                 <div id="account-details-validation" class="content active dstepper-block fv-plugins-bootstrap5 fv-plugins-framework">
-                    <div class="content-header mb-3">
-                        <h6 class="mb-0">Account Details</h6>
-                        <small>Enter Your Account Details.</small>
-                    </div>
+                    
                     <div class="form-group row">
                         <div class="col-12">
-                            <label class="form-label" for="card_code">GenCode</label>
+                            <label class="mb-2" for="card_code"><strong>GenCode</strong></label>
                             <input type="text" name="card_code" id="card_code" value="<?php echo @RandomString(4, 'C', 7); ?>" class="form-control input-sm" readonly>
                         </div>
                     </div>
                     <div class="row mt-3">
                         <div class="col-sm-12 col-md-4 fv-plugins-icon-container mb-3">
-                            <label class="form-label" for="prefixname">คำนำหน้าชื่อ</label>
+                            <label class="mb-2" for="prefixname"><strong>คำนำหน้าชื่อ</strong></label>
                             <select name="prefixname" id="prefixname" class="form-control select2" required style="width: 100%;">
                                 <option value="">--- เลือกข้อมูล ---</option>
                                 <?php $getprefix = $getdata->my_sql_select($connect, NULL, "members_prefix", "prefix_status ='1'");
@@ -85,25 +82,25 @@ require_once 'procress/datasave.php';
                         </div>
 
                         <div class="col-sm-12 col-md-4 fv-plugins-icon-container mb-3">
-                            <label class="form-label" for="fname">ชื่อเจ้าหน้าที่</label>
+                            <label class="mb-2" for="fname"><strong>ชื่อเจ้าหน้าที่</strong></label>
                             <input type="text" name="fname" id="fname" class="form-control" autocomplete="off">
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
 
                         <div class="col-sm-12 col-md-4 fv-plugins-icon-container mb-3">
-                            <label class="form-label" for="lname">นามสกุลเจ้าหน้าที่</label>
+                            <label class="mb-2" for="lname"><strong>นามสกุลเจ้าหน้าที่</strong></label>
                             <input type="text" name="lname" id="lname" class="form-control" autocomplete="off">
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
 
                         <div class="col-sm-12 col-md-4 fv-plugins-icon-container mb-3">
-                            <label class="form-label" for="position">ตำแหน่ง</label>
+                            <label class="mb-2" for="position"><strong>ตำแหน่งเจ้าหน้าที่</strong></label>
                             <input type="text" name="position" id="position" class="form-control" autocomplete="off">
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
 
                         <div class="col-sm-12 col-md-4 fv-plugins-icon-container mb-3">
-                            <label class="form-label" for="department">สังกัด</label>
+                            <label class="mb-2" for="department"><strong>สังกัด / ฝ่าย</strong></label>
                             <!-- <input type="text" name="department" id="department" class="form-control" autocomplete="off"> -->
                             <select name="department" id="department" class="form-control select2" required style="width: 100%;">
                                 <option value="">--- เลือกข้อมูล ---</option>
@@ -118,13 +115,13 @@ require_once 'procress/datasave.php';
                         </div>
 
                         <div class="col-sm-12 col-md-4 fv-plugins-icon-container mb-3">
-                            <label class="form-label" for="tel">หมายเลขโทรศัพท์</label>
+                            <label class="mb-2" for="tel"><strong>หมายเลขโทรศัพท์</strong></label>
                             <input type="tel" maxlength="10" name="tel" id="tel" class="form-control" autocomplete="off">
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
 
                         <div class="col-sm-12 col-md-4 fv-plugins-icon-container mb-3">
-                            <label class="form-label" for="building">อาคาร</label>
+                            <label class="mb-2" for="building"><strong>อาคาร</strong></label>
                             <select name="building" id="building" class="form-control select2 input-sm" required style="width: 100%;" onchange="getroomListcheck(this.value)">
                                 <option value="">--- เลือกข้อมูล ---</option>
                                 <option value="1">อาคาร Vertex View </option>
@@ -135,7 +132,7 @@ require_once 'procress/datasave.php';
                         </div>
 
                         <div class="col-sm-12 col-md-4 fv-plugins-icon-container mb-3">
-                            <label class="form-label" for="floor">ชั้น</label>
+                            <label class="mb-2" for="floor"><strong>ชั้น</strong></label>
                             <select name="floor" id="floor" class="form-control select2 input-sm" required style="width: 100%;" onchange="getroomListcheckroom(this.value)">
                                 <option value="">--- เลือกข้อมูล ---</option>
                             </select>
@@ -143,7 +140,7 @@ require_once 'procress/datasave.php';
                         </div>
 
                         <div class="col-sm-12 col-md-4 fv-plugins-icon-container mb-3">
-                            <label class="form-label" for="room">ห้อง</label>
+                            <label class="mb-2" for="room"><strong>ห้อง</strong></label>
                             <select name="room" id="room" class="form-control select2 input-sm" required style="width: 100%;">
                                 <option value="">--- เลือกข้อมูล ---</option>
 
@@ -152,7 +149,7 @@ require_once 'procress/datasave.php';
                         </div>
 
                         <div class="col-sm-12 col-md-4 fv-plugins-icon-container mb-3">
-                            <label class="form-label" for="status_guest">สถานะ</label>
+                            <label class="mb-2" for="status_guest"><strong>สถานะเจ้าหน้าที่</strong></label>
                             <select name="status_guest" id="mySelect" class="form-control select2 input-sm" required style="width: 100%;">
                                 <option value="">--- เลือกข้อมูล ---</option>
                                 <option value="1">เจ้าหน้าที่</option>
@@ -163,13 +160,13 @@ require_once 'procress/datasave.php';
                         </div>
 
                         <div id="myDiv" class="col-sm-12 col-md-4 fv-plugins-icon-container mb-3" style="display: none;">
-                            <label class="form-label" for="end_date">วันที่สิ้นสุดโครงการ</label>
+                            <label class="mb-2" for="end_date"><strong>วันที่สิ้นสุดโครงการ</strong></label>
                             <input type="date" name="end_date" id="end_date" class="form-control input-sm">
 
                         </div>
 
                         <div class="col-sm-12 col-md-4 fv-plugins-icon-container mb-3">
-                            <label class="form-label" for="pic">รูปถ่าย</label>
+                            <label class="mb-2" for="pic"><strong>รูปถ่าย</strong></label>
                             <input type="file" name="pic" id="pic" class="form-control input-sm" placeholder="รูปถ่าย">
                         </div>
 

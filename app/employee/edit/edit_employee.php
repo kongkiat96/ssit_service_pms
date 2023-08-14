@@ -91,26 +91,26 @@ $getmember_detail = $getdata->my_sql_query($connect, NULL, "employee", "card_key
       <div class="invalid-feedback">
         เลือก บริษัท / สังกัด.
       </div>
-    </div> 
-    <div class="col-md-6 col-sm-12">
-      <label class="mb-2" for="ed_department">แผนก</strong></label>
-      <select name="ed_department" id="ed_department" class="form-control mb-3 select2" required style="width: 100%;">
-        <option value="">--- เลือกข้อมูล ---</option>
-        <?php
-        $getprefix = $getdata->my_sql_select($connect, NULL, "department_name", "");
-        while ($showprefix = mysqli_fetch_object($getprefix)) {
-            if ($showprefix->id == $getmember_detail->user_department) {
-                echo '<option value="' . $showprefix->id . '" selected>' . $showprefix->department_name . '</option>';
-            } else {
-                echo '<option value="' . $showprefix->id . '">' . $showprefix->department_name . '</option>';
-            }
-        }
-        ?>
-      </select>
-      <div class="invalid-feedback">
-        เลือก แผนก.
-      </div>
     </div> -->
+        <div class="col-md-6 col-sm-12">
+            <label class="mb-2" for="ed_department"><strong>สังกัด / ฝ่าย</strong></label>
+            <select name="ed_department" id="ed_department" class="form-control mb-3 select2" required style="width: 100%;">
+                <option value="">--- เลือกข้อมูล ---</option>
+                <?php
+                $getprefix = $getdata->my_sql_select($connect, NULL, "department_name", "department_status = '1'");
+                while ($showprefix = mysqli_fetch_object($getprefix)) {
+                    if ($showprefix->id == $getmember_detail->department_id) {
+                        echo '<option value="' . $showprefix->id . '" selected>' . $showprefix->department_name . '</option>';
+                    } else {
+                        echo '<option value="' . $showprefix->id . '">' . $showprefix->department_name . '</option>';
+                    }
+                }
+                ?>
+            </select>
+            <div class="invalid-feedback">
+                เลือก สังกัด / ฝ่าย.
+            </div>
+        </div>
     </div>
 
     <input hidden name="card_key" id="card_key" value="<?php echo @htmlspecialchars($_GET['key']); ?>">
