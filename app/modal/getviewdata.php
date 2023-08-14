@@ -44,7 +44,7 @@ $guest_detail = $getdata->my_sql_query($connect, NULL, "bm_guest", "room='" . ht
             <h2 class="accordion-header text-body d-flex justify-content-between" id="accordionPopoutIconOne">
                 <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#detailGuest" aria-controls="detailGuest" aria-expanded="false">
                     <i class="fas fa-user me-2"></i>
-                    <strong>ข้อมูลผู้เข้าพัก</strong>
+                    <strong>ข้อมูล</strong>
                 </button>
             </h2>
 
@@ -73,7 +73,7 @@ $guest_detail = $getdata->my_sql_query($connect, NULL, "bm_guest", "room='" . ht
                                 <div class="col-sm-12 col-md-8">
                                     <div class="card">
                                         <div class="card-header text-center">
-                                            <strong>รายละเอียดผู้เข้าพัก</strong>
+                                            <strong>รายละเอียด</strong>
                                             <hr>
                                         </div>
                                         <div class="card-body">
@@ -115,15 +115,6 @@ $guest_detail = $getdata->my_sql_query($connect, NULL, "bm_guest", "room='" . ht
 
 
 
-
-                                            <div class="row mb-3">
-                                                <div class="col-sm-6 col-md-4 text-start">
-                                                    <label for=""><strong>ฝ่าย :</strong></label>
-                                                </div>
-                                                <div class="col-6 text-center">
-                                                    <label for=""><?php echo getDepartName($guest_detail->department); ?></label>
-                                                </div>
-                                            </div>
                                             <div class="row mb-3">
                                                 <div class="col-sm-6 col-md-4 text-start">
                                                     <label for=""><strong>สำนัก :</strong></label>
@@ -132,6 +123,15 @@ $guest_detail = $getdata->my_sql_query($connect, NULL, "bm_guest", "room='" . ht
                                                     <label for=""><?php echo getDepartName($guest_detail->department); ?></label>
                                                 </div>
                                             </div>
+                                            <div class="row mb-3">
+                                                <div class="col-sm-6 col-md-4 text-start">
+                                                    <label for=""><strong>ฝ่าย :</strong></label>
+                                                </div>
+                                                <div class="col-6 text-center">
+                                                    <label for=""><?php echo getComName($guest_detail->company_id); ?></label>
+                                                </div>
+                                            </div>
+
                                             <div class="row mb-3">
                                                 <div class="col-sm-6 col-md-4 text-start">
                                                     <label for=""><strong>วันที่เข้าพัก :</strong></label>

@@ -13,7 +13,7 @@ $getdepartment = $getdata->my_sql_query($connect, NULL, "department_name", "id='
 <div class="modal-body">
 	<div class="form-group row">
 		<div class="col-8">
-			<label for="edit_department">ชื่อแผนก</label>
+			<label for="edit_department">ชื่อสำนัก</label>
 			<input type="text" name="edit_department" id="edit_department" class="form-control" value="<?php echo @$getdepartment->department_name; ?>">
 		</div>
 

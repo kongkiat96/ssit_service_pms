@@ -126,6 +126,13 @@
             }
           }
         },
+        company_id: {
+          validators: {
+            notEmpty: {
+              message: 'ระบุ ฝ่าย'
+            }
+          }
+        },
         // formValidationEmail: {
         //   validators: {
         //     notEmpty: {

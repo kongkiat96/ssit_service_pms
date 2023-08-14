@@ -93,8 +93,8 @@ if (isset($_POST['search'])) {
                     <td>User Login</td>
                     <td>ชื่อ - นามสกุล</td>
                     <td>ตำแหน่ง</td>
-                    <td>สังกัด / ฝ่าย</td>
-                    <!-- <td>บริษัท</td> -->
+                    <td>สังกัด</td>
+                    <td>ฝ่าย</td>
                     <td>E-mail</td>
                     <td>จัดการ</td>
                 </tr>
@@ -129,6 +129,15 @@ if (isset($_POST['search'])) {
                             <?php if (@$showmember->department_id != NULL) {
 
                                 echo @prefixConvertorDepartment($showmember->department_id);
+                            } else {
+                                echo '<strong><div style="color: #E81600">-</div></strong>';
+                            }
+                            ?>
+                        </td>
+                        <td align="center">
+                            <?php if (@$showmember->user_department != NULL) {
+
+                                echo @getComName($showmember->user_department);
                             } else {
                                 echo '<strong><div style="color: #E81600">-</div></strong>';
                             }

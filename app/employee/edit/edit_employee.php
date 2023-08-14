@@ -93,7 +93,7 @@ $getmember_detail = $getdata->my_sql_query($connect, NULL, "employee", "card_key
       </div>
     </div> -->
         <div class="col-md-6 col-sm-12">
-            <label class="mb-2" for="ed_department"><strong>สังกัด / ฝ่าย</strong></label>
+            <label class="mb-2" for="ed_department"><strong>สังกัด</strong></label>
             <select name="ed_department" id="ed_department" class="form-control mb-3 select2" required style="width: 100%;">
                 <option value="">--- เลือกข้อมูล ---</option>
                 <?php
@@ -103,6 +103,26 @@ $getmember_detail = $getdata->my_sql_query($connect, NULL, "employee", "card_key
                         echo '<option value="' . $showprefix->id . '" selected>' . $showprefix->department_name . '</option>';
                     } else {
                         echo '<option value="' . $showprefix->id . '">' . $showprefix->department_name . '</option>';
+                    }
+                }
+                ?>
+            </select>
+            <div class="invalid-feedback">
+                เลือก สังกัด / ฝ่าย.
+            </div>
+        </div>
+
+        <div class="col-md-6 col-sm-12">
+            <label class="mb-2" for="ed_company_id"><strong>ฝ่าย</strong></label>
+            <select name="ed_company_id" id="ed_company_id" class="form-control mb-3 select2" required style="width: 100%;">
+                <option value="">--- เลือกข้อมูล ---</option>
+                <?php
+                $getprefix = $getdata->my_sql_select($connect, NULL, "company", "cp_status = '1'");
+                while ($showprefix = mysqli_fetch_object($getprefix)) {
+                    if ($showprefix->id == $getmember_detail->user_department) {
+                        echo '<option value="' . $showprefix->id . '" selected>' . $showprefix->company_name . '</option>';
+                    } else {
+                        echo '<option value="' . $showprefix->id . '">' . $showprefix->company_name . '</option>';
                     }
                 }
                 ?>

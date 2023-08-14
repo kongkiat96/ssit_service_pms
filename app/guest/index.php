@@ -100,13 +100,28 @@ require_once 'procress/datasave.php';
                         </div>
 
                         <div class="col-sm-12 col-md-4 fv-plugins-icon-container mb-3">
-                            <label class="mb-2" for="department"><strong>สังกัด / ฝ่าย</strong></label>
+                            <label class="mb-2" for="department"><strong>สังกัด</strong></label>
                             <!-- <input type="text" name="department" id="department" class="form-control" autocomplete="off"> -->
                             <select name="department" id="department" class="form-control select2" required style="width: 100%;">
                                 <option value="">--- เลือกข้อมูล ---</option>
                                 <?php $getDepart = $getdata->my_sql_select($connect, NULL, "department_name", "department_status ='1' ORDER BY department_name");
                                 while ($showDepart = mysqli_fetch_object($getDepart)) {
                                     echo '<option value="' . $showDepart->id . '">' . $showDepart->department_name . '</option>';
+                                }
+                                ?>
+                            </select>
+
+                            <div class="fv-plugins-message-container invalid-feedback"></div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-4 fv-plugins-icon-container mb-3">
+                            <label class="mb-2" for="company_id"><strong>ฝ่าย</strong></label>
+                            <!-- <input type="text" name="company_id" id="company_id" class="form-control" autocomplete="off"> -->
+                            <select name="company_id" id="company_id" class="form-control select2" required style="width: 100%;">
+                                <option value="">--- เลือกข้อมูล ---</option>
+                                <?php $getCom = $getdata->my_sql_select($connect, NULL, "company", "cp_status ='1' ORDER BY id");
+                                while ($showCom = mysqli_fetch_object($getCom)) {
+                                    echo '<option value="' . $showCom->id . '">' . $showCom->company_name . '</option>';
                                 }
                                 ?>
                             </select>

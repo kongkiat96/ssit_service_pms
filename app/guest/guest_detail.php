@@ -269,6 +269,9 @@
                                 <div class="col-sm-12 col-md-3 mb-3 text-end"><strong>สังกัด : </strong></div>
                                 <div class="col-sm-12 col-md-3 mb-3"><?php echo getDepartName($guest_detail->department); ?></div>
 
+                                <div class="col-sm-12 col-md-3 mb-3 text-end"><strong>ฝ่าย : </strong></div>
+                                <div class="col-sm-12 col-md-3 mb-3"><?php echo getComName($guest_detail->company_id); ?></div>
+
                                 <div class="col-sm-12 col-md-3 mb-3 text-end"><strong>ประเภทบุคลากร : </strong></div>
                                 <div class="col-sm-12 col-md-3 mb-3"><?php echo status_guest($guest_detail->status_guest); ?></div>
                                 <?php if ($guest_detail->status_guest == '3') { ?>

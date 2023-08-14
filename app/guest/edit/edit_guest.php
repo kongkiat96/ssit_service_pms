@@ -76,6 +76,27 @@ $getall = $getdata->my_sql_show_rows($connect, "bm_guest_detail", "ID <> 'hidden
         </div>
 
         <div class="col-md-4 col-sm-12 mb-3">
+            <label for="edit_company_id">ฝ่าย</label>
+            <!-- <input type="text" name="edit_company_id" id="edit_company_id" class="form-control input-sm" placeholder="ตำแหน่ง" value="<?php echo $guest_detail_modal->department; ?>" required> -->
+            <select name="edit_company_id" id="edit_company_id" class="form-control input-sm">
+                <option value="">--- เลือกข้อมูล ---</option>
+                <?php
+                $getComID = $getdata->my_sql_select($connect, NULL, "company", "cp_status ='1'");
+                while ($showComName = mysqli_fetch_object($getComID)) {
+                    if ($showComName->id == $guest_detail_modal->company_id) {
+                        echo '<option value="' . $showComName->id . '" selected>' . $showComName->company_name . '</option>';
+                    } else {
+                        echo '<option value="' . $showComName->id . '">' . $showComName->company_name . '</option>';
+                    }
+                }
+                ?>
+            </select>
+            <div class="invalid-feedback">
+                ระบุ ฝ่าย.
+            </div>
+        </div>
+
+        <div class="col-md-4 col-sm-12 mb-3">
             <label for="status_guest">สถานะผู้เข้าพัก</label>
             <select name="status_guest" id="mySelect" class="form-control" required>
                 <option value="">--- เลือกข้อมูล ---</option>
@@ -91,7 +112,7 @@ $getall = $getdata->my_sql_show_rows($connect, "bm_guest_detail", "ID <> 'hidden
                     echo '<option value="1">เจ้าหน้าที่</option>
                     <option value="2">ลูกจ้าง สทอภ.</option>
                     <option value="3" selected>ลูกจ้างโครงการ</option>';
-                }else {
+                } else {
                     echo '<option value="1">เจ้าหน้าที่</option>
                     <option value="2">ลูกจ้าง สทอภ.</option>
                     <option value="3">ลูกจ้างโครงการ</option>';
@@ -187,6 +208,10 @@ $getall = $getdata->my_sql_show_rows($connect, "bm_guest_detail", "ID <> 'hidden
         $("#status").select2({
             dropdownParent: $("#edit_guest")
         });
+        $("#edit_company_id").select2({
+            dropdownParent: $("#edit_guest")
+        });
+
     });
 
     $(document).ready(function() {

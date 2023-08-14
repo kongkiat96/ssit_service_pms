@@ -164,6 +164,16 @@ function getDepartName($getID)
     return $getDepartName->department_name;
 }
 
+function getComName($getID)
+{
+    $getdata = new clear_db();
+    $connect = $getdata->my_sql_connect(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
+    mysqli_set_charset($connect, 'utf8');
+    $getDepartName = $getdata->my_sql_query($connect, null,'company', "id ='" . $getID . "'");
+
+    return $getDepartName->company_name;
+}
+
 function Userlogin($getuser)
 {
     $getdata = new clear_db();

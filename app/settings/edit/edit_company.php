@@ -14,7 +14,7 @@ $getcompany = $getdata->my_sql_query($connect, NULL, "company", "id='" . addslas
 	<div class="form-group row">
 		<input type="hidden" name="dep_id" id="dep_id" value="<?php echo @$getcompany->id; ?>">
 		<div class="col-8">
-			<label for="edit_company">ชื่อบริษัท</label>
+			<label for="edit_company">ชื่อฝ่าย</label>
 			<input type="text" name="edit_company" id="edit_company" class="form-control" value="<?php echo @$getcompany->company_name; ?>">
 		</div>
 		<div class="col-4">

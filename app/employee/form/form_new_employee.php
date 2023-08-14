@@ -29,13 +29,26 @@
 
 
         <div class="col-md-4 col-sm-12 mb-3">
-            <label for="department" class="mb-2"><strong>สังกัด / ฝ่าย</strong></label>
+            <label for="department" class="mb-2"><strong>สังกัด</strong></label>
             <select name="department" id="department" class="form-control select2" required style="width: 100%;">
                 <option value="">--- เลือกข้อมูล ---</option>
                 <?php
                 $getprefix = $getdata->my_sql_select($connect, NULL, "department_name", "department_status = '1'");
                 while ($showprefix = mysqli_fetch_object($getprefix)) {
                     echo '<option value="' . $showprefix->id . '">' . $showprefix->department_name . '</option>';
+                }
+                ?>
+            </select>
+        </div>
+
+        <div class="col-md-4 col-sm-12 mb-3">
+            <label for="company_id" class="mb-2"><strong>ฝ่าย</strong></label>
+            <select name="company_id" id="company_id" class="form-control select2" required style="width: 100%;">
+                <option value="">--- เลือกข้อมูล ---</option>
+                <?php
+                $getprefix = $getdata->my_sql_select($connect, NULL, "company", "cp_status = '1'");
+                while ($showprefix = mysqli_fetch_object($getprefix)) {
+                    echo '<option value="' . $showprefix->id . '">' . $showprefix->company_name . '</option>';
                 }
                 ?>
             </select>
