@@ -1,7 +1,6 @@
 <div class="row">
   <div class="col-12">
     <h3 class="page-header"><i class="fa fa-sliders-h fa-fw"></i> ตั้งค่า</h3>
-    <hr class="mt-2">
   </div>
 </div>
 
@@ -17,60 +16,44 @@
 
 <div class="card shadow">
   <div class="card-header">
-    <div class="col-12">
-      <h5 class="fw-semibold">ข้อมูลผู้ใช้งาน <i class="fa fa-user-cog fa-fw"></i></h4>
-        <hr class="mt-0" />
-    </div>
+    <h6 class="m-0 font-weight-bold text-left text-info">ข้อมูลผู้ใช้งาน <i class="fa fa-user-cog fa-fw"></i></h6>
   </div>
   <div class="card-body">
-    <a href="?p=view_info" class="btn btn-primary"><br><i class="fa fa-user fa-3x"></i><br><br>ข้อมูลส่วนตัว</a>
-    <a href="?p=setting_info" class="btn btn-warning"><br><i class="fa fa-key fa-3x"></i><br><br>เปลี่ยนรหัสผ่าน</a>
+    <a href="?p=view_info" class="btn btn-primary mt-1"><i class="fa fa-user fa-fw fa-2x mt-2"></i><br><br>ข้อมูลส่วนตัว</a>
+    <a href="?p=setting_info" class="btn btn-warning mt-1"><i class="fa fa-key fa-fw fa-2x mt-2"></i><br><br>เปลี่ยนแปลงรหัสผ่าน</a>
   </div>
 </div><br>
 <?php
 if (@$_SESSION['uclass'] == 2 || @$_SESSION['uclass'] == 3) {
 ?>
-<div class="card shadow">
-  <div class="card-header">
-    <div class="col-12">
-      <h5 class="fw-semibold">ตั้งค่าระบบ <i class="fa fa-cogs fa-fw"></i></h4>
-        <hr class="mt-0" />
+  <div class="card shadow">
+    <div class="card-header">
+      <h6 class="m-0 font-weight-bold text-left text-warning">ตั้งค่าระบบ <i class="fa fa-cogs fa-fw"></i></h6>
+    </div>
+    <div class="card-body">
+      <a href="?p=setting_system" class="btn btn-primary mt-1"><i class="fa fa-wrench fa-fw fa-2x mt-2"></i><br><br>ภายในระบบ</a>
+      <a href="?p=setting_users" class="btn btn-warning mt-1"><i class="fa fa-users fa-fw fa-2x mt-2"></i><br><br>ผู้ใช้งานระบบ</a>
+      <!-- <a href="?p=setting_card_status" class="btn btn-success mt-1"><i class="fa fa-tags fa-fw fa-2x mt-2"></i><br><br>สถานะประเภท</a> -->
+      <a href="?p=setting_room" class="btn btn-info mt-1"><i class="fa fa-calendar-minus fa-fw fa-2x mt-2"></i><br><br>เพิ่มข้อมูลรายงานห้องพัก</a>
     </div>
   </div>
-  <div class="card-body">
-    <a href="?p=setting_system" class="btn btn-primary"><br><i class="fa fa-wrench fa-3x"></i><br><br>จัดการในระบบ</a>
-
-    <a href="?p=setting_card_status" class="btn btn-success"><br><i class="fa fa-tags fa-3x"></i><br><br>สถานะประเภท</a>
-  </div>
-</div>
 <?php } ?>
 <br>
 <?php
 if (@$_SESSION['uclass'] == 3) {
 ?>
-<div class="card shadow">
-  <div class="card-header">
-    <div class="col-12">
-      <h5 class="fw-semibold">ผู้ดูแลระบบ <i class="fa fa-cogs fa-fw"></i></h4>
-        <hr class="mt-0" />
+  <div class="card shadow">
+    <div class="card-header">
+      <h6 class="m-0 font-weight-bold text-left text-danger">ผู้ดูแลระบบ <i class="fa fa-cogs fa-fw"></i></h6>
+    </div>
+    <div class="card-body">
+      <a href="?p=administrator_access_list" class="btn btn-primary mt-1"><i class="fa fa-street-view fa-fw fa-2x mt-2"></i><br><br>ข้อมูลการเข้าถึง</a>
+      <a href="?p=administrator_menus" class="btn btn-warning mt-1"><i class="fa fa-sitemap fa-fw fa-2x mt-2"></i><br><br>จัดการเมนู</a>
+      <a href="?p=setting_app" class="btn btn-info mt-1"><i class="far fa-window-maximize fa-fw fa-2x mt-2"></i><br><br>ตั้งค่าระบบ</a>
+      <a href="?p=setting_backup" class="btn btn-danger mt-1"><i class="fa fa-database fa-fw fa-2x mt-2"></i><br><br>สำรองฐานข้อมูล</a>
+      <!-- <a href="?p=administrator_cases" class="btn btn-success mt-1"><i class="fa fa-bezier-curve fa-fw fa-2x mt-2"></i><br><br>ตรวจสอบหน้าระบบ</a> -->
+
+
     </div>
   </div>
-  <div class="card-body">
-    <a href="?p=setting_users" class="btn btn-secondary"><br><i class="fa fa-users fa-3x"></i><br><br>ผู้ใช้งานระบบ</a>
-    <a href="?p=administrator_access_list" class="btn btn-primary"><br><i
-        class="fa fa-street-view fa-3x"></i><br><br>ข้อมูลการเข้าถึง</a>
-    <a href="?p=administrator_menus" class="btn btn-warning"><br><i
-        class="fa fa-sitemap fa-3x"></i><br><br>จัดการลิงค์เมนู</a>
-    <a href="?p=administrator_cases" class="btn btn-success"><br><i
-        class="fa fa-bezier-curve fa-3x"></i><br><br>จัดการหน้าระบบ</a>
-    <a href="?p=setting_app" class="btn btn-info"><br><i
-        class="far fa-window-maximize fa-3x"></i><br><br>ตั้งค่าระบบ</a>
-    <a href="?p=administrator_log" class="btn btn-danger"><br><i
-        class="fa fa-user-clock fa-3x"></i><br><br>ประวัติเข้าระบบ</a>
-    <a href="?p=setting_backup" class="btn btn-danger"><br><i
-        class="fa fa-database fa-3x"></i><br><br>สำรองฐานข้อมูล</a>
-    <a href="service/autoalert.php" class="btn btn-danger" target="_blank"><br><i
-        class="fa fa-clock fa-3x"></i><br><br>ตรวจสอบการแจ้งเตือนอัตโนมัติ</a>
-  </div>
-</div>
 <?php } ?>

@@ -8,13 +8,8 @@ $getdata = new clear_db();
 $connect = $getdata->my_sql_connect(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
 mysqli_set_charset($connect, "utf8");
 
-$showuser_detail = $getdata->my_sql_query($connect, NULL, "user", "user_key='" . htmlspecialchars($_GET['key']) . "'");
+$showuser_detail = $getdata->my_sql_query($connect, NULL, "user", "user_key='" . addslashes($_GET['key']) . "'");
 ?>
-<div class="modal-header">
-    <h5 class="modal-title"><strong>แก้ไขข้อมูลการเข้าถึง</strong></h5>
-    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-    <hr class="mt-0" />
-</div>
 <div class="modal-body">
     <div class="form-group">
         <table class="table table-bordered table-hover text-center">
@@ -28,7 +23,7 @@ $showuser_detail = $getdata->my_sql_query($connect, NULL, "user", "user_key='" .
                 <?php
                 $getaccess  = $getdata->my_sql_select($connect, NULL, "access_list", "access_status='1' ORDER BY access_name");
                 while ($showaccess = mysqli_fetch_object($getaccess)) {
-                    $nowaccess = $getdata->my_sql_show_rows($connect, "access_user", "user_key='" . htmlspecialchars($_GET['key']) . "' AND access_key='" . $showaccess->access_key . "'");
+                    $nowaccess = $getdata->my_sql_show_rows($connect, "access_user", "user_key='" . addslashes($_GET['key']) . "' AND access_key='" . $showaccess->access_key . "'");
                     if ($nowaccess != 0) { ?>
                         <tr>
                             <td><input type="checkbox" name="access_list[]" value="<?php echo $showaccess->access_key; ?>" checked="checked"></td>
@@ -44,6 +39,5 @@ $showuser_detail = $getdata->my_sql_query($connect, NULL, "user", "user_key='" .
             </tbody>
         </table>
         <input type="text" name="key" hidden value="<?php echo $showuser_detail->user_key; ?>">
-        <input type="text" name="showclass" hidden value="<?php echo $showuser_detail->user_class; ?>">
     </div>
 </div>

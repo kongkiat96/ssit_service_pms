@@ -8,19 +8,28 @@ $getdata = new clear_db();
 $connect = $getdata->my_sql_connect(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
 mysqli_set_charset($connect, "utf8");
 
-$getprefix_detail = $getdata->my_sql_query($connect, NULL, "prefix_title", "prefix_key='" . htmlspecialchars($_GET['key']) . "'");
+$getprefix_detail = $getdata->my_sql_query($connect, NULL, "members_prefix", "prefix_key='" . addslashes($_GET['key']) . "'");
 ?>
-<div class="modal-header">
-    <h5 class="modal-title"><strong>แก้ไขข้อมูล</strong></h5>
-    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-    <hr class="mt-0" />
-</div>
 <div class="modal-body">
   <div class="form-group row">
-    <div class="col-12">
-      <label class="form-label-md fw-semibold mb-2" for="edit_prefix_title">ชื่อคำนำหน้านาม</label>
+    <div class="col-8">
+      <label for="edit_prefix_title">ชื่อคำนำหน้านาม</label>
       <input type="text" name="edit_prefix_title" id="edit_prefix_title" class="form-control" value="<?php echo @$getprefix_detail->prefix_title; ?>">
     </div>
+    <div class="col-4">
+      <label for="">สถานะการแสดง</label>
+      <h2 class="forn-control">
+        <?php
+        if (@$getprefix_detail->prefix_status == 1) {
+          echo '<button type="button" class="btn btn-success btn-sm" id="btn-' . @$getprefix_detail->prefix_key . '" onclick="changeUsingprefix(\'' . @$getprefix_detail->prefix_key . '\');"><i class="fa fa-unlock-alt" id="icon-' . @$getprefix_detail->prefix_key . '"></i> <span id="text-' . @$getprefix_detail->prefix_key . '">แสดง</span></button>';
+        } else {
+          echo '<button type="button" class="btn btn-danger btn-sm" id="btn-' . @$getprefix_detail->prefix_key . '" onclick="changeUsingprefix(\'' . @$getprefix_detail->prefix_key . '\');"><i class="fa fa-lock" id="icon-' . @$getprefix_detail->prefix_key . '"></i> <span id="text-' . @$getprefix_detail->prefix_key . '">ซ่อน</span></button>';
+        }
+        ?>
+      </h2>
+
+    </div>
+
 
     <input type="text" name="prefix_key" id="prefix_key" value="<?php echo @$getprefix_detail->prefix_key; ?>" hidden readonly>
   </div>

@@ -265,10 +265,10 @@
 						class="nav-link <?php if (isset($_POST['save_department']) || isset($_POST['save_edit_department'])) { echo 'active';};?>"
 						role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-justified-profile"
 						aria-controls="navs-pills-justified-profile" aria-selected="false">
-						<i class='bx bx-list-ul'></i> แผนก / ฝ่าย
+						<i class='bx bx-list-ul'></i> สำนัก / ฝ่าย
 					</button>
 				</li>
-				<li class="nav-item">
+				<!-- <li class="nav-item">
 					<button type="button"
 						class="nav-link <?php if (isset($_POST['save_company']) || isset($_POST['save_edit_company'])) { echo 'active';};?>"
 						role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-justified-messages"
@@ -283,7 +283,7 @@
 						aria-controls="navs-pills-location" aria-selected="false">
 						<i class="tf-icons bx bx-map"></i> สถานที่ตั้ง
 					</button>
-				</li>
+				</li> -->
 			</ul>
 			<div class="tab-content">
 				<div class="tab-pane fade <?php if (isset($_POST['save_prefix']) || isset($_POST['save_edit_prefix'])) { echo 'show active'; } ?>"
@@ -305,7 +305,7 @@
 							<tbody>
 								<?php
 									$i = 0;
-									$getprefix = $getdata->my_sql_select($connect, null, "prefix_title", "prefix_code <> 'hidden' AND prefix_status = '1' OR prefix_status = '0' AND prefix_status != '2'");
+									$getprefix = $getdata->my_sql_select($connect, null, "members_prefix", "prefix_code <> 'hidden' AND prefix_status = '1' OR prefix_status = '0' AND prefix_status != '2'");
 									while ($showprefix = mysqli_fetch_object($getprefix)) {
 										$i++
 									?>

@@ -47,6 +47,18 @@ $success = '<script type="text/javascript">
 
 </script>';
 
+$success2 = '<script type="text/javascript">
+    Swal.fire({
+        position: "top-end",
+        size: "small",
+        icon: "success",
+        title: "บันทึกเรียบร้อย...",
+        timer: 3000,  
+        showConfirmButton: false
+    });
+
+</script>';
+
 $reqService = '<script type="text/javascript">
     Swal.fire({
         position: "top-end",

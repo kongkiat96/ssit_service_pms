@@ -36,12 +36,10 @@
  <script src="../assets/vendor/libs/formvalidation/dist/js/FormValidation.js"></script>
  <script src="../assets/vendor/libs/formvalidation/dist/js/plugins/Bootstrap5.min.js"></script>
  <script src="../assets/vendor/libs/formvalidation/dist/js/plugins/AutoFocus.min.js"></script>
- <script src="../assets/js/form-validation.js"></script>
+ <!-- <script src="../assets/js/form-validation.js"></script> -->
  <script src="../assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
  <script src="../assets/js/extended-ui-sweetalert2.js"></script>
 
- <script src="../assets/vendor/libs/formvalidation/dist/js/plugins/Bootstrap5.min.js"></script>
- <script src="../assets/vendor/libs/formvalidation/dist/js/plugins/AutoFocus.min.js"></script>
  <script src="../assets/js/pages-auth.js"></script>
  <!-- Page JS -->
  <script src="../assets/js/forms-selects.js"></script>
@@ -70,9 +68,12 @@
  <script src="../assets/vendor/libs/block-ui/block-ui.js"></script>
 
 
+ <script src="../assets/vendor/libs/bs-stepper/bs-stepper.js"></script>
+ <script src="../assets/js/form-wizard-icons.js"></script>
+ <script src="../assets/js/form-wizard-numbered.js"></script>
+ <script src="../assets/js/form-wizard-validation.js"></script>
 
-
-
+ <script src="../assets/js/form-validation.js"></script>
  <!-- build:js assets/vendor/js/core.js -->
 
     <script src="../assets/vendor/js/menu.js"></script>
@@ -83,6 +84,6 @@
     <script src="../assets/vendor/libs/quill/quill.js"></script>
 
     <!-- Page JS -->
-    <script src="../assets/js/forms-editors.js"></script>
+    <!-- <script src="../assets/js/forms-editors.js"></script> -->
 
-    <script src="../assets/plugins/ckeditor/ckeditor.js"></script>
+    <!-- <script src="../assets/plugins/ckeditor/ckeditor.js"></script> -->

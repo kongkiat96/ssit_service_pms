@@ -75,9 +75,9 @@ mysqli_set_charset($connect, "utf8"); ?>
                                                         <div class="card ">
                                                             <div class="card-body">
                                                                 <!-- Logo -->
-                                                                <div class="app-brand justify-content-center mb-5">
+                                                                <div class="app-brand justify-content-center mb-3">
                                                                     <a href="#" class="app-brand-link gap-2">
-                                                                        <span class="app-brand-text demo text-body fw-bolder text-capitalize"><?php echo @$system_info->site_name; ?> Login</span>
+                                                                        <span class="app-brand-text demo text-body fw-bolder text-capitalize">Admin Login</span>
                                                                     </a>
                                                                 </div>
                                                                 <!-- /Logo -->

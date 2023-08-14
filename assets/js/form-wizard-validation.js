@@ -29,52 +29,133 @@
     // Account details
     const FormValidation1 = FormValidation.formValidation(wizardValidationFormStep1, {
       fields: {
-        formValidationUsername: {
+        prefixname: {
           validators: {
             notEmpty: {
-              message: 'The name is required'
+              message: 'ระบุ คำนำหน้า'
+            }
+            // stringLength: {
+            //   min: 6,
+            //   max: 30,
+            //   message: 'ระบุ The name must be more than 6 and less than 30 characters long'
+            // },
+            // regexp: {
+            //   regexp: /^[a-zA-Z0-9 ]+$/,
+            //   message: 'ระบุ The name can only consist of alphabetical, number and space'
+            // }
+          }
+        },
+        fname: {
+          validators: {
+            notEmpty: {
+              message: 'ระบุ ชื่อเจ้าหน้าที่'
+            }
+            // stringLength: {
+            //   min: 6,
+            //   max: 30,
+            //   message: 'ระบุ The name must be more than 6 and less than 30 characters long'
+            // },
+            // regexp: {
+            //   regexp: /^[a-zA-Z0-9 ]+$/,
+            //   message: 'ระบุ The name can only consist of alphabetical, number and space'
+            // }
+          }
+        },
+        lname: {
+          validators: {
+            notEmpty: {
+              message: 'ระบุ นามสกุลเจ้าหน้าที่'
+            }
+          }
+        },
+        position: {
+          validators: {
+            notEmpty: {
+              message: 'ระบุ ตำแหน่ง'
+            }
+          }
+        },
+        department: {
+          validators: {
+            notEmpty: {
+              message: 'ระบุ สังกัด'
+            }
+          }
+        },
+        tel: {
+          validators: {
+            notEmpty: {
+              message: 'ระบุ หมายเลขโทรศัพท์'
             },
             stringLength: {
-              min: 6,
-              max: 30,
-              message: 'The name must be more than 6 and less than 30 characters long'
+              min: 10,
+              max: 10,
+              message: 'ต้องไม่เกิน 10 หลัก'
             },
             regexp: {
-              regexp: /^[a-zA-Z0-9 ]+$/,
-              message: 'The name can only consist of alphabetical, number and space'
+              regexp: /^[0-9 ]+$/,
+              message: 'ระบุ เฉพาะตัวเลขเท่านั้น'
             }
           }
         },
-        formValidationEmail: {
+        building: {
           validators: {
             notEmpty: {
-              message: 'The Email is required'
-            },
-            emailAddress: {
-              message: 'The value is not a valid email address'
+              message: 'ระบุ อาคาร'
             }
           }
         },
-        formValidationPass: {
+        floor: {
           validators: {
             notEmpty: {
-              message: 'The password is required'
+              message: 'ระบุ ชั้น'
             }
           }
         },
-        formValidationConfirmPass: {
+        room: {
           validators: {
             notEmpty: {
-              message: 'The Confirm Password is required'
-            },
-            identical: {
-              compare: function () {
-                return wizardValidationFormStep1.querySelector('[name="formValidationPass"]').value;
-              },
-              message: 'The password and its confirm are not the same'
+              message: 'ระบุ ห้อง'
             }
           }
-        }
+        },
+        status_guest: {
+          validators: {
+            notEmpty: {
+              message: 'ระบุ สถานะ'
+            }
+          }
+        },
+        // formValidationEmail: {
+        //   validators: {
+        //     notEmpty: {
+        //       message: 'The Email is required'
+        //     },
+        //     emailAddress: {
+        //       message: 'The value is not a valid email address'
+        //     }
+        //   }
+        // },
+        // formValidationPass: {
+        //   validators: {
+        //     notEmpty: {
+        //       message: 'The password is required'
+        //     }
+        //   }
+        // },
+        // formValidationConfirmPass: {
+        //   validators: {
+        //     notEmpty: {
+        //       message: 'The Confirm Password is required'
+        //     },
+        //     identical: {
+        //       compare: function () {
+        //         return wizardValidationFormStep1.querySelector('[name="formValidationPass"]').value;
+        //       },
+        //       message: 'The password and its confirm are not the same'
+        //     }
+        //   }
+        // }
       },
       plugins: {
         trigger: new FormValidation.plugins.Trigger(),
@@ -82,7 +163,7 @@
           // Use this for enabling/changing valid/invalid class
           // eleInvalidClass: '',
           eleValidClass: '',
-          rowSelector: '.col-sm-6'
+          rowSelector: '.col-sm-12'
         }),
         autoFocus: new FormValidation.plugins.AutoFocus(),
         submitButton: new FormValidation.plugins.SubmitButton()
@@ -97,7 +178,8 @@
       }
     }).on('core.form.valid', function () {
       // Jump to the next step when all fields in the current step are valid
-      validationStepper.next();
+      // validationStepper.next();
+      // alert('Submitted..!!');
     });
 
     // Personal info
@@ -178,46 +260,103 @@
     // Social links
     const FormValidation3 = FormValidation.formValidation(wizardValidationFormStep3, {
       fields: {
-        formValidationTwitter: {
+        prefixname: {
           validators: {
             notEmpty: {
-              message: 'The Twitter URL is required'
-            },
-            uri: {
-              message: 'The URL is not proper'
+              message: 'ระบุ คำนำหน้า'
+            }
+            // stringLength: {
+            //   min: 6,
+            //   max: 30,
+            //   message: 'ระบุ The name must be more than 6 and less than 30 characters long'
+            // },
+            // regexp: {
+            //   regexp: /^[a-zA-Z0-9 ]+$/,
+            //   message: 'ระบุ The name can only consist of alphabetical, number and space'
+            // }
+          }
+        },
+        fname: {
+          validators: {
+            notEmpty: {
+              message: 'ระบุ ชื่อเจ้าหน้าที่'
+            }
+            // stringLength: {
+            //   min: 6,
+            //   max: 30,
+            //   message: 'ระบุ The name must be more than 6 and less than 30 characters long'
+            // },
+            // regexp: {
+            //   regexp: /^[a-zA-Z0-9 ]+$/,
+            //   message: 'ระบุ The name can only consist of alphabetical, number and space'
+            // }
+          }
+        },
+        lname: {
+          validators: {
+            notEmpty: {
+              message: 'ระบุ นามสกุลเจ้าหน้าที่'
             }
           }
         },
-        formValidationFacebook: {
+        position: {
           validators: {
             notEmpty: {
-              message: 'The Facebook URL is required'
-            },
-            uri: {
-              message: 'The URL is not proper'
+              message: 'ระบุ ตำแหน่ง'
             }
           }
         },
-        formValidationGoogle: {
+        department: {
           validators: {
             notEmpty: {
-              message: 'The Google URL is required'
-            },
-            uri: {
-              message: 'The URL is not proper'
+              message: 'ระบุ สังกัด'
             }
           }
         },
-        formValidationLinkedIn: {
+        tel: {
           validators: {
             notEmpty: {
-              message: 'The LinkedIn URL is required'
+              message: 'ระบุ หมายเลขโทรศัพท์'
             },
-            uri: {
-              message: 'The URL is not proper'
+            stringLength: {
+              min: 10,
+              max: 10,
+              message: 'ต้องไม่เกิน 10 หลัก'
+            },
+            regexp: {
+              regexp: /^[0-9 ]+$/,
+              message: 'ระบุ เฉพาะตัวเลขเท่านั้น'
             }
           }
-        }
+        },
+        building: {
+          validators: {
+            notEmpty: {
+              message: 'ระบุ อาคาร'
+            }
+          }
+        },
+        floor: {
+          validators: {
+            notEmpty: {
+              message: 'ระบุ ชั้น'
+            }
+          }
+        },
+        room: {
+          validators: {
+            notEmpty: {
+              message: 'ระบุ ห้อง'
+            }
+          }
+        },
+        status_guest: {
+          validators: {
+            notEmpty: {
+              message: 'ระบุ สถานะ'
+            }
+          }
+        },
       },
       plugins: {
         trigger: new FormValidation.plugins.Trigger(),
@@ -225,7 +364,7 @@
           // Use this for enabling/changing valid/invalid class
           // eleInvalidClass: '',
           eleValidClass: '',
-          rowSelector: '.col-sm-6'
+          rowSelector: '.col-sm-12'
         }),
         autoFocus: new FormValidation.plugins.AutoFocus(),
         submitButton: new FormValidation.plugins.SubmitButton()

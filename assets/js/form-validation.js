@@ -85,201 +85,103 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
         const fv = FormValidation.formValidation(formValidationExamples, {
             fields: {
-                call_back: {
+                prefixname: {
                     validators: {
-                        notEmpty: {
-                            message: 'ระบุข้อมูลการติดต่อกลับ'
-                        },
+                      notEmpty: {
+                        message: 'ระบุ คำนำหน้า'
+                      }
+                      // stringLength: {
+                      //   min: 6,
+                      //   max: 30,
+                      //   message: 'ระบุ The name must be more than 6 and less than 30 characters long'
+                      // },
+                      // regexp: {
+                      //   regexp: /^[a-zA-Z0-9 ]+$/,
+                      //   message: 'ระบุ The name can only consist of alphabetical, number and space'
+                      // }
                     }
-                },
-                number_asset: {
+                  },
+                  fname: {
                     validators: {
-                        notEmpty: {
-                            message: 'ระบุข้อมูลชื่อวัสดุ/ครุภัณฑ์'
-                        },
+                      notEmpty: {
+                        message: 'ระบุ ชื่อเจ้าหน้าที่'
+                      }
+                      // stringLength: {
+                      //   min: 6,
+                      //   max: 30,
+                      //   message: 'ระบุ The name must be more than 6 and less than 30 characters long'
+                      // },
+                      // regexp: {
+                      //   regexp: /^[a-zA-Z0-9 ]+$/,
+                      //   message: 'ระบุ The name can only consist of alphabetical, number and space'
+                      // }
                     }
-                },
-                se_room: {
+                  },
+                  lname: {
                     validators: {
-                        notEmpty: {
-                            message: 'ระบุข้อมูลพื้นที่/ห้อง'
-                        },
+                      notEmpty: {
+                        message: 'ระบุ นามสกุลเจ้าหน้าที่'
+                      }
                     }
-                },
-                other: {
+                  },
+                  position: {
                     validators: {
-                        notEmpty: {
-                            message: 'ระบุข้อมูลรายละเอียดอื่น ๆ ที่ต้องการแจ้งให้ทราบ'
-                        },
+                      notEmpty: {
+                        message: 'ระบุ ตำแหน่ง'
+                      }
                     }
-                },
-                formValidationName: {
+                  },
+                  department: {
                     validators: {
-                        notEmpty: {
-                            message: 'Please enter your name'
-                        },
-                        stringLength: {
-                            min: 6,
-                            max: 30,
-                            message: 'The name must be more than 6 and less than 30 characters long'
-                        },
-                        regexp: {
-                            regexp: /^[a-zA-Z0-9 ]+$/,
-                            message: 'The name can only consist of alphabetical, number and space'
-                        }
+                      notEmpty: {
+                        message: 'ระบุ สังกัด'
+                      }
                     }
-                },
-                formValidationEmail: {
+                  },
+                  tel: {
                     validators: {
-                        notEmpty: {
-                            message: 'Please enter your email'
-                        },
-                        emailAddress: {
-                            message: 'The value is not a valid email address'
-                        }
+                      notEmpty: {
+                        message: 'ระบุ หมายเลขโทรศัพท์'
+                      },
+                      stringLength: {
+                        min: 10,
+                        max: 10,
+                        message: 'ต้องไม่เกิน 10 หลัก'
+                      },
+                      regexp: {
+                        regexp: /^[0-9 ]+$/,
+                        message: 'ระบุ เฉพาะตัวเลขเท่านั้น'
+                      }
                     }
-                },
-                formValidationPass: {
+                  },
+                  building: {
                     validators: {
-                        notEmpty: {
-                            message: 'Please enter your password'
-                        }
+                      notEmpty: {
+                        message: 'ระบุ อาคาร'
+                      }
                     }
-                },
-                formValidationConfirmPass: {
+                  },
+                  floor: {
                     validators: {
-                        notEmpty: {
-                            message: 'Please confirm password'
-                        },
-                        identical: {
-                            compare: function() {
-                                return formValidationExamples.querySelector('[name="formValidationPass"]').value;
-                            },
-                            message: 'The password and its confirm are not the same'
-                        }
+                      notEmpty: {
+                        message: 'ระบุ ชั้น'
+                      }
                     }
-                },
-                formValidationFile: {
+                  },
+                  room: {
                     validators: {
-                        notEmpty: {
-                            message: 'Please select the file'
-                        }
+                      notEmpty: {
+                        message: 'ระบุ ห้อง'
+                      }
                     }
-                },
-                formValidationDob: {
+                  },
+                  status_guest: {
                     validators: {
-                        notEmpty: {
-                            message: 'กรุณาระบุวันที่'
-                        },
-                        date: {
-                            format: 'DD/MM/YYYY',
-                            message: 'The value is not a valid date'
-                        }
+                      notEmpty: {
+                        message: 'ระบุ สถานะ'
+                      }
                     }
-                },
-                formValidationSelect2: {
-                    validators: {
-                        notEmpty: {
-                            message: 'Please select your country'
-                        }
-                    }
-                },
-                name_user: {
-                    validators: {
-                        notEmpty: {
-                            message: 'กรุณาเลือกชื่อ - นามสกุล'
-                        }
-                    }
-                },
-                req_service: {
-                    validators: {
-                        notEmpty: {
-                            message: 'กรุณาเลือกประเภทของงาน'
-                        }
-                    }
-                },
-                se_location: {
-                    validators: {
-                        notEmpty: {
-                            message: 'กรุณาเลือกสถานที่ตั้ง'
-                        }
-                    }
-                },
-                service: {
-                    validators: {
-                        notEmpty: {
-                            message: 'เลือกปัญหาที่พบ'
-                        }
-                    }
-                },
-                service_id: {
-                    validators: {
-                        notEmpty: {
-                            message: 'เลือกรายละเอียดปัญหาที่พบ'
-                        }
-                    }
-                },
-                formValidationLang: {
-                    validators: {
-                        notEmpty: {
-                            message: 'Please add your language'
-                        }
-                    }
-                },
-                formValidationTech: {
-                    validators: {
-                        notEmpty: {
-                            message: 'Please select technology'
-                        }
-                    }
-                },
-                formValidationHobbies: {
-                    validators: {
-                        notEmpty: {
-                            message: 'Please select your hobbies'
-                        }
-                    }
-                },
-                formValidationBio: {
-                    validators: {
-                        notEmpty: {
-                            message: 'Please enter your bio'
-                        },
-                        stringLength: {
-                            min: 100,
-                            max: 500,
-                            message: 'The bio must be more than 100 and less than 500 characters long'
-                        }
-                    }
-                },
-                formValidationGender: {
-                    validators: {
-                        notEmpty: {
-                            message: 'Please select your gender'
-                        }
-                    }
-                },
-                formValidationPlan: {
-                    validators: {
-                        notEmpty: {
-                            message: 'Please select your preferred plan'
-                        }
-                    }
-                },
-                formValidationSwitch: {
-                    validators: {
-                        notEmpty: {
-                            message: 'Please select your preference'
-                        }
-                    }
-                },
-                formValidationCheckbox: {
-                    validators: {
-                        notEmpty: {
-                            message: 'Please confirm our T&C'
-                        }
-                    }
-                }
+                  },
             },
             plugins: {
                 trigger: new FormValidation.plugins.Trigger(),
@@ -298,7 +200,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                             case 'formValidationEmail':
                             case 'formValidationPass':
                             case 'formValidationConfirmPass':
-                            case 'formValidationFile':
+                            // case 'formValidationFile':
                             case 'formValidationDob':
                             case 'formValidationSelect2':
                             case 'name_user':

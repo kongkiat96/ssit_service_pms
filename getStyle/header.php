@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="../assets/vendor/libs/quill/typography.css" />
     <link rel="stylesheet" href="../assets/vendor/libs/quill/editor.css" />
 
-
+    <link rel="stylesheet" href="../assets/vendor/libs/bs-stepper/bs-stepper.css" />
 
 
 

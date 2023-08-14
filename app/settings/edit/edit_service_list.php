@@ -12,31 +12,39 @@ $getprefix_detail = $getdata->my_sql_query($connect, NULL, "service_list", "se_l
 ?>
 <div class="modal-body">
     <div class="form-group">
-        <label>หมวดหมู่</label>
-        <select class="form-control select2bs4" name="se_id" id="se_id">
-            <?php $select_status = $getdata->my_sql_select($connect, NULL, "service", "se_id");
+        <div class="col-12 mb-3">
+            <label class="mb-2" for="se_group_edit">อาคาร</label>
+            <select name="se_group_edit" class="form-control mb-3 select2" id="se_group_edit" onchange="getroomList_edit(this.value)" required>
+                <option value="">--- เลือกข้อมูล ---</option>
+                <option value="1">อาคาร Vertex View </option>
+                <option value="2">อาคาร Horizon </option>
+                <option value="3">อาคาร Vertical View </option>
+            </select>
+        </div>
+        <div class="col-12 mb-3">
+            <label class="mb-2" for="se_id_edit">ชั้น</label>
+            <select class="form-control mb-3 select2" name="se_id_edit" id="se_id_edit" required>
+                <option value="">--- เลือก ชั้น ---</option>
+            </select>
+            <div class="invalid-feedback">
+                เลือก ชั้น .
+            </div>
+        </div>
+        <div class="col-12 mb-3">
+            <label>ชื่อห้อง/รหัสห้อง</label>
+            <input type="text" name="edit_se_li_name" id="edit_se_li_name" class="form-control mb-3" value="<?php echo @$getprefix_detail->se_li_name; ?>">
+            <input hidden name="se_li_id" value="<?php echo @$getprefix_detail->se_li_id; ?>">
 
-            while ($show_status = mysqli_fetch_object($select_status)) {
-                if ($show_status->se_id == $getprefix_detail->se_id) {
-                    echo '<option value="' . $show_status->se_id . '" selected>' . $show_status->se_name . '</option>';
-                } else {
-                    echo '<option value="' . $show_status->se_id . '">' . $show_status->se_name . '</option>';
-                }
-            }
-            ?>
-        </select>
-    </div>
-    <div class="form-group">
-        <label>รายการหมวดหมู่</label>
-        <!-- <input type="text" name="edit_se_li_name" id="edit_se_li_name" class="form-control" value="<?php echo @$getprefix_detail->se_li_name; ?>"> -->
-        <input hidden name="se_li_id" value="<?php echo @$getprefix_detail->se_li_id; ?>">
+            <!-- <textarea class="form-control mb-3" name="edit_se_li_name" id="edit_se_li_name" cols="30" rows="5"><?php echo @$getprefix_detail->se_li_name; ?></textarea> -->
+        </div>
 
-        <textarea class="form-control" name="edit_se_li_name" id="edit_se_li_name" cols="30" rows="5"><?php echo @$getprefix_detail->se_li_name; ?></textarea>
     </div>
 </div>
 <script>
-    $('.select2bs4').select2({
-        theme: 'bootstrap4',
-        width: '100%'
+    $(document).ready(function() {
+        $(".select2").select2({
+            dropdownParent: $("#edit_service_list")
+        });
+
     });
 </script>

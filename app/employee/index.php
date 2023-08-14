@@ -1,208 +1,106 @@
-<?php
-include_once 'service/procress/dataSave_employee.php';
-?>
-<div class="modal fade" id="addEmployee" aria-labelledby="addEmployee" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title"><strong>เพิ่มข้อมูลผู้ใช้งาน</strong></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                <hr class="mt-0" />
+<?php require_once 'procress/dataEmployee.php'; ?>
+<?php $getmenus = $getdata->my_sql_query($connect, null, 'menus', "menu_status ='1' AND menu_case = '" . $_GET['p'] . "' AND menu_key != 'c6c8729b45d1fec563f8453c16ff03b8'"); ?>
 
+<div class="row">
+    <div class="col-12">
+        <h3 class="page-header"><?php echo '<i class="fas ' . $getmenus->menu_icon . '"></i> <span>' . $getmenus->menu_name . '</span>'; ?></h3>
+        <hr class="mt-2">
+    </div>
+</div>
+
+<nav aria-label="breadcrumb" class="mt-3 mb-3">
+    <ol class="breadcrumb breadcrumb-inverse">
+        <li class="breadcrumb-item">
+            <a href="index.php">หน้าแรก</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page"><?php echo '<span>' . $getmenus->menu_name . '</span>'; ?></li>
+    </ol>
+</nav>
+<?php echo $alert; ?>
+
+<div class="modal fade" id="edit_employee" role="dialog" aria-labelledby="edit_employee" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate id="waitsave3">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4><strong>แก้ไขข้อมูลผู้ใช้งาน</strong></h4>
+                </div>
+                <hr>
+                <div class="employee">
+
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-label-danger" data-bs-dismiss="modal">
+                        <i class="bx bx-exit"></i><span> ปิด</span>
+                    </button>
+                    <button class="btn btn-label-success" type="submit" name="save_edit_employee">
+                        <span class="fas fa-sync-alt"> บันทึก</span>
+                    </button>
+                </div>
             </div>
-            <form method="post" class="needs-validation" novalidate enctype="multipart/form-data">
-                <div class="modal-body">
-                    <div class="form-group row mb-2">
-                        <div class="col-sm-12 col-md-4">
-                            <label class="form-label-md fw-semibold mb-2">คำนำหน้าชื่อ</label>
-                            <select id="select-title" name="title_name" class="form-control" required>
-                                <option value="" selected>--- เลือกข้อมูล ---</option>
-                                <?php
-                                $select_title = $getdata->my_sql_select($connect, NULL, "prefix_title", "prefix_status = '1' ORDER BY prefix_code");
-                                    while ($show_title = mysqli_fetch_object($select_title)) {
-                                        
-                                        echo '<option value="' . $show_title->prefix_code . '">' . $show_title->prefix_title . '</option>';
-                                        
-                                    }
-                            ?>
-                            </select>
-                            <div class="invalid-feedback">
-                                <label class="form-label-md fw-semibold mt-2">ระบุ คำนำหน้าชื่อ.</label>
-
-                            </div>
-                        </div>
-
-
-                        <div class="col-sm-12 col-md-4">
-                            <label class="form-label-md fw-semibold mb-2">ชื่อ</label>
-                            <input type="text" class="form-control" value="" name="em_name" required>
-                            <div class="invalid-feedback">
-                                <label class="form-label-md fw-semibold mt-2">ระบุ ชื่อ.</label>
-
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-md-4">
-                            <label class="form-label-md fw-semibold mb-2">นามสกุล</label>
-                            <input type="text" class="form-control" value="" name="em_lastname" required>
-                            <div class="invalid-feedback">
-                                <label class="form-label-md fw-semibold mt-2">ระบุ นามสกุล.</label>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row mb-2 mt-3">
-                        <div class="col-sm-12 col-md-6">
-                            <label class="form-label-md fw-semibold mb-2">แผนก / ฝ่าย</label>
-                            <select id="select-department" name="em_department" class="form-control" required>
-                                <option value="" selected>--- เลือกข้อมูล ---</option>
-                                <?php
-                                $select_department = $getdata->my_sql_select($connect, NULL, "department_name", "department_status = '1' ORDER BY id");
-                                    while ($show_department = mysqli_fetch_object($select_department)) {
-                                        
-                                        echo '<option value="' . $show_department->id . '">' . $show_department->department_name . '</option>';
-                                        
-                                    }
-                            ?>
-                            </select>
-                            <div class="invalid-feedback">
-                                <label class="form-label-md fw-semibold mt-2">ระบุ แผนก / ฝ่าย.</label>
-
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-md-6">
-                            <label class="form-label-md fw-semibold mb-2">ตำแหน่ง</label>
-                            <input type="text" class="form-control" value="" name="em_position" required>
-                            <div class="invalid-feedback">
-                                <label class="form-label-md fw-semibold mt-2">ระบุ ตำแหน่ง.</label>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row mb-2 mt-3">
-                        <div class="col-sm-12 col-md-6">
-                            <label for="" class="form-label-md fw-semibold mb-2">บริษัท / สังกัด</label>
-                            <select id="select-company" name="em_company" class="form-control" required>
-                                <option value="" selected>--- เลือกข้อมูล ---</option>
-                                <?php
-                                $select_company = $getdata->my_sql_select($connect, NULL, "company", "cp_status = '1' ORDER BY id");
-                                while ($show_company = mysqli_fetch_object($select_company)) {
-                                    echo '<option value="' . $show_company->id . '">' . $show_company->company_name . '</option>';
-                                }
-                            ?>
-                            </select>
-                            <div class="invalid-feedback">
-                                <label class="form-label-md fw-semibold mt-2">ระบุ บริษัท / สังกัด.</label>
-
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-md-6">
-                            <div class="form-label-md fw-semibold mb-2">
-                                <label for="" class="form-label-md fw-semibold mb-2">ระดับการใช้งาน</label>
-                                <select id="select-class" name="em_class" class="form-control" required>
-                                    <option value="" selected>--- เลือกข้อมูล ---</option>
-                                    <option value="1">ผู้ใช้งานทั่วไป</option>
-                                    <option value="2">เจ้าหน้าที่</option>
-                                </select>
-                                <div class="invalid-feedback">
-                                    <label class="form-label-md fw-semibold mt-2">ระบุ ระดับการใช้งาน.</label>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <label for="email" class="form-label-md fw-semibold mb-2">E-mail</label>
-                            <input type="text" class="form-control" id="email" name="email" required />
-                            <div class="invalid-feedback">
-                                <label class="form-label-md fw-semibold mt-2">ระบุ อีเมล.</label>
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">
-                        <i class="bx bx-exit"></i>
-                        ปิด
-                    </button>
-                    <button type="submit" name="savedata" class="btn btn-primary"><i class="bx bx-save"></i>
-                        บันทึกข้อมูล</button>
-                </div>
-            </form>
-        </div>
+        </form>
     </div>
 </div>
 
-<div class="modal fade" id="editEmployee" aria-labelledby="editEmployee" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <form method="post" class="needs-validation" novalidate enctype="multipart/form-data">
-                <div class="editEmployee">
-
+<div class="card">
+    <div class="card-header text-center">
+        <div class="row">
+            <div class="col-md-3 col-sm-12 mb-4">
+                <div class="card">
+                    <div class="card-header d-flex align-items-center justify-content-between">
+                        <h6 class="card-title m-0 me-2"><strong>จำนวนที่ใช้งานอยู่</strong></h6>
+                    </div>
+                    <div class="card-body text-center">
+                        <div class="avatar avatar-md border-5 border-light-success rounded-circle mx-auto mb-4">
+                            <span class="avatar-initial rounded-circle bg-label-success"><i class="bx bx-user bx-sm"></i></span>
+                        </div>
+                        <h3 class="card-title mb-1 me-2"><?php @$getall = $getdata->my_sql_show_rows($connect, "employee", "card_key <> 'hidden' AND em_status = '1'");
+                                                            echo @number_format($getall); ?></h3>
+                        <small class="d-block mb-2">ผู้ใช้งาน</small>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">
-                        <i class="bx bx-exit"></i>
-                        ปิด
-                    </button>
-                    <button type="submit" name="editdata" class="btn btn-warning"><i class="bx bx-save"></i>
-                        บันทึกข้อมูล</button>
+            </div>
+            <div class="col-md-3 col-sm-12 mb-4">
+                <div class="card">
+                    <div class="card-header d-flex align-items-center justify-content-between">
+                        <h6 class="card-title m-0 me-2"><strong>จำนวนที่ปิดใช้งานอยู่</strong></h6>
+                    </div>
+                    <div class="card-body text-center">
+                        <div class="avatar avatar-md border-5 border-light-danger rounded-circle mx-auto mb-4">
+                            <span class="avatar-initial rounded-circle bg-label-danger"><i class="bx bx-user bx-sm"></i></span>
+                        </div>
+                        <h3 class="card-title mb-1 me-2"><?php @$getall = $getdata->my_sql_show_rows($connect, "employee", "card_key <> 'hidden' AND em_status = '0'");
+                                                            echo @number_format($getall); ?></h3>
+                        <small class="d-block mb-2">ผู้ใช้งาน</small>
+                    </div>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
-</div>
-
-<div class="text-end">
-    <button type="button" data-bs-toggle="modal" data-bs-target="#addEmployee" class="btn btn-success btn-md"><i
-            class="bx bx-save"></i> เพิ่มข้อมูลพนักงาน</button>
-</div>
-
-<div class="card mt-3">
     <div class="card-body">
-        <div class="col-12">
-            <h5 class="fw-semibold">ตารางแสดงข้อมูลรายการพนักงาน</h5>
-            <hr class="mt-0" />
-        </div>
-        <div class="table-responsive text-nowrap">
-            <table id="responsive-data-table-employee" class="table dt-responsive table-hover" style="font-family: sarabun; font-size: 16px;" width="100%">
-                <thead class="text-center ">
-                    <tr>
-                        <th>ลำดับ : </th>
-                        <th>ชื่อ - นามสกุล : </th>
-                        <th>แผนก / ฝ่าย : </th>
-                        <th>ตำแหน่ง : </th>
-                        <th>บริษัท / สังกัด :</th>
-                        <th>สถานะ : </th>
-                        <th>เครื่องมือ : </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                        $i = 0;
-                        $getEmployee = $getdata->my_sql_select($connect, NULL, "employee", "em_status = '1' ORDER BY em_class DESC");
-                        while ($showEmployee = mysqli_fetch_object($getEmployee)) {
-                        $i++;
-                        ?>
-                    <tr>
-                        <td class="text-center"><?php echo $i; ?></td>
-                        <td><?php echo @getemployeeName($showEmployee->em_key); ?></td>
-                        <td class="text-center"><?php echo @getDepartment($showEmployee->em_department); ?></td>
-                        <td class="text-center"><?php echo $showEmployee->em_position; ?></td>
-                        <td class="text-center"><?php echo @getCompany($showEmployee->em_company); ?></td>
-                        <td class="text-center"><?php echo @getAdmin($showEmployee->em_class); ?></td>
-                        <td class="text-center">
-                            <?php echo '<a href="#" data-bs-toggle="modal" data-bs-target="#editEmployee" data-whatever="' . @$showEmployee->em_key . '" class="btn rounded-pill btn-icon btn-label-warning btn-sm" data-top="toptitle" data-placement="top" title="แก้ไข"><span class="tf-icons bx bx-edit"></span></a>&nbsp'; ?>
-                            <a href="#" onclick="deletemployee('<?php echo @$showEmployee->em_key; ?>');" class="btn rounded-pill btn-icon btn-label-danger btn-sm" data-top="toptitle" data-placement="top" title="ลบข้อมูล"><span class="tf-icons bx bxs-trash"></span></a>
-                        </td>
-                    </tr>
-
-                    <?php } ?>
-
-                </tbody>
-
-            </table>
+        <div class="nav-align-top mb-4">
+            <ul class="nav nav-pills mb-3 nav-fill" role="tablist">
+                <li class="nav-item">
+                    <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-justified-home" aria-controls="navs-pills-justified-home" aria-selected="true">
+                        <i class="tf-icons bx bx-home me-1"></i> <strong>รายการพนักงานทั้งหมด</strong>
+                        <!-- <span class="badge rounded-pill badge-center h-px-20 w-px-20 bg-danger ms-1">3</span> -->
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-justified-profile" aria-controls="navs-pills-justified-profile" aria-selected="false">
+                        <i class="tf-icons bx bx-user me-1"></i> <strong>เพิ่มผู้ใช้งาน</strong>
+                    </button>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane fade active show" id="navs-pills-justified-home" role="tabpanel">
+                    <?php require_once 'table/employee.php'; ?>
+                </div>
+                <div class="tab-pane fade" id="navs-pills-justified-profile" role="tabpanel">
+                    <?php require_once 'form/form_new_employee.php'; ?>
+                </div>
+            </div>
         </div>
     </div>
 </div>

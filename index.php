@@ -52,15 +52,12 @@ $system_detail = $getdata->my_sql_query($connect, null, 'detail_index', null);
                         <div class="card">
                             <div class="card-header">
                                 <div class="col-12">
-                                    <h3 class="fw-semibold">การใช้ระบบแจ้งซ่อม/ปัญหา</h3>
+                                    <h4 class="fw-semibold"> รายการแสดงข้อมูลห้องและการเข้าพัก</h3>
                                     <hr class="mt-0" />
                                 </div>
                             </div>
                             <div class="card-body">
-                                <?php echo $system_detail->detail; ?>
-                            </div>
-                            <div class="card-footer text-center">
-                            <a href="service" class="btn rounded-pill btn-outline-info btn-lg"><i class='bx bx-calendar-edit bx-md'></i> สร้างแบบฟอร์มแจ้งซ่อม/ปัญหา</a>
+                                <?php require_once 'layout/listroom/showall.php'; ?>
                             </div>
                         </div>
 
