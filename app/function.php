@@ -392,13 +392,14 @@ switch (addslashes($_GET['type'])) {
 		}
 		break;
 
-	case "restoreemployee":
-		$getdata->my_sql_update($connect, "employee", "em_status = '1'", "em_key='" . htmlspecialchars($_GET['key']) . "'");
-		echo '<script>window.history.back();</script>';
-		break;
+	// case "restoreemployee":
+	// 	$getdata->my_sql_update($connect, "employee", "em_status = '1'", "em_key='" . htmlspecialchars($_GET['key']) . "'");
+	// 	$getdata->my_sql_update($connect, "user", "user_status = '1'", "user_key='" . htmlspecialchars($_GET['key']) . "'");
+	// 	echo '<script>window.history.back();</script>';
+	// 	break;
 
 	case "restore":
-		$getdata->my_sql_update($connect, "employee", "em_status = '1'", "em_key='" . htmlspecialchars($_GET['key']) . "'");
+		$getdata->my_sql_update($connect, "employee", "em_status = '1'", "card_key='" . htmlspecialchars($_GET['key']) . "'");
 		$getdata->my_sql_update($connect, "user", "user_status = '1'", "user_key='" . htmlspecialchars($_GET['key']) . "'");
 		echo '<script>window.history.back();</script>';
 		break;
