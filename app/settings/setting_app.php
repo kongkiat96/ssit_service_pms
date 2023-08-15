@@ -40,12 +40,12 @@ $getdetail = $getdata->my_sql_query($connect, NULL, "detail_index", NULL);
                     <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-justified-profile" aria-controls="navs-pills-justified-profile" aria-selected="false">
                         <i class='bx bxs-bell-ring'></i> การแจ้งเตือน
                     </button>
-                </li>
+                </li>-->
                 <li class="nav-item">
                     <button type="button" class="nav-link " role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-justified-index" aria-controls="navs-pills-justified-index" aria-selected="false">
-                        <i class='bx bx-list-ol'></i> ข้อความหน้าแรก
+                        <i class='bx bx-list-ol'></i> ข้อความการยินยอม
                     </button>
-                </li> -->
+                </li>
 
             </ul>
             <div class="tab-content">

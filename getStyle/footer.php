@@ -84,6 +84,6 @@
  <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
  <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
  <!-- Page JS -->
- <!-- <script src="../assets/js/forms-editors.js"></script> -->
+ <script src="../assets/js/forms-editors.js"></script>
 
- <!-- <script src="../assets/plugins/ckeditor/ckeditor.js"></script> -->
+ <script src="../assets/plugins/ckeditor/ckeditor.js"></script>

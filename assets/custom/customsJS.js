@@ -4,15 +4,9 @@ $(document).ready(function () {
         searching: !1,
         buttons: [{
             extend: 'collection',
-            className: 'btn btn-label-primary dropdown-toggle me-2',
+            className: 'btn btn-label-primary dropdown-toggle me-2 mb-2',
             text: '<i class="bx bx-download me-sm-2"></i> <span class="d-none d-sm-inline-block">Export</span>',
             buttons: [
-                {
-                    extend: 'pdf',
-                    text: '<i class="bx bxs-file-pdf me-2" ></i>PDF',
-                    className: 'dropdown-item',
-
-                },
                 {
                     extend: 'excelHtml5',
                     text: '<i class="bx bx-file me-2" ></i>Excel',
@@ -20,14 +14,7 @@ $(document).ready(function () {
                     className: 'dropdown-item',
                     sheetName: "Exported data",
 
-                },
-                // { extend: "excelHtml5", autoFilter: !0, sheetName: "Exported data" },
-                // {
-                //     extend: 'copy',
-                //     text: '<i class="bx bx-copy me-2" ></i>Copy',
-                //     className: 'dropdown-item',
-
-                // }
+                }
             ]
         },],
     });

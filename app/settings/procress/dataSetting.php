@@ -312,6 +312,18 @@ if (isset($_POST['save_device'])) {
 	}
 }
 
+if (isset($_POST['save_detail'])) {
+	$getdata->my_sql_update(
+		$connect,
+		"detail_index",
+		"detail = '" . $_POST['detail'] . "'",
+		"id = '1'"
+
+	);
+	
+	$alert = $success_admin;
+}
+
 //------------------------------------------------------------------------------
 
 if (isset($_POST['save_service'])) {

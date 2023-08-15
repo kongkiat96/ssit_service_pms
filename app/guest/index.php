@@ -94,7 +94,7 @@ require_once 'procress/datasave.php';
                         </div>
 
                         <div class="col-sm-12 col-md-4 fv-plugins-icon-container mb-3">
-                            <label class="mb-2" for="position"><strong>ตำแหน่ง</strong></label>
+                            <label class="mb-2" for="position"><strong>ตำแหน่งบุคคลากร</strong></label>
                             <input type="text" name="position" id="position" class="form-control" autocomplete="off">
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
@@ -164,7 +164,7 @@ require_once 'procress/datasave.php';
                         </div>
 
                         <div class="col-sm-12 col-md-4 fv-plugins-icon-container mb-3">
-                            <label class="mb-2" for="status_guest"><strong>สถานะ</strong></label>
+                            <label class="mb-2" for="status_guest"><strong>ประเภทบุคคลากร</strong></label>
                             <select name="status_guest" id="mySelect" class="form-control select2 input-sm" required style="width: 100%;">
                                 <option value="">--- เลือกข้อมูล ---</option>
                                 <option value="1">เจ้าหน้าที่</option>

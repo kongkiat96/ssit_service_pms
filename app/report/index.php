@@ -1,16 +1,31 @@
 <?php
 $date_start = $_POST['date_start'];
 $date_end = $_POST['date_end'];
-$building = $_POST['building'];
+$building = $_POST['building_id'];
 if (isset($_POST['search'])) {
     if ($_POST['date_start'] != null && $_POST['date_end'] != null) {
-        $getquery =  $getdata->my_sql_select($connect, "bm_guest.building,bm_guest.floor,bm_guest.end_date,bm_guest.status_guest_detail,bm_guest.status_guest,bm_guest.code AS code, bm_guest.status AS status, bm_guest.check_in AS check_in,bm_guest.check_out AS check_out,bm_guest.room AS room, bm_guest.prefix_name AS g_prefix, bm_guest.fname AS g_fname, bm_guest.lname AS g_lname, bm_guest.position AS g_position, bm_guest.department AS g_department", "bm_guest", "check_in >= '" . $date_start . "'  AND check_in <= '" . $date_end . "' AND bm_guest.status != '9'  AND bm_guest.building = '" . $building . "' ORDER BY building ASC");
+        $getquery =  $getdata->my_sql_select($connect, "bm_guest.building,bm_guest.floor,bm_guest.end_date,bm_guest.status_guest_detail,bm_guest.status_guest,bm_guest.code AS code, bm_guest.status AS status, bm_guest.check_in AS check_in,bm_guest.check_out AS check_out,bm_guest.room AS room, bm_guest.prefix_name AS g_prefix, bm_guest.fname AS g_fname, bm_guest.lname AS g_lname, bm_guest.position AS g_position, bm_guest.department AS g_department", "bm_guest", "check_in >= '" . $date_start . "'  AND check_in <= '" . $date_end . "' AND bm_guest.status != '9' AND bm_guest.building = '" . $building . "' ORDER BY bm_guest.building ASC");
+
+        $getquery2 =  $getdata->my_sql_select($connect, "bm_guest.building,bm_guest.floor,bm_guest.end_date,bm_guest.status_guest_detail,bm_guest.status_guest,bm_guest.code AS code, bm_guest.status AS status, bm_guest.check_in AS check_in,bm_guest.check_out AS check_out,bm_guest.room AS room, bm_guest.prefix_name AS g_prefix, bm_guest.fname AS g_fname, bm_guest.lname AS g_lname, bm_guest.position AS g_position,
+        bm_guest_detail.prefix_name AS gdetail_prefix, bm_guest_detail.fname AS gdetail_fname,bm_guest_detail.lname AS gdetail_lname,bm_guest_detail.relation AS gdetail_relation", "bm_guest LEFT JOIN bm_guest_detail ON bm_guest_detail.code_guest = bm_guest.code", "check_in >= '" . $date_start . "'  AND check_in <= '" . $date_end . "' AND bm_guest.status != '9'AND bm_guest.building = '" . $building . "' ORDER BY bm_guest.code ASC");
     } elseif ($_POST['date_start'] != null && $_POST['date_end'] == null) {
-        $getquery =  $getdata->my_sql_select($connect, "bm_guest.building,bm_guest.floor,bm_guest.end_date,bm_guest.status_guest_detail,bm_guest.status_guest,bm_guest.code AS code, bm_guest.status AS status, bm_guest.check_in AS check_in,bm_guest.check_out AS check_out, bm_guest.room AS room, bm_guest.prefix_name AS g_prefix, bm_guest.fname AS g_fname, bm_guest.lname AS g_lname, bm_guest.position AS g_position, bm_guest.department AS g_department", "bm_guest", "check_in >= '" . $date_start . "' AND bm_guest.status != '9' AND bm_guest.building = '" . $building . "' ORDER BY building ASC");
+        $getquery =  $getdata->my_sql_select($connect, "bm_guest.building,bm_guest.floor,bm_guest.end_date,bm_guest.status_guest_detail,bm_guest.status_guest,bm_guest.code AS code, bm_guest.status AS status, bm_guest.check_in AS check_in,bm_guest.check_out AS check_out, bm_guest.room AS room, bm_guest.prefix_name AS g_prefix, bm_guest.fname AS g_fname, bm_guest.lname AS g_lname, bm_guest.position AS g_position, bm_guest.department AS g_department", "bm_guest", "check_in >= '" . $date_start . "' AND bm_guest.status != '9' AND bm_guest.building = '" . $building . "' ORDER BY bm_guest.building ASC");
+
+        $getquery2 =  $getdata->my_sql_select($connect, "bm_guest.building,bm_guest.floor,bm_guest.end_date,bm_guest.status_guest_detail,bm_guest.status_guest,bm_guest.code AS code, bm_guest.status AS status, bm_guest.check_in AS check_in,bm_guest.check_out AS check_out, bm_guest.room AS room, bm_guest.prefix_name AS g_prefix, bm_guest.fname AS g_fname, bm_guest.lname AS g_lname, bm_guest.position AS g_position,
+        bm_guest_detail.prefix_name AS gdetail_prefix, bm_guest_detail.fname AS gdetail_fname,bm_guest_detail.lname AS gdetail_lname,bm_guest_detail.relation AS gdetail_relation", "bm_guest LEFT JOIN bm_guest_detail ON bm_guest_detail.code_guest = bm_guest.code", "check_in >= '" . $date_start . "' AND bm_guest.status != '9' AND bm_guest.building = '" . $building . "' ORDER BY bm_guest.code ASC");
     } elseif ($_POST['date_start'] == null && $_POST['date_end'] != null) {
-        $getquery =  $getdata->my_sql_select($connect, "bm_guest.building,bm_guest.floor,bm_guest.end_date,bm_guest.status_guest_detail,bm_guest.status_guest,bm_guest.code AS code, bm_guest.status AS status, bm_guest.check_in AS check_in,bm_guest.check_out AS check_out, bm_guest.room AS room, bm_guest.prefix_name AS g_prefix, bm_guest.fname AS g_fname, bm_guest.lname AS g_lname, bm_guest.position AS g_position, bm_guest.department AS g_department", "bm_guest", "check_in <= '" . $date_end . "' AND bm_guest.status != '9' AND bm_guest.building = '" . $building . "' ORDER BY building ASC");
+        $getquery =  $getdata->my_sql_select($connect, "bm_guest.building,bm_guest.floor,bm_guest.end_date,bm_guest.status_guest_detail,bm_guest.status_guest,bm_guest.code AS code, bm_guest.status AS status, bm_guest.check_in AS check_in,bm_guest.check_out AS check_out, bm_guest.room AS room, bm_guest.prefix_name AS g_prefix, bm_guest.fname AS g_fname, bm_guest.lname AS g_lname, bm_guest.position AS g_position, bm_guest.department AS g_department", "bm_guest", "check_in <= '" . $date_end . "' AND bm_guest.status != '9' AND bm_guest.building = '" . $building . "' ORDER BY bm_guest.building ASC");
+
+        $getquery2 =  $getdata->my_sql_select($connect, "bm_guest.building,bm_guest.floor,bm_guest.end_date,bm_guest.status_guest_detail,bm_guest.status_guest,bm_guest.code AS code, bm_guest.status AS status, bm_guest.check_in AS check_in,bm_guest.check_out AS check_out, bm_guest.room AS room, bm_guest.prefix_name AS g_prefix, bm_guest.fname AS g_fname, bm_guest.lname AS g_lname, bm_guest.position AS g_position,
+        bm_guest_detail.prefix_name AS gdetail_prefix, bm_guest_detail.fname AS gdetail_fname,bm_guest_detail.lname AS gdetail_lname,bm_guest_detail.relation AS gdetail_relation", "bm_guest LEFT JOIN bm_guest_detail ON bm_guest_detail.code_guest = bm_guest.code", "check_in <= '" . $date_end . "' AND bm_guest.status != '9' AND bm_guest.building = '" . $building . "' ORDER BY bm_guest.code ASC");
+    } else if (!empty($building)) {
+        $getquery =  $getdata->my_sql_select($connect, "bm_guest.building,bm_guest.floor,bm_guest.end_date,bm_guest.status_guest_detail,bm_guest.status_guest,bm_guest.code AS code, bm_guest.status AS status, bm_guest.check_in AS check_in,bm_guest.check_out AS check_out, bm_guest.room AS room, bm_guest.prefix_name AS g_prefix, bm_guest.fname AS g_fname, bm_guest.lname AS g_lname, bm_guest.position AS g_position, bm_guest.department AS g_department", "bm_guest", "bm_guest.status != '9' AND bm_guest.building = '" . $building . "' ORDER BY building ASC");
+        $getquery2 =  $getdata->my_sql_select($connect, "bm_guest.building,bm_guest.floor,bm_guest.end_date,bm_guest.status_guest_detail,bm_guest.status_guest,bm_guest.code AS code, bm_guest.status AS status, bm_guest.check_in AS check_in,bm_guest.check_out AS check_out, bm_guest.room AS room, bm_guest.prefix_name AS g_prefix, bm_guest.fname AS g_fname, bm_guest.lname AS g_lname, bm_guest.position AS g_position, bm_guest.department AS g_department", "bm_guest", "bm_guest.status != '9' AND bm_guest.building = '" . $building . "' ORDER BY bm_guest.code ASC");
     } else {
         $getquery =  $getdata->my_sql_select($connect, "bm_guest.building,bm_guest.floor,bm_guest.end_date,bm_guest.status_guest_detail,bm_guest.status_guest,bm_guest.code AS code, bm_guest.status AS status, bm_guest.check_in AS check_in,bm_guest.check_out AS check_out, bm_guest.room AS room, bm_guest.prefix_name AS g_prefix, bm_guest.fname AS g_fname, bm_guest.lname AS g_lname, bm_guest.position AS g_position, bm_guest.department AS g_department", "bm_guest", "bm_guest.status != '9' ORDER BY building ASC");
+
+        $getquery2 =  $getdata->my_sql_select($connect, "bm_guest.building,bm_guest.floor,bm_guest.end_date,bm_guest.status_guest_detail,bm_guest.status_guest,bm_guest.code AS code, bm_guest.status AS status, bm_guest.check_in AS check_in,bm_guest.check_out AS check_out, bm_guest.room AS room, bm_guest.prefix_name AS g_prefix, bm_guest.fname AS g_fname, bm_guest.lname AS g_lname, bm_guest.position AS g_position,
+        bm_guest_detail.prefix_name AS gdetail_prefix, bm_guest_detail.fname AS gdetail_fname,bm_guest_detail.lname AS gdetail_lname,bm_guest_detail.relation AS gdetail_relation", "bm_guest LEFT JOIN bm_guest_detail ON bm_guest_detail.code_guest = bm_guest.code", "bm_guest.status != '9' ORDER BY bm_guest.code ASC");
     }
 }
 
@@ -99,7 +114,7 @@ if (isset($_POST['search'])) {
                                     <label for="date_start">อาคาร</label>
                                 </div>
                                 <div class="col-md-3 col-sm-12">
-                                    <select name="building" id="building" class="form-control select2 input-sm" style="width: 100%;">
+                                    <select name="building_id" id="building_id" class="form-control select2 input-sm" style="width: 100%;">
                                         <option value="">--- เลือกข้อมูล ---</option>
                                         <option value="1">อาคาร Vertex View </option>
                                         <option value="2">อาคาร Horizon </option>
@@ -146,140 +161,226 @@ if (isset($_POST['search'])) {
                     </div>
                 </div>
                 <?php if (isset($_POST['search'])) { ?>
-                    <div class="card mt-5">
-                        <div class="card-body">
-                            <div class="responsive-data-table">
-                                <a href="report/MyPDF.pdf" class="btn btn-md btn-success ml-auto" target="_blank"><span class="fas fa-file-pdf"> Download PDF</span></a>
+                    <div class="nav-align-top mb-4 mt-5">
+                        <ul class="nav nav-pills mb-3 nav-fill" role="tablist">
+                            <li class="nav-item">
+                                <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-justified-home" aria-controls="navs-pills-justified-home" aria-selected="true">
+                                    <i class="tf-icons bx bxs-file-pdf me-1"></i> ออกรายงาน PDF
+                                </button>
+                            </li>
+                            <li class="nav-item">
+                                <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-justified-profile" aria-controls="navs-pills-justified-profile" aria-selected="false">
+                                    <i class="tf-icons bx bx-table me-1"></i> ออกรายงาน Excel
+                                </button>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane fade active show" id="navs-pills-justified-home" role="tabpanel">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="responsive-data-table">
+                                            <a href="report/MyPDF.pdf" class="btn btn-md btn-success ml-auto" target="_blank"><span class="fas fa-file-pdf"> Download PDF</span></a>
 
-                                <?php
-                                // Require composer autoload
-                                require_once __DIR__ . '/vendor/autoload.php';
+                                            <?php
+                                            // Require composer autoload
+                                            require_once __DIR__ . '/vendor/autoload.php';
 
-                                $defaultFontConfig = (new Mpdf\Config\FontVariables())->getDefaults();
-                                $fontData = $defaultFontConfig['fontdata'];
-                                $mpdf = new \Mpdf\Mpdf([
-                                    'tempDir' => __DIR__ . '/tmp',
-                                    'fontdata' => $fontData + [
-                                        'sarabun' => [
-                                            'R' => 'THSarabunNew.ttf',
-                                            'I' => 'THSarabunNewItalic.ttf',
-                                            'B' =>  'THSarabunNewBold.ttf',
-                                            'BI' => "THSarabunNewBoldItalic.ttf",
-                                        ]
-                                    ],
-                                ]);
+                                            $defaultFontConfig = (new Mpdf\Config\FontVariables())->getDefaults();
+                                            $fontData = $defaultFontConfig['fontdata'];
+                                            $mpdf = new \Mpdf\Mpdf([
+                                                'tempDir' => __DIR__ . '/tmp',
+                                                'fontdata' => $fontData + [
+                                                    'sarabun' => [
+                                                        'R' => 'THSarabunNew.ttf',
+                                                        'I' => 'THSarabunNewItalic.ttf',
+                                                        'B' =>  'THSarabunNewBold.ttf',
+                                                        'BI' => "THSarabunNewBoldItalic.ttf",
+                                                    ]
+                                                ],
+                                            ]);
 
-                                ob_start(); // Start get HTML code
-                                ?>
-                                <style>
-                                    .body-t {
-                                        font-family: sarabun;
-                                    }
+                                            ob_start(); // Start get HTML code
+                                            ?>
+                                            <style>
+                                                .body-t {
+                                                    font-family: sarabun;
+                                                }
 
-                                    table {
-                                        border-collapse: collapse;
-                                        width: 100%;
-                                    }
+                                                table {
+                                                    border-collapse: collapse;
+                                                    width: 100%;
+                                                }
 
-                                    td,
-                                    th {
-                                        border: 1px solid #dddddd;
-                                        text-align: left;
-                                        padding: 8px;
-                                    }
+                                                td,
+                                                th {
+                                                    border: 1px solid #dddddd;
+                                                    text-align: left;
+                                                    padding: 8px;
+                                                }
 
-                                    tr:nth-child(even) {
-                                        background-color: #dddddd;
-                                    }
-                                </style>
-                                <!-- ดาวโหลดรายงานในรูปแบบ PDF <a href="report/MyPDF.pdf">คลิกที่นี้</a> -->
-                                <?php
-                                // if (!empty($building)) {
-                                //     $tit = '<h5>รายชื่อผู้พักอาศัย ' . building($building) . ' พร้อมบริวาร</h5>';
-                                // } else {
-                                //     $tit = '<h5>รายชื่อผู้พักอาศัยอาคารทั้งหมดพร้อมบริวาร</h5>';
-                                // }
-                                $tit = 'Exported ' . dateTimeConvertor(date('Y-m-d H:i:s'));
-                                ?>
-                                <table id="responsive-data-table-1" class="table dt-responsive nowrap hover body-t table-t">
-                                    <thead class="font-weight-bold">
-                                        <tr class="tr-t">
-                                            <td class="th-t" align="center"><strong>ลำดับ</strong></td>
-                                            <td class="th-t" align="center"><strong>ชื่อ - นาสกุลเจ้าหน้าที่</strong></td>
-                                            <td class="th-t" align="center"><strong>ตำแหน่ง / สังกัด</strong></td>
-                                            <td class="th-t" align="center"><strong>รหัสห้อง</strong></td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-
-                                        while ($show_total = mysqli_fetch_object($getquery)) {
-                                            $i++ ?>
-                                            <?php $count_guest_detail = $getdata->my_sql_show_rows($connect, "bm_guest_detail", "code_guest = '" . $show_total->code . "'"); ?>
-                                            <tr class="tr-t">
-
-                                                <td class="th-t"><?php echo $i; ?></td>
-                                                <td class="th-t">
-                                                    <?php echo @prefixConvertor($show_total->g_prefix) . ' ' . $show_total->g_fname . ' ' . $show_total->g_lname; ?>
-                                                    <br>
+                                                tr:nth-child(even) {
+                                                    background-color: #dddddd;
+                                                }
+                                            </style>
+                                            <!-- ดาวโหลดรายงานในรูปแบบ PDF <a href="report/MyPDF.pdf">คลิกที่นี้</a> -->
+                                            <?php
+                                            // if (!empty($building)) {
+                                            //     $tit = '<h5>รายชื่อผู้พักอาศัย ' . building($building) . ' พร้อมบริวาร</h5>';
+                                            // } else {
+                                            //     $tit = '<h5>รายชื่อผู้พักอาศัยอาคารทั้งหมดพร้อมบริวาร</h5>';
+                                            // }
+                                            $tit = 'Exported ' . dateTimeConvertor(date('Y-m-d H:i:s'));
+                                            ?>
+                                            <table id="responsive-data-table-1" class="table dt-responsive nowrap hover body-t table-t">
+                                                <thead class="font-weight-bold">
+                                                    <tr class="tr-t">
+                                                        <td class="th-t" align="center"><strong>ลำดับ</strong></td>
+                                                        <td class="th-t" align="center"><strong>ชื่อ - นาสกุลเจ้าหน้าที่</strong></td>
+                                                        <td class="th-t" align="center"><strong>ตำแหน่ง / สังกัด</strong></td>
+                                                        <td class="th-t" align="center"><strong>รหัสห้อง</strong></td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
                                                     <?php
-                                                    if ($count_guest_detail >= 1) {
-                                                    ?>
-                                                        <?php
-                                                        if ($show_total->status_guest_detail == '1') {
-                                                        ?>
 
-                                                            <strong>บริวาร</strong>
-                                                            <br>
-                                                            <?php
-                                                            $getdetail = $getdata->my_sql_select($connect, NULL, "bm_guest_detail", "code_guest='" . $show_total->code . "' ORDER BY create_time");
-                                                            while ($showlist = mysqli_fetch_object($getdetail)) {
-                                                                echo relation($showlist->relation) . ' ' . @prefixConvertor($showlist->prefix_name) . ' ' . $showlist->fname . ' ' . $showlist->lname;
-                                                                echo "<br>";
-                                                            }
-                                                            ?>
-                                                        <?php } else {
-                                                            echo '<span class="text-danger">ไม่แจ้งบริวาร</span>';
-                                                        } ?>
+                                                    while ($show_total = mysqli_fetch_object($getquery)) {
+                                                        $i++ ?>
+                                                        <?php $count_guest_detail = $getdata->my_sql_show_rows($connect, "bm_guest_detail", "code_guest = '" . $show_total->code . "'"); ?>
+                                                        <tr class="tr-t">
+
+                                                            <td class="th-t"><?php echo $i; ?></td>
+                                                            <td class="th-t">
+                                                                <?php echo @prefixConvertor($show_total->g_prefix) . ' ' . $show_total->g_fname . ' ' . $show_total->g_lname; ?>
+                                                                <br>
+                                                                <?php
+                                                                if ($count_guest_detail >= 1) {
+                                                                ?>
+                                                                    <?php
+                                                                    if ($show_total->status_guest_detail == '1') {
+                                                                    ?>
+
+                                                                        <strong>บริวาร</strong>
+                                                                        <br>
+                                                                        <?php
+                                                                        $getdetail = $getdata->my_sql_select($connect, NULL, "bm_guest_detail", "code_guest='" . $show_total->code . "' ORDER BY create_time");
+                                                                        while ($showlist = mysqli_fetch_object($getdetail)) {
+                                                                            echo relation($showlist->relation) . ' ' . @prefixConvertor($showlist->prefix_name) . ' ' . $showlist->fname . ' ' . $showlist->lname;
+                                                                            echo "<br>";
+                                                                        }
+                                                                        ?>
+                                                                    <?php } else {
+                                                                        echo '<span class="text-danger">ไม่แจ้งบริวาร</span>';
+                                                                    } ?>
+                                                                <?php } ?>
+                                                            </td>
+                                                            <td class="th-t">
+                                                                <?php echo $show_total->g_position . " / " . getDepartName($show_total->g_department); ?>
+                                                                <br>
+                                                                <?php
+                                                                if ($show_total->status_guest == '3') {
+                                                                    echo '<span class="text-danger">(ลจค. สิ้นสุดสัญญาจ้าง ' . dateConvertor($show_total->end_date) . ')</span>';
+                                                                }
+                                                                ?>
+                                                            </td>
+                                                            <td class="th-t">
+                                                                <?php
+                                                                // echo @prefixConvertorServiceList($show_total->room);
+                                                                echo @building($show_total->building) . ' ' . @prefixConvertorService($show_total->floor) . ' ห้อง ' . @prefixConvertorServiceList($show_total->room);
+                                                                ?>
+                                                            </td>
+                                                        </tr>
                                                     <?php } ?>
-                                                </td>
-                                                <td class="th-t">
-                                                    <?php echo $show_total->g_position . " / " . getDepartName($show_total->g_department); ?>
-                                                    <br>
+                                                </tbody>
+                                            </table>
+
+                                            <?php
+                                            $html = ob_get_contents();
+                                            $mpdf->SetHTMLHeader($tit);
+                                            $mpdf->WriteHTML($html);
+                                            $mpdf->Output("report/MyPDF.pdf");
+                                            ob_end_flush()
+                                            ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="navs-pills-justified-profile" role="tabpanel">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="">
+
+                                            <table id="example" class="table hover" style="font-family: sarabun; font-size: 14px; text-align: center;" width="100%">
+                                                <thead class="font-weight-bold text-center">
+                                                    <tr>
+                                                        <td>รหัสห้อง</td>
+                                                        <td>ชื่อ - นาสกุลเจ้าหน้าที่</td>
+                                                        <td>ตำแหน่ง/สังกัด</td>
+                                                        <td>ชื่อ - นามสกุลบริวาร</td>
+                                                        <td>ความสัมพันธ์</td>
+                                                        <td>วันที่เข้าห้องพัก</td>
+                                                        <td>วันที่ออกห้องพัก</td>
+                                                        <td>สถานะ</td>
+                                                        <td>รหัสอ้างอิง</td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
                                                     <?php
-                                                    if ($show_total->status_guest == '3') {
-                                                        echo '<span class="text-danger">(ลจค. สิ้นสุดสัญญาจ้าง ' . dateConvertor($show_total->end_date) . ')</span>';
-                                                    }
-                                                    ?>
-                                                </td>
-                                                <td class="th-t">
-                                                    <?php
-                                                    // echo @prefixConvertorServiceList($show_total->room);
-                                                    echo @building($show_total->building) . ' ' . @prefixConvertorService($show_total->floor) . ' ห้อง ' . @prefixConvertorServiceList($show_total->room);
-                                                    ?>
-                                                </td>
-                                            </tr>
-                                        <?php } ?>
-                                    </tbody>
-                                </table>
+
+                                                    while ($show_total = mysqli_fetch_object($getquery2)) { ?>
+                                                        <?php $count_guest_detail = $getdata->my_sql_show_rows($connect, "bm_guest_detail", "code_guest = '" . $show_total->code . "'"); ?>
+                                                        <tr>
+                                                            <td><?php echo @building($show_total->building) . ' ' . @prefixConvertorService($show_total->floor) . ' ห้อง ' . @prefixConvertorServiceList($show_total->room); ?></td>
+                                                            <td><?php echo @prefixConvertor($show_total->g_prefix) . ' ' . $show_total->g_fname . ' ' . $show_total->g_lname; ?></td>
+                                                            <td><?php echo $show_total->g_position . " / " . getDepartName($show_total->g_department); ?>
+
+                                                                <?php
+                                                                if ($show_total->status_guest == '3') {
+                                                                    echo ', <span class="text-danger">(ลจค. สิ้นสุดสัญญาจ้าง ' . dateConvertor($show_total->end_date) . ')</span>';
+                                                                } else {
+                                                                    echo '';
+                                                                }
+                                                                ?>
+                                                            </td>
+                                                            <td>
+                                                                <?php
+                                                                if ($count_guest_detail >= 1) {
+                                                                ?>
+                                                                    <?php
+                                                                    if ($show_total->status_guest_detail == '1') {
+                                                                    ?>
+
+
+                                                                        <?php echo @prefixConvertor($show_total->gdetail_prefix) . ' ' . $show_total->gdetail_fname . ' ' . $show_total->gdetail_lname; ?>
+                                                                    <?php } else {
+                                                                        echo '<span class="text-danger">ไม่แจ้งบริวาร</span>';
+                                                                    } ?>
+                                                                <?php } ?>
+
+                                                            </td>
+                                                            <td>บริวาร / ความสัมพันธ์ : <?php echo @relation($show_total->gdetail_relation); ?></td>
+                                                            <td><?php echo @dateTimeConvertor($show_total->check_in); ?></td>
+                                                            <td><?php echo @dateTimeConvertor($show_total->check_out); ?></td>
+                                                            <td><?php if ($show_total->status == '1') {
+                                                                    echo 'รอการยืนยันเข้าพัก';
+                                                                } elseif ($show_total->status == '2') {
+                                                                    echo 'เข้าพัก';
+                                                                } else {
+                                                                    echo 'ออกจากห้องพัก';
+                                                                } ?></td>
+                                                            <td><?php echo $show_total->code; ?></td>
+                                                        </tr>
+                                                    <?php } ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+
                 <?php } ?>
             </div>
         </div>
     </div>
 </div>
-
-
-
-
-
-
-<?php
-$html = ob_get_contents();
-$mpdf->SetHTMLHeader($tit);
-$mpdf->WriteHTML($html);
-$mpdf->Output("report/MyPDF.pdf");
-ob_end_flush()
-?>
