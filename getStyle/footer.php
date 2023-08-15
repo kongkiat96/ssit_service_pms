@@ -1,4 +1,3 @@
- 
  <!-- Core JS -->
  <!-- build:js assets/vendor/js/core.js -->
  <script src="../assets/vendor/libs/jquery/jquery.js"></script>
@@ -47,7 +46,7 @@
  <script src="../assets/custom/customsJS.js"></script>
 
  <!-- Datatable -->
- 
+
  <script src="../assets/vendor/libs/datatables/jquery.dataTables.js"></script>
  <script src="../assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
  <script src="../assets/vendor/libs/datatables-responsive/datatables.responsive.js"></script>
@@ -60,8 +59,8 @@
  <!-- <script src="../assets/js/tables-datatables-basic.js"></script> -->
 
  <!-- <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js"></script>  -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-<!-- <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js"></script> -->
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+ <!-- <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js"></script> -->
 
  <!-- load -->
  <script src="../assets/js/extended-ui-blockui.js"></script>
@@ -75,15 +74,15 @@
 
  <script src="../assets/js/form-validation.js"></script>
  <!-- build:js assets/vendor/js/core.js -->
+ <script src="../assets/js/ui-modals.js"></script>
+ <script src="../assets/vendor/js/menu.js"></script>
+ <!-- endbuild -->
 
-    <script src="../assets/vendor/js/menu.js"></script>
-    <!-- endbuild -->
+ <!-- Vendors JS -->
+ <script src="../assets/vendor/libs/quill/katex.js"></script>
+ <script src="../assets/vendor/libs/quill/quill.js"></script>
 
-    <!-- Vendors JS -->
-    <script src="../assets/vendor/libs/quill/katex.js"></script>
-    <script src="../assets/vendor/libs/quill/quill.js"></script>
+ <!-- Page JS -->
+ <!-- <script src="../assets/js/forms-editors.js"></script> -->
 
-    <!-- Page JS -->
-    <!-- <script src="../assets/js/forms-editors.js"></script> -->
-
-    <!-- <script src="../assets/plugins/ckeditor/ckeditor.js"></script> -->
+ <!-- <script src="../assets/plugins/ckeditor/ckeditor.js"></script> -->
