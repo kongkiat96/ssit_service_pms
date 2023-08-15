@@ -92,7 +92,7 @@ if (isset($_POST['search'])) {
 
             <div class="tab-pane pt-3 fade show active" id="employee" role="tabpanel" aria-labelledby="employee-tab">
                 <div class="row">
-                    <div class="col-12 text-center">
+                    <div class="col-12">
                         <form action="<?php echo $SERVER_NAME; ?>" method="post">
                             <div class="form-group row mb-4">
                                 <div class="col-md-2 col-sm-12">
@@ -114,7 +114,7 @@ if (isset($_POST['search'])) {
                                 <div class="col-md-3 col-sm-12">
                                     <input type="date" name="date_start" id="date_start" class="form-control" onfocus="this.value=''" value="<?php echo $date_start; ?>">
                                 </div>
-                                <div class="col-2"><label for="to">ถึง</label></div>
+                                <div class="col-2 text-center"><label for="to">ถึง</label></div>
                                 <div class="col-md-2 col-sm-12">
                                     <label for="date_end">วันที่ออกห้องพัก</label>
                                 </div>
@@ -122,22 +122,25 @@ if (isset($_POST['search'])) {
                                     <input type="date" name="date_end" id="date_end" class="form-control" placeholder="" onfocus="this.value=''" value="<?php echo $date_end; ?>">
                                 </div>
                             </div>
-                            <?php if (isset($_POST['search'])) { ?>
-                                <button class="btn btn-label-danger mt-3" onclick="reloadPage()" data-style="expand-left">
-                                    <span class="fas fa-trash-alt"> ล้างค่า</span>
-                                    <span class="ladda-spinner"></span>
-                                </button>
+                            <div class="text-center">
+                                <?php if (isset($_POST['search'])) { ?>
+                                    <button class="btn btn-label-danger mt-3" onclick="reloadPage()" data-style="expand-left">
+                                        <span class="fas fa-trash-alt"> ล้างค่า</span>
+                                        <span class="ladda-spinner"></span>
+                                    </button>
 
-                                <button class="btn btn-label-warning mt-3" data-style="expand-left" type="submit" name="search">
-                                    <span class="fas fa-file-download"> ค้นหา</span>
-                                    <span class="ladda-spinner"></span>
-                                </button>
-                            <?php } else { ?>
-                                <button class="btn btn-label-warning mt-3" data-style="expand-left" type="submit" name="search">
-                                    <span class="fas fa-file-download"> ค้นหา</span>
-                                    <span class="ladda-spinner"></span>
-                                </button>
-                            <?php } ?>
+                                    <button class="btn btn-label-warning mt-3" data-style="expand-left" type="submit" name="search">
+                                        <span class="fas fa-file-download"> ค้นหา</span>
+                                        <span class="ladda-spinner"></span>
+                                    </button>
+                                <?php } else { ?>
+                                    <button class="btn btn-label-warning mt-3" data-style="expand-left" type="submit" name="search">
+                                        <span class="fas fa-file-download"> ค้นหา</span>
+                                        <span class="ladda-spinner"></span>
+                                    </button>
+                                <?php } ?>
+                            </div>
+
                         </form>
 
                     </div>
@@ -196,7 +199,7 @@ if (isset($_POST['search'])) {
                                 // } else {
                                 //     $tit = '<h5>รายชื่อผู้พักอาศัยอาคารทั้งหมดพร้อมบริวาร</h5>';
                                 // }
-                                $tit = 'Exported '.dateTimeConvertor(date('Y-m-d H:i:s'));
+                                $tit = 'Exported ' . dateTimeConvertor(date('Y-m-d H:i:s'));
                                 ?>
                                 <table id="responsive-data-table-1" class="table dt-responsive nowrap hover body-t table-t">
                                     <thead class="font-weight-bold">
