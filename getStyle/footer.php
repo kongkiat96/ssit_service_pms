@@ -3,7 +3,6 @@
  <script src="../assets/vendor/libs/jquery/jquery.js"></script>
  <script src="../assets/vendor/libs/popper/popper.js"></script>
  <script src="../assets/vendor/js/bootstrap.js"></script>
- <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
  <script src="../assets/vendor/libs/hammer/hammer.js"></script>
  <script src="../assets/vendor/libs/i18n/i18n.js"></script>
  <script src="../assets/vendor/libs/typeahead-js/typeahead.js"></script>
@@ -81,7 +80,9 @@
  <!-- Vendors JS -->
  <script src="../assets/vendor/libs/quill/katex.js"></script>
  <script src="../assets/vendor/libs/quill/quill.js"></script>
-
+ <script src="../assets/js/extended-ui-perfect-scrollbar.js"></script>
+ <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+ <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
  <!-- Page JS -->
  <!-- <script src="../assets/js/forms-editors.js"></script> -->
 

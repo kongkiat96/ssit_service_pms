@@ -15,11 +15,10 @@
 <link rel="stylesheet" href="../assets/css/demo.css" />
 
 <!-- Vendors CSS -->
-<link rel="stylesheet" href="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
 <link rel="stylesheet" href="../assets/vendor/libs/typeahead-js/typeahead.css" />
 <link rel="stylesheet" href="../assets/vendor/libs/apex-charts/apex-charts.css" />
 <link rel="stylesheet" href="../assets/vendor/libs/sweetalert2/sweetalert2.css" />
-
+<link rel="stylesheet" href="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
 <!-- validation -->
 <link rel="stylesheet" href="../assets/vendor/libs/bootstrap-select/bootstrap-select.css" />
 <link rel="stylesheet" href="../assets/vendor/libs/tagify/tagify.css" />
