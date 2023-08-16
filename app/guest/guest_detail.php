@@ -426,22 +426,13 @@
                                         ระบุ นามสกุลบริวาร.
                                     </div>
                                 </div>
-                                <div class="col-md-4 col-sm-12 mb-3">
+                                <!-- <div class="col-md-4 col-sm-12 mb-3">
                                     <label for="position">ตำแหน่ง</label>
-                                    <!-- <select name="position" id="position" class="form-control select2" style="width: 100%;">
-                                        <option value="">--- เลือกข้อมูล ---</option>
-                                        <?php
-                                        //$getprefix = $getdata->my_sql_select($connect, NULL, "department_name");
-                                        //while ($showprefix = mysqli_fetch_object($getprefix)) {
-                                        //    echo '<option value="' . $showprefix->id . '">' . $showprefix->department_name . '</option>';
-                                        //}
-                                        ?>
-                                    </select> -->
                                     <input type="text" name="position" id="position" class="form-control input-sm" placeholder="ตำแหน่ง">
                                     <div class="invalid-feedback">
                                         ระบุ ตำแหน่ง.
                                     </div>
-                                </div>
+                                </div> -->
 
                                 <div class="col-md-4 col-sm-12 mb-3">
                                     <label for="tel">หมายเลขโทรศัพท์</label>
