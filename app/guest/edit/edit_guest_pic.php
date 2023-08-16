@@ -15,7 +15,7 @@ $guest_detail = $getdata->my_sql_query($connect, NULL, "bm_guest", "key_guest='"
     <div class="form-group row">
         <div class="col-12">
             <label for="edit_guest_pic">แก้ไขรูปภาพเจ้าหน้าที่</label>
-            <input type="file" name="pic" id="edit_guest_pic" class="form-control">
+            <input type="file" name="pic" id="edit_guest_pic" class="form-control mt-3">
         </div>
 
     </div>

@@ -1,2 +1,3 @@
 .DS_Store
 resource
+app/report/MyPDF.pdf

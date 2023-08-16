@@ -125,10 +125,35 @@
     </div>
 </div>
 
+<div class="modal fade" id="edit_guest_pic" role="dialog" aria-labelledby="edit_guest_pic" aria-hidden="true">
+    <div class="modal-dialog modal-md" role="document">
+        <form method="post" enctype="multipart/form-data" class="needs-validation">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4><strong>แก้ไขข้อมูล</strong></h4>
+                </div>
+                <hr>
+                <div class="pic">
+
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-label-danger" data-bs-dismiss="modal">
+                        <i class="bx bx-exit"></i><span> ปิด</span>
+                    </button>
+                    <button class="btn btn-label-success" type="submit" name="save_edit_guest_pic">
+                        <span class="fas fa-sync-alt"> บันทึก</span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
 
 <div class="modal fade" id="save_guest" role="dialog" aria-labelledby="save_guest" aria-hidden="true">
     <div class="modal-dialog modal-md" role="document">
-        <form method="post" enctype="multipart/form-data" validate >
+        <form method="post" enctype="multipart/form-data" validate>
             <div class="modal-content">
                 <div class="modal-header">
                     <h4><strong>ยืนยันข้อมูล</strong></h4>
@@ -254,8 +279,12 @@
                             }
                             ?>
                             <br>
+                            <div class="row">
+                                <a class="btn btn-sm btn-info ml-auto text-white" data-bs-toggle="modal" data-bs-target="#edit_guest_pic" data-whatever="<?php echo @$guest_detail->key_guest; ?>"><i class="fas fa-camera"></i> <strong>แก้ไขรูปภาพ</strong></a>
+
+                            </div>
+
                             <?php if ($_SESSION['user_class'] == '3') { ?>
-                                <a class="btn btn-sm btn-info ml-auto text-white" data-toggle="modal" data-target="#edit_guest_pic" data-whatever="<?php echo @$guest_detail->key_guest; ?>"><i class="fas fa-camera"></i> แก้ไขรูปภาพ</a>
                             <?php } ?>
                         </div>
                         <div class="col-sm-12 col-md-8">
@@ -398,7 +427,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-sm-12 mb-3">
-                                    <label for="position">ตำแหน่ง (ถ้ามี)</label>
+                                    <label for="position">ตำแหน่ง</label>
                                     <!-- <select name="position" id="position" class="form-control select2" style="width: 100%;">
                                         <option value="">--- เลือกข้อมูล ---</option>
                                         <?php
@@ -408,7 +437,7 @@
                                         //}
                                         ?>
                                     </select> -->
-                                    <input type="text" name="position" id="position" class="form-control input-sm" placeholder="ตำแหน่ง (ถ้ามี)">
+                                    <input type="text" name="position" id="position" class="form-control input-sm" placeholder="ตำแหน่ง">
                                     <div class="invalid-feedback">
                                         ระบุ ตำแหน่ง.
                                     </div>
@@ -421,13 +450,13 @@
                                         ระบุ หมายเลขโทรศัพท์.
                                     </div>
                                 </div>
-                                <div class="col-md-4 col-sm-12 mb-3">
+                                <!-- <div class="col-md-4 col-sm-12 mb-3">
                                     <label for="idcard">เลขบัตรประจำตัวประชาชน/หนังสือเดินทาง</label>
                                     <input type="text" name="idcard" id="idcard" class="form-control input-sm" placeholder="เลขบัตรประจำตัวประชาชน/หนังสือเดินทาง">
                                     <div class="invalid-feedback">
                                         ระบุ เลขบัตรประจำตัวประชาชน/หนังสือเดินทาง.
                                     </div>
-                                </div>
+                                </div> -->
 
                                 <div class="col-md-4 col-sm-12 mb-3">
                                     <label for="pic">รูปถ่าย</label>
@@ -483,12 +512,15 @@
                                             ?>
                                             <br>
                                             <?php if ($_SESSION['uclass'] != '1') { ?>
-                                                <!-- <a class="btn btn-sm btn-info ml-auto text-white" data-toggle="modal" data-target="#edit_guest_list_pic" data-whatever="<?php echo @$showlist->ID; ?>"><i class="fas fa-camera"></i> แก้ไขรูปภาพ</a> -->
-                                                <div class="mx-auto">
-                                                    <button type="button" class="mb-1 btn btn-outline-warning btn-sm" data-bs-toggle="modal" data-bs-target="#edit_guest_list_pic" data-whatever="<?php echo @$showlist->ID; ?>">
-                                                        <i class="fas fa-camera"></i> แก้ไขรูปภาพ
-                                                    </button>
+                                                <!-- <a class="btn btn-sm btn-info ml-auto text-white" data-toggle="modal" data-target="#edit_guest_list_pic" data-whatever="<?php echo @$showlist->ID; ?>"><i class="fas fa-camera"></i> <strong>แก้ไขรูปภาพ</strong></a> -->
+                                                <div class="row">
+                                                    <!-- <div class="mx-auto"> -->
+                                                        <button type="button" class="btn btn-sm btn-warning ml-auto text-white" data-bs-toggle="modal" data-bs-target="#edit_guest_list_pic" data-whatever="<?php echo @$showlist->ID; ?>">
+                                                            <i class="fas fa-camera"></i> <strong>แก้ไขรูปภาพ</strong>
+                                                        </button>
+                                                    <!-- </div> -->
                                                 </div>
+
 
 
 
@@ -526,7 +558,7 @@
                                         <?php if ($_SESSION['uclass'] != '1') { ?>
                                             <div class="card-footer text-center" style="background-color:#f0f8ff00">
 
-                                                <button type="button" class="mb-1 btn btn-outline-info btn-sm" data-bs-toggle="modal" data-bs-target="#edit_guest_list" data-whatever="<?php echo @$showlist->ID; ?>">
+                                                <button type="button" class="mb-1 btn btn-outline-warning btn-sm" data-bs-toggle="modal" data-bs-target="#edit_guest_list" data-whatever="<?php echo @$showlist->ID; ?>">
                                                     <i class="fas fa-edit"></i>
                                                 </button>
 

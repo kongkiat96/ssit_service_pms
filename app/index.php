@@ -147,7 +147,7 @@ $system_info = $getdata->my_sql_query($connect, null, 'system_info', null);
 <script>
     // Replace the <textarea id="editor1"> with a CKEditor
     // instance, using default configuration.
-    CKEDITOR.replace('detail');
+    CKEDITOR.replace('policy');
 
     function CKupdate() {
         for (instance in CKEDITOR.instances)

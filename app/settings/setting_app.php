@@ -41,11 +41,11 @@ $getdetail = $getdata->my_sql_query($connect, NULL, "detail_index", NULL);
                         <i class='bx bxs-bell-ring'></i> การแจ้งเตือน
                     </button>
                 </li>-->
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <button type="button" class="nav-link " role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-justified-index" aria-controls="navs-pills-justified-index" aria-selected="false">
                         <i class='bx bx-list-ol'></i> ข้อความการยินยอม
                     </button>
-                </li>
+                </li> -->
 
             </ul>
             <div class="tab-content">
@@ -124,7 +124,7 @@ $getdetail = $getdata->my_sql_query($connect, NULL, "detail_index", NULL);
                 <div class="tab-pane fade " id="navs-pills-justified-index" role="tabpanel">
                     <p>
                     <form action="" method="post" enctype="multipart/form-data">
-                        <textarea name="detail" id="detail"><?php echo $getdetail->detail; ?></textarea>
+                        <textarea name="policy" id="policy"><?php echo $getdetail->detail; ?></textarea>
                         <div class="text-center mt-3">
                             <input type="hidden" name="key" id="key" value="<?php echo $getdetail->id; ?>">
                             <button type="submit" name="save_detail" class="btn btn-primary"><i class="bx bx-save"></i>
