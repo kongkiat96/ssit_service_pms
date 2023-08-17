@@ -250,7 +250,7 @@ if (isset($_POST['search'])) {
 
                                                             <td class="th-t"><?php echo $i; ?></td>
                                                             <td class="th-t">
-                                                                <?php echo @prefixConvertor($show_total->g_prefix) . ' ' . $show_total->g_fname . ' ' . $show_total->g_lname; ?>
+                                                                <?php echo @prefixConvertor($show_total->g_prefix) . '' . $show_total->g_fname . ' ' . $show_total->g_lname; ?>
                                                                 <br>
                                                                 <?php
                                                                 if ($count_guest_detail >= 1) {
@@ -264,7 +264,7 @@ if (isset($_POST['search'])) {
                                                                         <?php
                                                                         $getdetail = $getdata->my_sql_select($connect, NULL, "bm_guest_detail", "code_guest='" . $show_total->code . "' ORDER BY create_time");
                                                                         while ($showlist = mysqli_fetch_object($getdetail)) {
-                                                                            echo relation($showlist->relation) . ' ' . @prefixConvertor($showlist->prefix_name) . ' ' . $showlist->fname . ' ' . $showlist->lname;
+                                                                            echo relation($showlist->relation) . ' ' . @prefixConvertor($showlist->prefix_name) . '' . $showlist->fname . ' ' . $showlist->lname;
                                                                             echo "<br>";
                                                                         }
                                                                         ?>
@@ -330,7 +330,7 @@ if (isset($_POST['search'])) {
                                                         <?php $count_guest_detail = $getdata->my_sql_show_rows($connect, "bm_guest_detail", "code_guest = '" . $show_total->code . "'"); ?>
                                                         <tr>
                                                             <td><?php echo @building($show_total->building) . ' ' . @prefixConvertorService($show_total->floor) . ' ห้อง ' . @prefixConvertorServiceList($show_total->room); ?></td>
-                                                            <td><?php echo @prefixConvertor($show_total->g_prefix) . ' ' . $show_total->g_fname . ' ' . $show_total->g_lname; ?></td>
+                                                            <td><?php echo @prefixConvertor($show_total->g_prefix) . '' . $show_total->g_fname . ' ' . $show_total->g_lname; ?></td>
                                                             <td><?php echo $show_total->g_position . " / " . getDepartName($show_total->g_department); ?>
 
                                                                 <?php
@@ -350,7 +350,7 @@ if (isset($_POST['search'])) {
                                                                     ?>
 
 
-                                                                        <?php echo @prefixConvertor($show_total->gdetail_prefix) . ' ' . $show_total->gdetail_fname . ' ' . $show_total->gdetail_lname; ?>
+                                                                        <?php echo @prefixConvertor($show_total->gdetail_prefix) . '' . $show_total->gdetail_fname . ' ' . $show_total->gdetail_lname; ?>
                                                                     <?php } else {
                                                                         echo '<span class="text-danger">ไม่แจ้งบริวาร</span>';
                                                                     } ?>

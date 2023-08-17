@@ -524,7 +524,7 @@
                                                             ชื่อ - นามสกุล :
                                                         </div>
                                                         <div class="col-6">
-                                                            <label for=""> <?php echo @prefixConvertor($showlist->prefix_name) . ' ' . $showlist->fname . ' ' . $showlist->lname; ?></label>
+                                                            <label for=""> <?php echo @prefixConvertor($showlist->prefix_name) . '' . $showlist->fname . ' ' . $showlist->lname; ?></label>
                                                         </div>
                                                     </div>
                                                     <div class="row m-1">

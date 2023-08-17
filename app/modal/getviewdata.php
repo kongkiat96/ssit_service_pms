@@ -232,7 +232,7 @@ $guest_detail = $getdata->my_sql_query($connect, NULL, "bm_guest", "room='" . ht
                                                         ชื่อ - นามสกุล :
                                                     </div>
                                                     <div class="col-md-6 col-sm-12">
-                                                        <label for=""> <?php echo @prefixConvertor($showlist->prefix_name) . ' ' . $showlist->fname . ' ' . $showlist->lname; ?></label>
+                                                        <label for=""> <?php echo @prefixConvertor($showlist->prefix_name) . '' . $showlist->fname . ' ' . $showlist->lname; ?></label>
                                                     </div>
                                                     <!-- <div class="row m-1"> -->
                                                     <div class="col-md-6 col-sm-12 text-end mb-2">
