@@ -358,8 +358,8 @@ if (isset($_POST['search'])) {
 
                                                             </td>
                                                             <td>บริวาร / ความสัมพันธ์ : <?php echo @relation($show_total->gdetail_relation); ?></td>
-                                                            <td><?php echo @dateTimeConvertor($show_total->check_in); ?></td>
-                                                            <td><?php echo @dateTimeConvertor($show_total->check_out); ?></td>
+                                                            <td><?php echo @dateConvertor($show_total->check_in); ?></td>
+                                                            <td><?php echo @dateConvertor($show_total->check_out); ?></td>
                                                             <td><?php if ($show_total->status == '1') {
                                                                     echo 'รอการยืนยันเข้าพัก';
                                                                 } elseif ($show_total->status == '2') {
