@@ -71,9 +71,9 @@ $guest_detail = $getdata->my_sql_query($connect, NULL, "bm_guest", "room='" . ht
                                     </div>
                                 </div>
                                 <div class="col-sm-12 col-md-8">
-                                    <div class="card">
+                                <div class="card">
                                         <div class="card-header text-center">
-                                            <strong>รายละเอียด</strong>
+                                            <strong>รายละเอียดผู้เข้าพัก</strong>
                                             <hr>
                                         </div>
                                         <div class="card-body">
@@ -81,7 +81,7 @@ $guest_detail = $getdata->my_sql_query($connect, NULL, "bm_guest", "room='" . ht
                                                 <div class="col-sm-6 col-md-4 text-start">
                                                     <label for=""><strong>หมายเลขโทรศัพท์ :</strong></label>
                                                 </div>
-                                                <div class="col-6 text-center">
+                                                <div class="col-6 text-start">
                                                     <label for=""><?php echo $guest_detail->tel; ?></label>
                                                 </div>
                                             </div>
@@ -89,7 +89,7 @@ $guest_detail = $getdata->my_sql_query($connect, NULL, "bm_guest", "room='" . ht
                                                 <div class="col-sm-6 col-md-4 text-start">
                                                     <label for=""><strong>ตำแหน่งงาน :</strong></label>
                                                 </div>
-                                                <div class="col-6 text-center">
+                                                <div class="col-6 text-start">
                                                     <label for=""><?php echo $guest_detail->position; ?></label>
                                                 </div>
                                             </div>
@@ -97,7 +97,7 @@ $guest_detail = $getdata->my_sql_query($connect, NULL, "bm_guest", "room='" . ht
                                                 <div class="col-sm-6 col-md-4 text-start">
                                                     <label for=""><strong>ประเภทบุคลากร :</strong></label>
                                                 </div>
-                                                <div class="col-6 text-center">
+                                                <div class="col-6 text-start">
                                                     <label for=""><?php echo status_guest($guest_detail->status_guest); ?></label>
                                                 </div>
                                             </div>
@@ -106,7 +106,7 @@ $guest_detail = $getdata->my_sql_query($connect, NULL, "bm_guest", "room='" . ht
                                                     <div class="col-sm-6 col-md-4 text-start">
                                                         <label for=""><strong>วันสิ้นสุดสัญญา :</strong></label>
                                                     </div>
-                                                    <div class="col-6 text-center">
+                                                    <div class="col-6 text-start">
                                                         <label for=""><?php echo dateConvertor($guest_detail->end_date); ?></label>
                                                     </div>
                                                 </div>
@@ -115,28 +115,28 @@ $guest_detail = $getdata->my_sql_query($connect, NULL, "bm_guest", "room='" . ht
 
 
 
+
+                                            <div class="row mb-3">
+                                                <div class="col-sm-6 col-md-4 text-start">
+                                                    <label for=""><strong>ฝ่าย :</strong></label>
+                                                </div>
+                                                <div class="col-6 text-start">
+                                                    <label for=""><?php echo getComName($guest_detail->company_id); ?></label>
+                                                </div>
+                                            </div>
                                             <div class="row mb-3">
                                                 <div class="col-sm-6 col-md-4 text-start">
                                                     <label for=""><strong>สำนัก :</strong></label>
                                                 </div>
-                                                <div class="col-6 text-center">
+                                                <div class="col-6 text-start">
                                                     <label for=""><?php echo getDepartName($guest_detail->department); ?></label>
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
                                                 <div class="col-sm-6 col-md-4 text-start">
-                                                    <label for=""><strong>ฝ่าย :</strong></label>
-                                                </div>
-                                                <div class="col-6 text-center">
-                                                    <label for=""><?php echo getComName($guest_detail->company_id); ?></label>
-                                                </div>
-                                            </div>
-
-                                            <div class="row mb-3">
-                                                <div class="col-sm-6 col-md-4 text-start">
                                                     <label for=""><strong>วันที่เข้าพัก :</strong></label>
                                                 </div>
-                                                <div class="col-6 text-center">
+                                                <div class="col-6 text-start">
                                                     <label for="">
                                                         <?php if ($guest_detail->check_in == NULL) {
                                                             echo '<span class="badge badge-danger">ยังไม่มีการระบุ</span>';
@@ -150,7 +150,7 @@ $guest_detail = $getdata->my_sql_query($connect, NULL, "bm_guest", "room='" . ht
                                                 <div class="col-sm-6 col-md-4 text-start">
                                                     <label for=""><strong>วันที่ออกห้องพัก :</strong></label>
                                                 </div>
-                                                <div class="col-6 text-center">
+                                                <div class="col-6 text-start">
                                                     <label for="">
                                                         <?php if ($guest_detail->check_out == NULL) {
                                                             echo '<span class="badge bg-label-danger">ยังไม่มีการระบุ</span>';
@@ -164,7 +164,7 @@ $guest_detail = $getdata->my_sql_query($connect, NULL, "bm_guest", "room='" . ht
                                                 <div class="col-sm-6 col-md-4 text-start">
                                                     <label for=""><strong>จำนวนบริวาร :</strong></label>
                                                 </div>
-                                                <div class="col-6 text-center">
+                                                <div class="col-6 text-start">
                                                     <label for="">
                                                         <?php if ($guest_detail->status_guest_detail == '1') { ?>
                                                             <label for="prefix_code"><?php $count_guest_detail = $getdata->my_sql_show_rows($connect, "bm_guest_detail", "code_guest = '" . $guest_detail->code . "'");
@@ -179,7 +179,7 @@ $guest_detail = $getdata->my_sql_query($connect, NULL, "bm_guest", "room='" . ht
                                                 <div class="col-sm-6 col-md-4 text-start">
                                                     <label for=""><strong>ผู้บันทึกข้อมูล :</strong></label>
                                                 </div>
-                                                <div class="col-6 text-center">
+                                                <div class="col-6 text-start">
                                                     <label for=""><?php echo @getemployee($guest_detail->user_key); ?></label>
                                                 </div>
                                             </div>

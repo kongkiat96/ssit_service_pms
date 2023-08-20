@@ -20,38 +20,6 @@ $system_detail = $getdata->my_sql_query($connect, null, 'detail_index', null);
     <link rel="icon" type="image/x-icon" href="resource/system/favicon/<?php echo @$system_info->site_favicon; ?>" />
     <title><?php echo @$system_info->site_name; ?></title>
     <?php include 'core/header.php' ?>
-
-    <style>
-        .cookies-eu-banner {
-            background: #444;
-            color: #fff;
-            padding: 6px;
-            font-size: 13px;
-            text-align: center;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            z-index: 10;
-        }
-
-        .cookies-eu-banner button {
-            text-decoration: none;
-            background: #222;
-            color: #fff;
-            border: 1px solid #000;
-            cursor: pointer;
-            padding: 4px 7px;
-            margin: 2px 0;
-            font-size: 13px;
-            font-weight: 700;
-            transition: background 0.07s, color 0.07s, border-color 0.07s;
-        }
-
-        .cookies-eu-banner button:hover {
-            background: #fff;
-            color: #222;
-        }
-    </style>
 </head>
 
 <body>
@@ -112,39 +80,33 @@ $system_detail = $getdata->my_sql_query($connect, null, 'detail_index', null);
     </div>
     <!-- Overlay -->
     <div class="layout-overlay layout-menu-toggle"></div>
-    <!-- Drag Target Area To SlideIn Menu On Small Screens -->
-    <div class="drag-target"></div>
-    <!--/ Layout wrapper -->
-    <div class="cookies-eu-banner">
-        <span>
-            เว็บไซต์นี้ใช้งานคุกกี้ในการใช้งานสามารถใช้งานเว็บไซต์อย่างต่อเนื่องและมีประสิทธิภาพ เว็บไซต์นี้จะมีการเก็บค่าคุกกี้เพื่อให้การใช้เว็บไซต์ของท่านเป็นไปอย่างราบรื่น <br>และเป็นส่วนตัวมากขึ้น
-            จึงขอให้ท่านรับรองว่าท่านได้อ่านและทำความเข้าใจนโยบายการใช้งานคุกกี้ <br> <a href="https://www.gistda.or.th/download/article/article_20220613093807.pdf" target="_blank" rel="noopener noreferrer" style="color:#ff8d26"> นโยบายการคุ้มครองข้อมูลส่วนบุคคล GISTDA </a>
-        </span>
-<br>
-        <!-- <button>Accept</button> -->
-        <button class="btn btn-label-success" type="button">
-            <i class='bx bxs-user-check'></i> <strong>ตกลง</strong>
-        </button>
-    </div>
     <!-- Modal -->
-    <div class="modal fade" id="myModal" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-xl" role="document">
+    <!-- <div class="modal fade" id="myModal" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document"> -->
+    <div class="modal fade" id="myModal" tabindex="-1" data-bs-backdrop="static" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h2 class="modal-title" id="exampleModalLabel4">นโยบายความเป็นส่วนตัว (Privacy Policy)</h2>
+                    <h4 class="modal-title" id="exampleModalLabel4"><strong>การอนุญาตคุกกี้ในการใช้งาน</strong></h4>
                     <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
                 </div>
-                <div class="modal-body">
-                    <?php echo $system_detail->detail; ?>
-                    <div class="text-center">
+                <div class="modal-body text-center">
+                    <span>
+                        เว็บไซต์นี้ใช้งานคุกกี้ในการใช้งานสามารถใช้งานเว็บไซต์อย่างต่อเนื่องและมีประสิทธิภาพ เว็บไซต์นี้จะมีการเก็บค่าคุกกี้เพื่อให้การใช้เว็บไซต์ของท่านเป็นไปอย่างราบรื่นและเป็นส่วนตัวมากขึ้น
+                        จึงขอให้ท่านรับรองว่าท่านได้อ่านและทำความเข้าใจนโยบายการใช้งานคุกกี้ <br>
+                    </span>
+                    <div class="mt-3"></div>
+                    <a href="https://www.gistda.or.th/download/article/article_20220613093807.pdf" target="_blank" rel="noopener noreferrer" style="color:#ff8d26"> นโยบายการคุ้มครองข้อมูลส่วนบุคคล GISTDA </a>
+                    <!-- <?php echo $system_detail->detail; ?> -->
+                    
+                    <div class="text-center mt-3">
                         <input class="form-check-input mt-1" type="checkbox" id="acceptCheckbox" value="">
                         <label class="form-check-label" for="acceptCheckbox">
                             <strong>ยอมรับเงื่อนไข</strong>
                         </label>
                         <br>
-                        <br>
-                        <button class="btn btn-label-success" id="acceptButton" type="button" disabled data-bs-dismiss="modal">
-                            <i class='bx bxs-user-check'></i> <strong>ยอมรับเงื่อนไข</strong>
+                        <button class="btn btn-label-success mt-4" id="acceptButton" type="button" disabled data-bs-dismiss="modal">
+                            <i class='bx bxs-user-check'></i> <strong>ยอมรับ</strong>
                         </button>
 
 
@@ -157,65 +119,88 @@ $system_detail = $getdata->my_sql_query($connect, null, 'detail_index', null);
     </div>
 
 
-
-
 </body>
 <?php include 'core/footer.php' ?>
 <?php echo @$alert; ?>
 <script>
-    // document.addEventListener("DOMContentLoaded", function() {
-    //     // ตรวจสอบว่ามีคุกกี้ยินยอมหรือไม่
-    //     if (!getCookie("cookieConsent")) {
-    //         Swal.fire({
-    //             title: 'นโยบายคุกกี้ (Cookies Policy)',
-    //             icon: 'info',
-    //             showCancelButton: false,
-    //             confirmButtonText: "<i class='bx bxs-book-bookmark'></i> อ่านรายละเอียด",
-    //             // cancelButtonText: 'ปฏิเสธ'
-    //         }).then((result) => {
-    //             if (result.isConfirmed) {
-    //                 // If user accepts, show the Bootstrap Modal
-    //                 $('#myModal').modal('show');
-
-
-    //                 $('#acceptCheckbox').on('change', function() {
-    //                     if ($(this).is(':checked')) {
-    //                         $('#acceptButton').prop('disabled', false);
-    //                     } else {
-    //                         $('#acceptButton').prop('disabled', true);
-    //                     }
-    //                 });
+    document.addEventListener("DOMContentLoaded", function() {
+        // ตรวจสอบว่ามีคุกกี้ยินยอมหรือไม่
+        if (!getCookie("cookieConsent")) {
+            $('#myModal').modal('show');
+            //         $('#acceptCheckbox').on('change', function() {
+            //             if ($(this).is(':checked')) {
+            //                 $('#acceptButton').prop('disabled', false);
+            //             } else {
+            //                 $('#acceptButton').prop('disabled', true);
+            //             }
+            //         });
 
 
 
-    //             } else if (result.isDismissed) {
-    //                 // If user dismisses, reload the page
-    //                 location.reload();
-    //             }
-    //         });
-    //     }
-    // });
+            //     } else if (result.isDismissed) {
+            //         // If user dismisses, reload the page
+            //         location.reload();
+            //     }
+            // });
 
-    // function setCookie(name, value, days) {
-    //     let date = new Date();
-    //     date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-    //     let expires = "expires=" + date.toUTCString();
-    //     document.cookie = name + "=" + value + ";" + expires + ";path=/";
-    // }
+            // Swal.fire({
+            //     title: 'นโยบายคุกกี้ (Cookies Policy)',
+            //     icon: 'info',
+            //     showCancelButton: false,
+            //     confirmButtonText: "<i class='bx bxs-book-bookmark'></i> อ่านรายละเอียด",
+            //     // cancelButtonText: 'ปฏิเสธ'
+            // }).then((result) => {
 
-    // function getCookie(name) {
-    //     let cookieArray = document.cookie.split(';');
-    //     for (let i = 0; i < cookieArray.length; i++) {
-    //         let cookie = cookieArray[i];
-    //         while (cookie.charAt(0) == ' ') {
-    //             cookie = cookie.substring(1);
-    //         }
-    //         if (cookie.indexOf(name + "=") == 0) {
-    //             return cookie.substring(name.length + 1, cookie.length);
-    //         }
-    //     }
-    //     return "";
-    // }
+            //     if (result.isConfirmed) {
+            //         // If user accepts, show the Bootstrap Modal
+
+
+            //         $('#acceptCheckbox').on('change', function() {
+            //             if ($(this).is(':checked')) {
+            //                 $('#acceptButton').prop('disabled', false);
+            //             } else {
+            //                 $('#acceptButton').prop('disabled', true);
+            //             }
+            //         });
+
+
+
+            //     } else if (result.isDismissed) {
+            //         // If user dismisses, reload the page
+            //         location.reload();
+            //     }
+            // });
+        }
+
+        $('#acceptCheckbox').on('change', function() {
+            if ($(this).is(':checked')) {
+                $('#acceptButton').prop('disabled', false);
+            } else {
+                $('#acceptButton').prop('disabled', true);
+            }
+        });
+    });
+
+    function setCookie(name, value, days) {
+        let date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        let expires = "expires=" + date.toUTCString();
+        document.cookie = name + "=" + value + ";" + expires + ";path=/";
+    }
+
+    function getCookie(name) {
+        let cookieArray = document.cookie.split(';');
+        for (let i = 0; i < cookieArray.length; i++) {
+            let cookie = cookieArray[i];
+            while (cookie.charAt(0) == ' ') {
+                cookie = cookie.substring(1);
+            }
+            if (cookie.indexOf(name + "=") == 0) {
+                return cookie.substring(name.length + 1, cookie.length);
+            }
+        }
+        return "";
+    }
 
 
 
