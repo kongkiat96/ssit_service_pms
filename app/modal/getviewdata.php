@@ -228,26 +228,26 @@ $guest_detail = $getdata->my_sql_query($connect, NULL, "bm_guest", "room='" . ht
                                             <div class="card-body">
                                                 <div class="card-title"><strong>ลำดับที่ : </strong><?php echo $i; ?></div>
                                                 <div class="row">
-                                                    <div class="col-md-6 col-sm-12 text-end mb-2">
+                                                    <div class="col-md-5 col-sm-12 text-start mb-2">
                                                         ชื่อ - นามสกุล :
                                                     </div>
-                                                    <div class="col-md-6 col-sm-12">
+                                                    <div class="col-md-7 col-sm-12 text-start">
                                                         <label for=""> <?php echo @prefixConvertor($showlist->prefix_name) . '' . $showlist->fname . ' ' . $showlist->lname; ?></label>
                                                     </div>
                                                     <!-- <div class="row m-1"> -->
-                                                    <div class="col-md-6 col-sm-12 text-end mb-2">
+                                                    <div class="col-md-5 col-sm-12 text-start mb-2">
                                                         ความสัมพันธ์ :
                                                     </div>
-                                                    <div class="col-md-6 col-sm-12">
+                                                    <div class="col-md-7 col-sm-12 text-start">
                                                         <label for=""><?php echo @relation($showlist->relation); ?></label>
                                                     </div>
                                                     <!-- </div> -->
 
                                                     <!-- <div class="row m-1"> -->
-                                                    <div class="col-md-6 col-sm-12 text-end mb-2">
+                                                    <div class="col-md-6 col-sm-12 text-start mb-2">
                                                         หมายเลขโทรศัพท์ :
                                                     </div>
-                                                    <div class="col-md-6 col-sm-12">
+                                                    <div class="col-md-6 col-sm-12 text-start">
                                                         <label for=""><?php echo $showlist->tel; ?></label>
                                                     </div>
                                                     <!-- </div> -->
