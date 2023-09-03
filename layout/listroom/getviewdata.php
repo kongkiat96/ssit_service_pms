@@ -203,16 +203,14 @@ $guest_detail = $getdata->my_sql_query($connect, NULL, "bm_guest", "room='" . ht
 
                                     <div class="col-sm-12 col-md-4">
                                         <div class="card">
-                                            <div class="card-header">
-                                                <?php
-                                                if ($showlist->pic == null) {
-                                                    echo '<img class="img-thumbnail mx-auto" src="resource/guest/file_pic_now/no-img.png" width="100%">';
-                                                } else {
-                                                    echo '<img class="img-thumbnail mx-auto" src="resource/guest/delevymo/' . $showlist->pic . '" width="50%">';
-                                                }
-                                                ?>
-
-                                            </div>
+                                            <!-- <img class="card-img-top" src="../../assets/img/elements/2.jpg" alt="Card image cap" /> -->
+                                            <?php
+                                            if ($showlist->pic == null) {
+                                                echo '<img class="card-img-center mx-auto" src="../resource/guest/file_pic_now/no-img.png" width="200px" height="200px">';
+                                            } else {
+                                                echo '<img class="card-img-center mx-auto" src="../resource/guest/delevymo/' . $showlist->pic . '" width="200px" height="200px">';
+                                            }
+                                            ?>
                                             <div class="card-body">
                                                 <div class="card-title"><strong>ลำดับที่ : </strong><?php echo $i; ?></div>
                                                 <div class="row">
