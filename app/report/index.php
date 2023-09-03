@@ -246,7 +246,7 @@ if (isset($_POST['search'])) {
                                                         <?php $count_guest_detail = $getdata->my_sql_show_rows($connect, "bm_guest_detail", "code_guest = '" . $show_total->code . "'"); ?>
                                                         <tr class="tr-t">
 
-                                                            <td class="th-t"><?php echo $i; ?></td>
+                                                            <td class="th-t" align="center"><?php echo $i; ?></td>
                                                             <td class="th-t">
                                                                 <?php echo @prefixConvertor($show_total->g_prefix) . '' . $show_total->g_fname . ' ' . $show_total->g_lname; ?>
                                                                 <br>

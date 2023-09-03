@@ -108,6 +108,9 @@ function relation($id)
         case '4':
             echo 'มารดา';
             break;
+        case '5':
+            echo 'บุคคลภายนอกฯ';
+            break;
         default:
             echo 'ไม่ระบุ';
     }
@@ -159,7 +162,7 @@ function getDepartName($getID)
     $getdata = new clear_db();
     $connect = $getdata->my_sql_connect(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
     mysqli_set_charset($connect, 'utf8');
-    $getDepartName = $getdata->my_sql_query($connect, null,'department_name', "id ='" . $getID . "'");
+    $getDepartName = $getdata->my_sql_query($connect, null, 'department_name', "id ='" . $getID . "'");
 
     return $getDepartName->department_name;
 }
@@ -169,7 +172,7 @@ function getComName($getID)
     $getdata = new clear_db();
     $connect = $getdata->my_sql_connect(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
     mysqli_set_charset($connect, 'utf8');
-    $getDepartName = $getdata->my_sql_query($connect, null,'company', "id ='" . $getID . "'");
+    $getDepartName = $getdata->my_sql_query($connect, null, 'company', "id ='" . $getID . "'");
 
     return $getDepartName->company_name;
 }

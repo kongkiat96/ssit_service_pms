@@ -464,6 +464,7 @@
                                         <option value="2">คู่สมรส</option>
                                         <option value="3">บิดา</option>
                                         <option value="4">มารดา</option>
+                                        <option value="5">บุคคลภายนอกฯ</option>
                                     </select>
                                 </div>
                                 <div class="col-md-4 col-sm-12 mb-3">
@@ -482,8 +483,8 @@
                         <?php } ?>
 
 
-                        <div class="col-12">
-                            <div class="row">
+                        <div class="col-12 mt-5">
+                            <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
                                 <!-- style="width: 108%" -->
                                 <?php
                                 $i = 0;
@@ -492,77 +493,79 @@
                                     $i++
                                 ?>
 
-                                    <div class="card col-md-4 col-sm-12 mt-3" style="border:0px solid #e5e9f2">
-                                        <div class="card-header" style="background-color:#f0f8ff00">
+
+                                    <div class="col">
+                                        <div class="card h-100">
+                                            <!-- <img class="card-img-top" src="../../assets/img/elements/2.jpg" alt="Card image cap" /> -->
                                             <?php
                                             if ($showlist->pic == null) {
-                                                echo '<img class="img-thumbnail mx-auto" src="../resource/guest/file_pic_now/no-img.png" width="100%">';
+                                                echo '<img class="card-img-center mx-auto" src="../resource/guest/file_pic_now/no-img.png" width="200px" height="200px">';
                                             } else {
-                                                echo '<img class="img-thumbnail mx-auto" src="../resource/guest/delevymo/' . $showlist->pic . '" width="50%">';
+                                                echo '<img class="card-img-center mx-auto" src="../resource/guest/delevymo/' . $showlist->pic . '" width="200px" height="200px">';
                                             }
                                             ?>
-                                            <br>
-                                            <?php if ($_SESSION['uclass'] != '1') { ?>
-                                                <!-- <a class="btn btn-sm btn-info ml-auto text-white" data-toggle="modal" data-target="#edit_guest_list_pic" data-whatever="<?php echo @$showlist->ID; ?>"><i class="fas fa-camera"></i> <strong>แก้ไขรูปภาพ</strong></a> -->
-                                                <div class="row">
-                                                    <!-- <div class="mx-auto"> -->
+
+
+
+
+
+                                            <div class="card-body">
+                                                <?php if ($_SESSION['uclass'] != '1') { ?>
+                                                    <!-- <a class="btn btn-sm btn-info ml-auto text-white" data-toggle="modal" data-target="#edit_guest_list_pic" data-whatever="<?php echo @$showlist->ID; ?>"><i class="fas fa-camera"></i> <strong>แก้ไขรูปภาพ</strong></a> -->
+                                                    <div class="row">
+                                                        <!-- <div class="mx-auto"> -->
                                                         <button type="button" class="btn btn-sm btn-warning ml-auto text-white" data-bs-toggle="modal" data-bs-target="#edit_guest_list_pic" data-whatever="<?php echo @$showlist->ID; ?>">
                                                             <i class="fas fa-camera"></i> <strong>แก้ไขรูปภาพ</strong>
                                                         </button>
-                                                    <!-- </div> -->
+                                                        <!-- </div> -->
+                                                    </div>
+
+
+
+
+                                                <?php } ?>
+                                                <br>
+                                                <h5 class="card-title"><strong>ลำดับที่ : </strong><?php echo $i; ?><h5>
+                                                        <div class="row m-1">
+                                                            <div class="col-6 text-right">
+                                                                ชื่อ - นามสกุล :
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <label for=""> <?php echo @prefixConvertor($showlist->prefix_name) . '' . $showlist->fname . ' ' . $showlist->lname; ?></label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row m-1">
+                                                            <div class="col-6 text-right">
+                                                                ความสัมพันธ์ :
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <label for=""><?php echo @relation($showlist->relation); ?></label>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row m-1">
+                                                            <div class="col-6 text-right">
+                                                                หมายเลขโทรศัพท์ :
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <label for=""><?php echo $showlist->tel; ?></label>
+                                                            </div>
+                                                        </div>
+
+                                            </div>
+                                            <?php if ($_SESSION['uclass'] != '1') { ?>
+                                                <div class="text-center" style="background-color:#f0f8ff00">
+
+                                                    <button type="button" class="mb-1 btn btn-outline-warning btn-sm" data-bs-toggle="modal" data-bs-target="#edit_guest_list" data-whatever="<?php echo @$showlist->ID; ?>">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+
+                                                    <button type="button" class="mb-1 btn btn-outline-danger btn-sm" onclick="deletelist('<?php echo @$showlist->ID; ?>');">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </button>
                                                 </div>
-
-
-
-
                                             <?php } ?>
                                         </div>
-                                        <div class="card-body">
-                                            <h5 class="card-title"><strong>ลำดับที่ : </strong><?php echo $i; ?><h5>
-                                                    <div class="row m-1">
-                                                        <div class="col-6 text-right">
-                                                            ชื่อ - นามสกุล :
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <label for=""> <?php echo @prefixConvertor($showlist->prefix_name) . '' . $showlist->fname . ' ' . $showlist->lname; ?></label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row m-1">
-                                                        <div class="col-6 text-right">
-                                                            ความสัมพันธ์ :
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <label for=""><?php echo @relation($showlist->relation); ?></label>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row m-1">
-                                                        <div class="col-6 text-right">
-                                                            หมายเลขโทรศัพท์ :
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <label for=""><?php echo $showlist->tel; ?></label>
-                                                        </div>
-                                                    </div>
-
-                                        </div>
-                                        <?php if ($_SESSION['uclass'] != '1') { ?>
-                                            <div class="card-footer text-center" style="background-color:#f0f8ff00">
-
-                                                <button type="button" class="mb-1 btn btn-outline-warning btn-sm" data-bs-toggle="modal" data-bs-target="#edit_guest_list" data-whatever="<?php echo @$showlist->ID; ?>">
-                                                    <i class="fas fa-edit"></i>
-                                                </button>
-
-                                                <button type="button" class="mb-1 btn btn-outline-danger btn-sm" onclick="deletelist('<?php echo @$showlist->ID; ?>');">
-                                                    <i class="fas fa-trash-alt"></i>
-                                                </button>
-
-
-                                                <!-- <a data-bs-toggle="modal" data-bs-target="#edit_guest_list" data-whatever="<?php echo @$showlist->ID; ?>" class="btn btn-sm btn-outline-info" title="แก้ไข"><i class="fas fa-edit"></i></a> -->
-
-                                                <!-- <a onclick="deletelist('<?php echo @$showlist->ID; ?>');" class="btn btn-sm btn-outline-danger" title="ลบ"><i class="fa fa-times"></i></a> -->
-                                            </div>
-                                        <?php } ?>
                                     </div>
                                 <?php
                                 }

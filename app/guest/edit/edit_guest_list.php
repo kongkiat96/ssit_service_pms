@@ -49,29 +49,13 @@ $guest_list = $getdata->my_sql_query($connect, NULL, "bm_guest_detail", "ID='" .
     </div>
 
     <div class="form-group row">
-        <div class="col-md-4 col-sm-12 mb-3">
+        <!-- <div class="col-md-4 col-sm-12 mb-3">
             <label for="edit_position">ตำแหน่ง</label>
-
-            <!-- <select name="edit_position" id="edit_position" class="form-control select2bs43 input-sm" required="">
-                <option value="">--- เลือกข้อมูล ---</option>
-                <?php
-                $getposition = $getdata->my_sql_select($connect, NULL, "department_name", "department_status = '1'");
-                while ($showposition = mysqli_fetch_object($getposition)) {
-                    if ($showposition->id == $guest_list->position) {
-                        echo '<option value="' . $showposition->id . '" selected>' . $showposition->department_name . '</option>';
-                    } else {
-                        echo '<option value="' . $showposition->id . '">' . $showposition->department_name . '</option>';
-                    }
-                }
-                ?>
-            </select> -->
-
-
             <input type="text" name="edit_position" id="edit_position" class="form-control input-sm" placeholder="ตำแหน่ง" value="<?php echo $guest_list->position; ?>" required>
             <div class="invalid-feedback">
                 ระบุ ตำแหน่ง.
             </div>
-        </div>
+        </div> -->
         <div class="col-md-4 col-sm-12 mb-3">
             <label for="tel">หมายเลขโทรศัพท์</label>
             <input type="tel" name="edit_tel" id="tel" class="form-control input-sm" placeholder="หมายเลขโทรศัพท์" value="<?php echo $guest_list->tel; ?>" required>
@@ -79,16 +63,14 @@ $guest_list = $getdata->my_sql_query($connect, NULL, "bm_guest_detail", "ID='" .
                 ระบุ หมายเลขโทรศัพท์.
             </div>
         </div>
-        <div class="col-md-4 col-sm-12 mb-3">
+        <!-- <div class="col-md-4 col-sm-12 mb-3">
             <label for="idcard">เลขบัตรประจำตัวประชาชน/หนังสือเดินทาง</label>
             <input type="text" name="edit_idcard" id="idcard" class="form-control input-sm" value="<?php echo $guest_list->id_card; ?>" placeholder="เลขบัตรประจำตัวประชาชน/หนังสือเดินทาง">
             <div class="invalid-feedback">
                 ระบุ เลขบัตรประจำตัวประชาชน/หนังสือเดินทาง.
             </div>
-        </div>
-    </div>
+        </div> -->
 
-    <div class="form-group row">
         <div class="col-md-4 col-sm-12 mb-3">
             <label for="edit_relation">ความสัมพันธ์</label>
 
@@ -98,27 +80,38 @@ $guest_list = $getdata->my_sql_query($connect, NULL, "bm_guest_detail", "ID='" .
                     echo '<option value="1" selected>บุตร</option>
                 <option value="2">คู่สมรส</option>
                 <option value="3">บิดา</option>
-                <option value="4">มารดา</option>';
+                <option value="4">มารดา</option>
+                <option value="5">บุคคลภายนอกฯ</option>';
                 } elseif ($guest_list->relation == '2') {
                     echo '<option value="1">บุตร</option>
                 <option value="2" selected>คู่สมรส</option>
                 <option value="3">บิดา</option>
-                <option value="4">มารดา</option>';
+                <option value="4">มารดา</option>
+                <option value="5">บุคคลภายนอกฯ</option>';
                 } elseif ($guest_list->relation == '3') {
                     echo '<option value="1">บุตร</option>
                 <option value="2">คู่สมรส</option>
                 <option value="3" selected>บิดา</option>
-                <option value="4">มารดา</option>';
+                <option value="4">มารดา</option>
+                <option value="5">บุคคลภายนอกฯ</option>';
                 } elseif ($guest_list->relation == '4') {
                     echo '<option value="1">บุตร</option>
                 <option value="2">คู่สมรส</option>
                 <option value="3">บิดา</option>
-                <option value="4" selected>มารดา</option>';
+                <option value="4" selected>มารดา</option>
+                <option value="5">บุคคลภายนอกฯ</option>';
+                } elseif ($guest_list->relation == '5') {
+                    echo '<option value="1">บุตร</option>
+            <option value="2">คู่สมรส</option>
+            <option value="3">บิดา</option>
+            <option value="4" >มารดา</option>
+            <option value="5" selected>บุคคลภายนอกฯ</option>';
                 } else {
                     echo '<option value="1">บุตร</option>
                 <option value="2">คู่สมรส</option>
                 <option value="3">บิดา</option>
-                <option value="4">มารดา</option>';
+                <option value="4">มารดา</option>
+                <option value="5">บุคคลภายนอกฯ</option>';
                 }
                 ?>
 
@@ -132,6 +125,12 @@ $guest_list = $getdata->my_sql_query($connect, NULL, "bm_guest_detail", "ID='" .
             <label for="detail">รายละเอียดเพิ่มเติม (ถ้ามี)</label>
             <textarea name="edit_detail" id="detail" cols="20" rows="2" class="form-control"><?php echo $guest_list->detail; ?></textarea>
         </div>
+
+
+    </div>
+
+    <div class="form-group row">
+
     </div>
 
     <div class="form-group">
@@ -141,17 +140,17 @@ $guest_list = $getdata->my_sql_query($connect, NULL, "bm_guest_detail", "ID='" .
 
     <script>
         $(document).ready(function() {
-        $("#edit_prefixname").select2({
-            dropdownParent: $("#edit_guest_list")
+            $("#edit_prefixname").select2({
+                dropdownParent: $("#edit_guest_list")
+            });
+            $("#edit_department").select2({
+                dropdownParent: $("#edit_guest_list")
+            });
+            $("#mySelect").select2({
+                dropdownParent: $("#edit_guest_list")
+            });
+            $("#status").select2({
+                dropdownParent: $("#edit_guest_list")
+            });
         });
-        $("#edit_department").select2({
-            dropdownParent: $("#edit_guest_list")
-        });
-        $("#mySelect").select2({
-            dropdownParent: $("#edit_guest_list")
-        });
-        $("#status").select2({
-            dropdownParent: $("#edit_guest_list")
-        });
-    });
     </script>

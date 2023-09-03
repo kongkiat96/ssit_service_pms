@@ -247,7 +247,7 @@ $guest_detail = $getdata->my_sql_query($connect, NULL, "bm_guest", "room='" . ht
                                                     <div class="col-md-6 col-sm-12 text-start mb-2">
                                                         หมายเลขโทรศัพท์ :
                                                     </div>
-                                                    <div class="col-md-6 col-sm-12 text-start">
+                                                    <div class="col-md-6 col-sm-12 text-start" style="margin-left: -26px;">
                                                         <label for=""><?php echo $showlist->tel; ?></label>
                                                     </div>
                                                     <!-- </div> -->
