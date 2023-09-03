@@ -89,7 +89,7 @@ include_once 'service/procress/dataSave.php';
                                                                         <?php } elseif ($showroom->se_li_status == '2') {  ?>
                                                                             <div class="col-md-2 col-sm-4 mt-2">
                                                                                 <button type="button" class="mb-1 btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#showguest_foradmin" data-whatever="<?php echo @$showroom->se_li_id; ?>">
-                                                                                    <i class="fas fa-user-slash fa-lg"></i> <?php echo $showroom->se_li_name; ?>
+                                                                                   <i class="fas fa-user-tag fa-lg"></i><?php echo $showroom->se_li_name; ?>
                                                                                 </button>
                                                                                 <!-- <a class="mb-1 btn btn-outline-danger" data-toggle="modal" data-target="#genlink" data-whatever="<?php echo @$showroom->se_li_id; ?>"><i class="fas fa-user-slash fa-lg"></i> <?php echo $showroom->se_li_name; ?></a> -->
                                                                             </div>
@@ -140,7 +140,7 @@ include_once 'service/procress/dataSave.php';
                                                                         <?php } elseif ($showroom->se_li_status == '2') {  ?>
                                                                             <div class="col-md-2 col-sm-4 mt-2">
                                                                                 <button type="button" class="mb-1 btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#showguest_foradmin" data-whatever="<?php echo @$showroom->se_li_id; ?>">
-                                                                                    <i class="fas fa-user-slash fa-lg"></i> <?php echo $showroom->se_li_name; ?>
+                                                                                   <i class="fas fa-user-tag fa-lg"></i><?php echo $showroom->se_li_name; ?>
                                                                                 </button>
                                                                                 <!-- <a class="mb-1 btn btn-outline-danger" data-toggle="modal" data-target="#genlink" data-whatever="<?php echo @$showroom->se_li_id; ?>"><i class="fas fa-user-slash fa-lg"></i> <?php echo $showroom->se_li_name; ?></a> -->
                                                                             </div>
@@ -191,7 +191,7 @@ include_once 'service/procress/dataSave.php';
                                                                         <?php } elseif ($showroom->se_li_status == '2') {  ?>
                                                                             <div class="col-md-2 col-sm-4 mt-2">
                                                                                 <button type="button" class="mb-1 btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#showguest_foradmin" data-whatever="<?php echo @$showroom->se_li_id; ?>">
-                                                                                    <i class="fas fa-user-slash fa-lg"></i> <?php echo $showroom->se_li_name; ?>
+                                                                                   <i class="fas fa-user-tag fa-lg"></i><?php echo $showroom->se_li_name; ?>
                                                                                 </button>
                                                                                 <!-- <a class="mb-1 btn btn-outline-danger" data-toggle="modal" data-target="#genlink" data-whatever="<?php echo @$showroom->se_li_id; ?>"><i class="fas fa-user-slash fa-lg"></i> <?php echo $showroom->se_li_name; ?></a> -->
                                                                             </div>
