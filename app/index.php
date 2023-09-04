@@ -95,7 +95,7 @@ $system_info = $getdata->my_sql_query($connect, null, 'system_info', null);
                         } else {
                             if ($_SESSION['uclass'] == 2 || $_SESSION['uclass'] == 3) {
                                 // echo '<div id="toaster"></div>';
-                                require '../layout/user/status.php';
+                                // require '../layout/user/status.php';
                                 require 'home.php';
                             }
                         }
