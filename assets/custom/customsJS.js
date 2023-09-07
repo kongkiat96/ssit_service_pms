@@ -351,6 +351,26 @@ $(function () {
         });
     })
 
+    $('#showSearch').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var recipient = button.data('whatever') // Extract info from data-* attributes
+        var modal = $(this);
+        var dataString = 'key=' + recipient;
+
+        $.ajax({
+            type: "GET",
+            url: "layout/listroom/getviewdataSearch.php",
+            data: dataString,
+            cache: false,
+            success: function (data) {
+                modal.find('.showSearch').html(data);
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    })
+
     $('#showguest_foradmin').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget) // Button that triggered the modal
         var recipient = button.data('whatever') // Extract info from data-* attributes

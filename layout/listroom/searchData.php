@@ -36,6 +36,25 @@ if (isset($_POST['search'])) {
         </form>
     </div>
 </div>
+
+<div class="modal fade" id="showSearch" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+
+            <div class="showSearch">
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-label-danger" data-bs-dismiss="modal">
+                    ปิด
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <?php if (isset($_POST['search'])) { ?>
 
     <div class="card mt-5">
@@ -58,6 +77,7 @@ if (isset($_POST['search'])) {
                         <th>จำนวนบริวาร</th>
                         <th>สถานะข้อมูล</th>
                         <th>เข้าพักที่</th>
+                        <th>ตรวจสอบรายการ</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -108,7 +128,11 @@ if (isset($_POST['search'])) {
                                 }
                                 ?>
                             </td>
-
+                            <td align="center">
+                                <button type="button" class="mb-1 btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#showSearch" data-whatever="<?php echo @$guest_detail->building.'_'.$guest_detail->floor.'_'.$guest_detail->room; ?>">
+                                    <i class="fas fa-search fa-lg"></i>
+                                </button>
+                            </td>
                         </tr>
 
                     <?php } ?>

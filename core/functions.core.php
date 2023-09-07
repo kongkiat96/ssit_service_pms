@@ -328,7 +328,7 @@ function dateTimeConvertor($datetime)
     $date->setTime($exptime[0], $exptime[1], $exptime[2]);
     $Y = $epd[0] + 543;
 
-    return $date->format("d/m/$Y H:i");
+    return $date->format("d/m/$Y");
 }
 
 function dateOnlyFromTimeConvertor($datetime)
