@@ -73,7 +73,7 @@ if (isset($_POST['search'])) {
                         <th>ชื่อ - นาสกุลผู้เข้าพัก</th>
                         <th>ตำแหน่ง</th>
                         <th>วันที่เข้าพัก</th>
-                        <th>วันที่ออกจากห้องพัก</th>
+                        <!-- <th>วันที่ออกจากห้องพัก</th> -->
                         <th>จำนวนบริวาร</th>
                         <th>สถานะข้อมูล</th>
                         <th>เข้าพักที่</th>
@@ -96,11 +96,11 @@ if (isset($_POST['search'])) {
                                 } else {
                                     echo @dateTimeConvertor($guest_detail->check_in);
                                 } ?></td>
-                            <td><?php if ($guest_detail->check_out == NULL) {
+                            <!-- <td><?php if ($guest_detail->check_out == NULL) {
                                     echo '<span class="badge bg-label-danger">ยังไม่มีการระบุ</span>';
                                 } else {
                                     echo @dateTimeConvertor($guest_detail->check_out);
-                                } ?></td>
+                                } ?></td> -->
                             <td>
                                 <?php if ($guest_detail->status_guest_detail == '1') { ?>
                                     <label for="prefix_code"><?php $count_guest_detail = $getdata->my_sql_show_rows($connect, "bm_guest_detail", "code_guest = '" . $guest_detail->code . "'");
