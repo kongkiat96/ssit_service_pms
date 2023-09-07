@@ -123,7 +123,7 @@ $system_detail = $getdata->my_sql_query($connect, null, 'detail_index', null);
     document.addEventListener("DOMContentLoaded", function() {
         // ตรวจสอบว่ามีคุกกี้ยินยอมหรือไม่
         if (!getCookie("cookieConsent")) {
-            $('#myModals').modal('show');
+            $('#myModal').modal('show');
         }
 
         $('#acceptCheckbox').on('change', function() {
