@@ -81,14 +81,11 @@ $system_detail = $getdata->my_sql_query($connect, null, 'detail_index', null);
     <!-- Overlay -->
     <div class="layout-overlay layout-menu-toggle"></div>
     <!-- Modal -->
-    <!-- <div class="modal fade" id="myModal" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-xl" role="document"> -->
     <div class="modal fade" id="myModal" tabindex="-1" data-bs-backdrop="static" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="exampleModalLabel4"><strong>การอนุญาตคุกกี้ในการใช้งาน</strong></h4>
-                    <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
                 </div>
                 <div class="modal-body text-center">
                     <span>
@@ -126,50 +123,7 @@ $system_detail = $getdata->my_sql_query($connect, null, 'detail_index', null);
     document.addEventListener("DOMContentLoaded", function() {
         // ตรวจสอบว่ามีคุกกี้ยินยอมหรือไม่
         if (!getCookie("cookieConsent")) {
-            $('#myModal').modal('show');
-            //         $('#acceptCheckbox').on('change', function() {
-            //             if ($(this).is(':checked')) {
-            //                 $('#acceptButton').prop('disabled', false);
-            //             } else {
-            //                 $('#acceptButton').prop('disabled', true);
-            //             }
-            //         });
-
-
-
-            //     } else if (result.isDismissed) {
-            //         // If user dismisses, reload the page
-            //         location.reload();
-            //     }
-            // });
-
-            // Swal.fire({
-            //     title: 'นโยบายคุกกี้ (Cookies Policy)',
-            //     icon: 'info',
-            //     showCancelButton: false,
-            //     confirmButtonText: "<i class='bx bxs-book-bookmark'></i> อ่านรายละเอียด",
-            //     // cancelButtonText: 'ปฏิเสธ'
-            // }).then((result) => {
-
-            //     if (result.isConfirmed) {
-            //         // If user accepts, show the Bootstrap Modal
-
-
-            //         $('#acceptCheckbox').on('change', function() {
-            //             if ($(this).is(':checked')) {
-            //                 $('#acceptButton').prop('disabled', false);
-            //             } else {
-            //                 $('#acceptButton').prop('disabled', true);
-            //             }
-            //         });
-
-
-
-            //     } else if (result.isDismissed) {
-            //         // If user dismisses, reload the page
-            //         location.reload();
-            //     }
-            // });
+            $('#myModals').modal('show');
         }
 
         $('#acceptCheckbox').on('change', function() {

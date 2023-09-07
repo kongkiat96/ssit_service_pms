@@ -6,5 +6,10 @@
                 <i class="menu-icon tf-icons bx bx-home"></i> <span>ตรวจสอบรายการห้องพัก</span>
             </a>
         </li>
+        <li class="menu-item <?php echo $page == 'search' ? 'active' : ''; ?>">
+            <a href="search.php" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-search-alt"></i> <span>ค้นหารายการห้องพัก</span>
+            </a>
+        </li>
     </ul>
 </div>

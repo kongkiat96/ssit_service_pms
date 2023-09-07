@@ -25,7 +25,7 @@
                     <strong>แสดงข้อมูลสถานะแต่ละอาคาร</strong>
                 </button>
             </h2>
-            <div id="accordionPopoutIcon-1" class="accordion-collapse collapse show" data-bs-parent="#accordionPopoutIcon" style="">
+            <div id="accordionPopoutIcon-1" class="accordion-collapse collapse show" data-bs-parent="#accordionPopoutIcon">
                 <div class="accordion-body">
                     <div class="col-12">
                         <div class="nav-align-top mb-4">
@@ -80,7 +80,7 @@
                                                                 <?php } elseif ($showroom->se_li_status == '2') {  ?>
                                                                     <div class="col-md-2 col-sm-4 mt-2">
                                                                         <button type="button" class="mb-1 btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#showguest" data-whatever="<?php echo @$showroom->se_li_id; ?>">
-                                                                           <i class="fas fa-user-tag fa-lg"></i><?php echo $showroom->se_li_name; ?>
+                                                                            <i class="fas fa-user-tag fa-lg"></i><?php echo $showroom->se_li_name; ?>
                                                                         </button>
                                                                         <!-- <a class="mb-1 btn btn-outline-danger" data-toggle="modal" data-target="#genlink" data-whatever="<?php echo @$showroom->se_li_id; ?>"><i class="fas fa-user-slash fa-lg"></i> <?php echo $showroom->se_li_name; ?></a> -->
                                                                     </div>
@@ -131,7 +131,7 @@
                                                                 <?php } elseif ($showroom->se_li_status == '2') {  ?>
                                                                     <div class="col-md-2 col-sm-4 mt-2">
                                                                         <button type="button" class="mb-1 btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#showguest" data-whatever="<?php echo @$showroom->se_li_id; ?>">
-                                                                           <i class="fas fa-user-tag fa-lg"></i><?php echo $showroom->se_li_name; ?>
+                                                                            <i class="fas fa-user-tag fa-lg"></i><?php echo $showroom->se_li_name; ?>
                                                                         </button>
                                                                         <!-- <a class="mb-1 btn btn-outline-danger" data-toggle="modal" data-target="#genlink" data-whatever="<?php echo @$showroom->se_li_id; ?>"><i class="fas fa-user-slash fa-lg"></i> <?php echo $showroom->se_li_name; ?></a> -->
                                                                     </div>
@@ -182,7 +182,7 @@
                                                                 <?php } elseif ($showroom->se_li_status == '2') {  ?>
                                                                     <div class="col-md-2 col-sm-4 mt-2">
                                                                         <button type="button" class="mb-1 btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#showguest" data-whatever="<?php echo @$showroom->se_li_id; ?>">
-                                                                           <i class="fas fa-user-tag fa-lg"></i><?php echo $showroom->se_li_name; ?>
+                                                                            <i class="fas fa-user-tag fa-lg"></i><?php echo $showroom->se_li_name; ?>
                                                                         </button>
                                                                         <!-- <a class="mb-1 btn btn-outline-danger" data-toggle="modal" data-target="#genlink" data-whatever="<?php echo @$showroom->se_li_id; ?>"><i class="fas fa-user-slash fa-lg"></i> <?php echo $showroom->se_li_name; ?></a> -->
                                                                     </div>
@@ -214,7 +214,7 @@
                     <strong>ข้อมูลรายชื่อผู้เข้าพักและสถานะ</strong>
                 </button>
             </h2>
-            <div id="accordionPopoutIcon-2" class="accordion-collapse collapse" data-bs-parent="#accordionPopoutIcon" style="">
+            <div id="accordionPopoutIcon-2" class="accordion-collapse collapse" data-bs-parent="#accordionPopoutIcon">
                 <div class="form-block p-2">
                     <div class="table-responsive text-nowrap">
                         <table id="responsive-data-table-1" class="table dt-responsive table-hover" style="font-family: sarabun; font-size: 16px;" width="100%">
@@ -252,8 +252,13 @@
                                                 echo @dateTimeConvertor($guest_detail->check_out);
                                             } ?></td>
                                         <td>
-                                            <?php $count_guest_detail = $getdata->my_sql_show_rows($connect, "bm_guest_detail", "code_guest = '" . $guest_detail->code . "'");
-                                            echo $count_guest_detail; ?> ท่าน</td>
+                                            <?php if ($guest_detail->status_guest_detail == '1') { ?>
+                                                <label for="prefix_code"><?php $count_guest_detail = $getdata->my_sql_show_rows($connect, "bm_guest_detail", "code_guest = '" . $guest_detail->code . "'");
+                                                                            echo $count_guest_detail; ?> ท่าน</label>
+                                            <?php } else { ?>
+                                                <span class="badge bg-label-info">ไม่แจ้งบริวาร</span>
+                                            <?php } ?>
+                                        </td>
                                         <td class="text-center"><?php if ($guest_detail->status == '1') {
                                                                     echo '<span class="badge bg-label-warning">รอการยืนยันเข้าพัก</span>';
                                                                 } elseif ($guest_detail->status == '2') {
