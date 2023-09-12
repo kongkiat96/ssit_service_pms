@@ -109,7 +109,7 @@ function relation($id)
             echo 'มารดา';
             break;
         case '5':
-            echo 'บุคคลภายนอกฯ';
+            echo 'บุคคลภายนอก';
             break;
         default:
             echo 'ไม่ระบุ';

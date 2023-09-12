@@ -236,6 +236,46 @@ if (isset($_POST['save_guest_detail'])) {
     }
 }
 
+if (isset($_POST['save_guest_detail_other'])) {
+
+    if (htmlspecialchars($_POST['prefixname2']) != NULL && htmlspecialchars($_POST['fname2']) != NULL) {
+        if (!defined('pic')) {
+            define('pic', '../resource/guest/delevymo/');
+        }
+        if (is_uploaded_file($_FILES['pic']['tmp_name'])) {
+            $remove_charname = array(' ', '`', '"', '\'', '\\', '/', '_');
+            $pic = str_replace($remove_charname, '', $_FILES['pic']['name']);
+            $fixname_pic = htmlspecialchars($_POST['card_code2']) . '-detail2-' . $pic;
+            $File_tmpname = $_FILES['pic']['tmp_name'];
+
+            if (move_uploaded_file($File_tmpname, (pic . $fixname_pic)));
+        }
+        resizeguestpic($pic, $fixname_pic);
+
+
+        $getdata->my_sql_insert(
+            $connect,
+            "bm_guest_detail",
+            "prefix_name  = '" . htmlspecialchars($_POST['prefixname2']) . "',
+        fname  = '" . htmlspecialchars($_POST['fname2']) . "',
+        lname  = '" . htmlspecialchars($_POST['lname2']) . "',
+        position  = '" . htmlspecialchars($_POST['position2']) . "',
+        relation  = '5',
+        tel  = '" . htmlspecialchars($_POST['tel2']) . "',
+        id_card  = '" . htmlspecialchars($_POST['idcard2']) . "',
+        pic = '" . $fixname_pic . "',
+        detail = '" . htmlspecialchars($_POST['detail2']) . "',
+        code_guest = '" . htmlspecialchars($_POST['card_code2']) . "',
+        user_key = '" . $_SESSION['ukey'] . "',
+        create_time = '" . date("Y-m-d H:i:s") . "'"
+        );
+
+        $alert = $success2;
+    } else {
+        $alert = $warning;
+    }
+}
+
 if (isset($_POST['save_edit_guest_detail'])) {
 
     if (

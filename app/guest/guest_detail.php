@@ -436,7 +436,7 @@
 
                                 <div class="col-md-4 col-sm-12 mb-3">
                                     <label for="tel">หมายเลขโทรศัพท์</label>
-                                    <input type="tel" name="tel" id="tel" class="form-control input-sm" placeholder="หมายเลขโทรศัพท์">
+                                    <input type="tel" name="tel" id="tel" class="form-control input-sm" placeholder="หมายเลขโทรศัพท์" maxlength="10" pattern="[0-9]{10}" oninput="validatePhoneNumber()">
                                     <div class="invalid-feedback">
                                         ระบุ หมายเลขโทรศัพท์.
                                     </div>
@@ -464,7 +464,7 @@
                                         <option value="2">คู่สมรส</option>
                                         <option value="3">บิดา</option>
                                         <option value="4">มารดา</option>
-                                        <option value="5">บุคคลภายนอกฯ</option>
+                                        <!-- <option value="5">บุคคลภายนอกฯ</option> -->
                                     </select>
                                 </div>
                                 <div class="col-md-4 col-sm-12 mb-3">
@@ -488,7 +488,194 @@
                                 <!-- style="width: 108%" -->
                                 <?php
                                 $i = 0;
-                                $getdetail = $getdata->my_sql_select($connect, NULL, "bm_guest_detail", "code_guest='" . $guest_detail->code . "' ORDER BY create_time");
+                                $getdetail = $getdata->my_sql_select($connect, NULL, "bm_guest_detail", "code_guest='" . $guest_detail->code . "' AND relation != '5'  ORDER BY create_time");
+                                while ($showlist = mysqli_fetch_object($getdetail)) {
+                                    $i++
+                                ?>
+
+
+                                    <div class="col">
+                                        <div class="card h-100">
+                                            <!-- <img class="card-img-top" src="../../assets/img/elements/2.jpg" alt="Card image cap" /> -->
+                                            <?php
+                                            if ($showlist->pic == null) {
+                                                echo '<img class="card-img-center mx-auto" src="../resource/guest/file_pic_now/no-img.png" width="200px" height="200px">';
+                                            } else {
+                                                echo '<img class="card-img-center mx-auto" src="../resource/guest/delevymo/' . $showlist->pic . '" width="200px" height="200px">';
+                                            }
+                                            ?>
+
+
+
+
+
+                                            <div class="card-body">
+                                                <?php if ($_SESSION['uclass'] != '1') { ?>
+                                                    <!-- <a class="btn btn-sm btn-info ml-auto text-white" data-toggle="modal" data-target="#edit_guest_list_pic" data-whatever="<?php echo @$showlist->ID; ?>"><i class="fas fa-camera"></i> <strong>แก้ไขรูปภาพ</strong></a> -->
+                                                    <div class="row">
+                                                        <!-- <div class="mx-auto"> -->
+                                                        <button type="button" class="btn btn-sm btn-warning ml-auto text-white" data-bs-toggle="modal" data-bs-target="#edit_guest_list_pic" data-whatever="<?php echo @$showlist->ID; ?>">
+                                                            <i class="fas fa-camera"></i> <strong>แก้ไขรูปภาพ</strong>
+                                                        </button>
+                                                        <!-- </div> -->
+                                                    </div>
+
+
+
+
+                                                <?php } ?>
+                                                <br>
+                                                <h5 class="card-title"><strong>ลำดับที่ : </strong><?php echo $i; ?><h5>
+                                                        <div class="row m-1">
+                                                            <div class="col-6 text-right">
+                                                                ชื่อ - นามสกุล :
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <label for=""> <?php echo @prefixConvertor($showlist->prefix_name) . '' . $showlist->fname . ' ' . $showlist->lname; ?></label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row m-1">
+                                                            <div class="col-6 text-right">
+                                                                ความสัมพันธ์ :
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <label for=""><?php echo @relation($showlist->relation); ?></label>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row m-1">
+                                                            <div class="col-6 text-right">
+                                                                หมายเลขโทรศัพท์ :
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <label for=""><?php echo $showlist->tel; ?></label>
+                                                            </div>
+                                                        </div>
+
+                                            </div>
+                                            <?php if ($_SESSION['uclass'] != '1') { ?>
+                                                <div class="text-center" style="background-color:#f0f8ff00">
+
+                                                    <button type="button" class="mb-1 btn btn-outline-warning btn-sm" data-bs-toggle="modal" data-bs-target="#edit_guest_list" data-whatever="<?php echo @$showlist->ID; ?>">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+
+                                                    <button type="button" class="mb-1 btn btn-outline-danger btn-sm" onclick="deletelist('<?php echo @$showlist->ID; ?>');">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </button>
+                                                </div>
+                                            <?php } ?>
+                                        </div>
+                                    </div>
+                                <?php
+                                }
+                                ?>
+                            </div>
+                        </div>
+
+
+
+
+                    </form>
+
+                </div>
+
+
+
+            </div>
+            <hr>
+            <div class="card broder-warning ">
+                <div class="card-header bg-dark text-white font-weight-bold mb-3">
+                บุคคลภายนอกได้รับอนุมัติจาก ผสทอภ.
+                </div>
+
+                <div class="card-body">
+
+                    <form method="POST" enctype="multipart/form-data">
+                        <?php if ($_SESSION['uclass'] != '1') { ?>
+                            <div class="form-group row mb-3">
+                                <div class="col-12">
+                                    <label for="card_code2">Code</label>
+
+                                    <input type="text" name="card_code2" id="card_code2" value="<?php echo $guest_detail->code; ?>" class="form-control input-sm" readonly>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 col-sm-12 mb-3">
+                                    <label for="prefixname2">คำนำหน้าชื่อ</label>
+                                    <select name="prefixname2" id="prefixname2" class="form-control" style="width: 100%;">
+                                        <option value="">--- เลือกข้อมูล ---</option>
+                                        <?php $getprefix = $getdata->my_sql_select($connect, NULL, "members_prefix", "prefix_status ='1'");
+                                        while ($showprefix = mysqli_fetch_object($getprefix)) {
+                                            echo '<option value="' . $showprefix->prefix_code . '">' . $showprefix->prefix_title . '</option>';
+                                        }
+                                        ?>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        เลือก คำนำหน้า.
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-12 mb-3">
+                                    <label for="fname2">ชื่อบุคคลภายนอก</label>
+                                    <input type="text" name="fname2" id="fname2" class="form-control input-sm" placeholder="ชื่อบุคคลภายนอก">
+                                    <div class="invalid-feedback">
+                                        ระบุ ชื่อบุคคลภายนอก.
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-12 mb-3">
+                                    <label for="lname2">นามสกุลบุคคลภายนอก</label>
+                                    <input type="text" name="lname2" id="lname2" class="form-control input-sm" placeholder="นามสกุลบุคคลภายนอก">
+                                    <div class="invalid-feedback">
+                                        ระบุ นามสกุลบุคคลภายนอก.
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 col-sm-12 mb-3">
+                                    <label for="tel2">หมายเลขโทรศัพท์</label>
+                                    <input type="tel" name="tel2" id="tel2" class="form-control input-sm" placeholder="หมายเลขโทรศัพท์" maxlength="10" pattern="[0-9]{10}">
+                                    <div class="invalid-feedback">
+                                        ระบุ หมายเลขโทรศัพท์.
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 col-sm-12 mb-3">
+                                    <label for="pic">รูปถ่าย</label>
+                                    <input type="file" name="pic" id="pic" class="form-control input-sm" placeholder="รูปถ่าย">
+                                    <div class="invalid-feedback">
+                                        ระบุ รูปถ่าย.
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-12 mb-3">
+                                    <label for="relation2">ความสัมพันธ์</label>
+                                    <select name="relation2" id="relation2" class="form-control" style="width: 100%;" disabled>
+                                        <option value="5" selected>บุคคลภายนอก</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4 col-sm-12 mb-3">
+                                    <label for="detail2">เลขที่เอกสารที่ได้รับการอนุมัติ</label>
+                                    <input type="text" name="detail2" id="detail2" class="form-control input-sm" placeholder="เลขที่เอกสารที่ได้รับการอนุมัติ">
+                                    <div class="invalid-feedback">
+                                        ระบุ เลขที่เอกสารที่ได้รับการอนุมัติ.
+                                    </div>
+                                </div>
+
+                                <div class="col-12 text-center">
+
+                                    <button class="ladda-button btn btn-warning btn-square btn-ladda bg-warning" data-style="expand-left" type="submit" name="save_guest_detail_other">
+                                        <span class="fas fa-list-ol"> เพิ่มข้อมูลบุคคลภายนอก</span>
+                                        <span class="ladda-spinner"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        <?php } ?>
+
+
+                        <div class="col-12 mt-5">
+                            <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+                                <!-- style="width: 108%" -->
+                                <?php
+                                $i = 0;
+                                $getdetail = $getdata->my_sql_select($connect, NULL, "bm_guest_detail", "code_guest='" . $guest_detail->code . "' AND relation = '5' ORDER BY create_time");
                                 while ($showlist = mysqli_fetch_object($getdetail)) {
                                     $i++
                                 ?>
@@ -610,3 +797,18 @@
         <!-- </div> -->
     </div>
 </div>
+
+<script>
+    var phoneNumberInput = document.getElementById("tel");
+  var errorMessage = document.getElementById("error-message");
+
+  phoneNumberInput.addEventListener("input", function() {
+    var phoneNumber = phoneNumberInput.value;
+    if (!/^\d+$/.test(phoneNumber)) {
+      errorMessage.textContent = "กรุณากรอกเฉพาะตัวเลขโทรศัพท์มือถือ";
+    } else {
+      errorMessage.textContent = "";
+    }
+  });
+
+</script>
