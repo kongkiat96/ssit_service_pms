@@ -122,8 +122,16 @@ $guest_list = $getdata->my_sql_query($connect, NULL, "bm_guest_detail", "ID='" .
             </div>
         </div>
         <div class="col-md-8 col-sm-12">
-            <label for="detail">รายละเอียดเพิ่มเติม (ถ้ามี)</label>
-            <textarea name="edit_detail" id="detail" cols="20" rows="2" class="form-control"><?php echo $guest_list->detail; ?></textarea>
+            <?php if ($guest_list->relation == '5') {  ?>
+                <label for="detail">เลขที่เอกสารที่ได้รับการอนุมัติ</label>
+                <input type="text" name="edit_detail" id="edit_detail" class="form-control input-sm" placeholder="เลขที่เอกสารที่ได้รับการอนุมัติ" value="<?php echo $guest_list->detail; ?>" required>
+                <div class="invalid-feedback">
+                    ระบุ เลขที่เอกสารที่ได้รับการอนุมัติ.
+                </div>
+            <?php } else { ?>
+                <label for="detail">รายละเอียดเพิ่มเติม (ถ้ามี)</label>
+                <textarea name="edit_detail" id="detail" cols="20" rows="2" class="form-control"><?php echo $guest_list->detail; ?></textarea>
+            <?php } ?>
         </div>
 
 

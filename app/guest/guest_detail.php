@@ -671,7 +671,7 @@
 
 
                         <div class="col-12 mt-5">
-                            <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+                            <div class="row row-cols-1 row-cols-md-2 g-4 mb-5">
                                 <!-- style="width: 108%" -->
                                 <?php
                                 $i = 0;
@@ -713,7 +713,7 @@
                                                 <?php } ?>
                                                 <br>
                                                 <h5 class="card-title"><strong>ลำดับที่ : </strong><?php echo $i; ?><h5>
-                                                        <div class="row m-1">
+                                                        <div class="row m-2">
                                                             <div class="col-6 text-right">
                                                                 ชื่อ - นามสกุล :
                                                             </div>
@@ -721,7 +721,7 @@
                                                                 <label for=""> <?php echo @prefixConvertor($showlist->prefix_name) . '' . $showlist->fname . ' ' . $showlist->lname; ?></label>
                                                             </div>
                                                         </div>
-                                                        <div class="row m-1">
+                                                        <div class="row m-2">
                                                             <div class="col-6 text-right">
                                                                 ความสัมพันธ์ :
                                                             </div>
@@ -730,12 +730,21 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="row m-1">
+                                                        <div class="row m-2">
                                                             <div class="col-6 text-right">
                                                                 หมายเลขโทรศัพท์ :
                                                             </div>
                                                             <div class="col-6">
                                                                 <label for=""><?php echo $showlist->tel; ?></label>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row m-2">
+                                                            <div class="col-6 text-right">
+                                                            เลขที่เอกสารที่ได้รับการอนุมัติ :
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <label for=""><?php echo $showlist->detail; ?></label>
                                                             </div>
                                                         </div>
 
