@@ -436,7 +436,7 @@
 
                                 <div class="col-md-4 col-sm-12 mb-3">
                                     <label for="tel">หมายเลขโทรศัพท์</label>
-                                    <input type="tel" name="tel" id="tel" class="form-control input-sm" placeholder="หมายเลขโทรศัพท์" maxlength="10" pattern="[0-9]{10}" oninput="validatePhoneNumber()">
+                                    <input type="tel" name="tel" id="data2" onkeyup="autoTab2(this,2)" class="form-control input-sm" placeholder="หมายเลขโทรศัพท์">
                                     <div class="invalid-feedback">
                                         ระบุ หมายเลขโทรศัพท์.
                                     </div>
@@ -632,7 +632,7 @@
 
                                 <div class="col-md-4 col-sm-12 mb-3">
                                     <label for="tel2">หมายเลขโทรศัพท์</label>
-                                    <input type="tel" name="tel2" id="tel2" class="form-control input-sm" placeholder="หมายเลขโทรศัพท์" maxlength="10" pattern="[0-9]{10}">
+                                    <input type="tel" name="tel2" id="data2" onkeyup="autoTab2(this,2)" class="form-control input-sm" placeholder="หมายเลขโทรศัพท์">
                                     <div class="invalid-feedback">
                                         ระบุ หมายเลขโทรศัพท์.
                                     </div>
@@ -807,17 +807,33 @@
     </div>
 </div>
 
-<script>
-    var phoneNumberInput = document.getElementById("tel");
-  var errorMessage = document.getElementById("error-message");
-
-  phoneNumberInput.addEventListener("input", function() {
-    var phoneNumber = phoneNumberInput.value;
-    if (!/^\d+$/.test(phoneNumber)) {
-      errorMessage.textContent = "กรุณากรอกเฉพาะตัวเลขโทรศัพท์มือถือ";
-    } else {
-      errorMessage.textContent = "";
-    }
-  });
-
+<script type="text/javascript">
+function autoTab2(obj,typeCheck){
+    /* กำหนดรูปแบบข้อความโดยให้ _ แทนค่าอะไรก็ได้ แล้วตามด้วยเครื่องหมาย
+    หรือสัญลักษณ์ที่ใช้แบ่ง เช่นกำหนดเป็น  รูปแบบเลขที่บัตรประชาชน
+    4-2215-54125-6-12 ก็สามารถกำหนดเป็น  _-____-_____-_-__
+    รูปแบบเบอร์โทรศัพท์ 08-4521-6521 กำหนดเป็น __-____-____
+    หรือกำหนดเวลาเช่น 12:45:30 กำหนดเป็น __:__:__
+    ตัวอย่างข้างล่างเป็นการกำหนดรูปแบบเลขบัตรประชาชน
+    */
+        if(typeCheck==1){
+            var pattern=new String("_-____-_____-_-__"); // กำหนดรูปแบบในนี้
+            var pattern_ex=new String("-"); // กำหนดสัญลักษณ์หรือเครื่องหมายที่ใช้แบ่งในนี้     
+        }else{
+            var pattern=new String("___-___-____"); // กำหนดรูปแบบในนี้
+            var pattern_ex=new String("-"); // กำหนดสัญลักษณ์หรือเครื่องหมายที่ใช้แบ่งในนี้                 
+        }
+        var returnText=new String("");
+        var obj_l=obj.value.length;
+        var obj_l2=obj_l-1;
+        for(i=0;i<pattern.length;i++){           
+            if(obj_l2==i && pattern.charAt(i+1)==pattern_ex){
+                returnText+=obj.value+pattern_ex;
+                obj.value=returnText;
+            }
+        }
+        if(obj_l>=pattern.length){
+            obj.value=obj.value.substr(0,pattern.length);           
+        }
+}
 </script>

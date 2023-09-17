@@ -108,8 +108,9 @@
 			<div class="tab-panel fade show active" id="service" role="tabpanel" aria-labelledby="service-tab">
 				<div class="card shadow">
 					<div class="card-body m-2">
-						<div class="row">
-							<button class="btn btn-danger btn-xs float-right mb-2 btn-outline" data-toggle="modal" data-target="#modal_new_link"><i class="fa fa-plus fa-fw"></i> เพิ่มรายการลิงค์หน้า</button>
+						<div class="text-end mb-3">
+							<!-- <button class="btn btn-danger btn-xs float-right mb-2 btn-outline" data-toggle="modal" data-target="#modal_new_link"><i class="fa fa-plus fa-fw"></i> เพิ่มรายการลิงค์หน้า</button> -->
+							<button type="button" data-bs-toggle="modal" data-bs-target="#modal_new_link" class="btn btn-success btn-md"><i class="bx bx-save"></i> เพิ่มรายการลิงค์หน้า</button>
 						</div>
 
 

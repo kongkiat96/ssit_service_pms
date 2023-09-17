@@ -24,22 +24,21 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<h5 class="modal-title font-weight-bold">เพิ่มรายการเมนู</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <hr class="mt-0" />
 				</div>
 				<div class="modal-body">
-					<div class="form-group row">
+					<div class="form-group row mt-3">
 						<div class="col-md-6 col-sm-12">
 							<label for="menu_name">ชื่อเมนู</label>
 							<input type="text" id="menu_name" name="menu_name" class="form-control" autocomplete="off" required>
 						</div>
 						<div class="col-md-6 col-sm-12">
-							<label for="menu_icon">ไอคอนเมนู <a href="https://fontawesome.com/icons?d=gallery&m=free" target="_blank"><i class="fa fa-question-circle"></i></a></label>
+							<label for="menu_icon">ไอคอนเมนู <a href="https://fontawesome.com/v5/search?m=free" target="_blank"><i class="fa fa-question-circle"></i></a></label>
 							<input type="text" id="menu_icon" name="menu_icon" class="form-control" placeholder="Ex. fa-home" autocomplete="off" required>
 						</div>
 					</div>
-					<div class="form-group row">
+					<div class="form-group row mt-3">
 						<div class="col-md-5 col-sm-12">
 							<label for="menu_folder">โฟลเดอร์</label>
 							<input type="text" id="menu_folder" name="menu_folder" class="form-control" required>
@@ -97,6 +96,9 @@
 			<h5 class="fw-semibold">ตารางแสดงข้อมูลรายการเมนู</h4>
 				<hr class="mt-0" />
 		</div>
+		<div class="text-end mb-3">
+			<button type="button" data-bs-toggle="modal" data-bs-target="#modal_new_menu" class="btn btn-success btn-md"><i class="bx bx-save"></i> เพิ่มเมนู</button>
+		</div>
 		<table class="table table-bordered table-hover text-center">
 			<thead class="table-success text-center font-weight-bold">
 				<tr>
@@ -133,7 +135,7 @@
 							}
 							?>
 							<button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#edit_menu" data-whatever="<?php echo @$showmenu->menu_key; ?>" data-top="toptitle" data-placement="top" title="แก้ไข"><i class="fa fa-edit fa-fw"></i></button>
-							
+
 
 
 
