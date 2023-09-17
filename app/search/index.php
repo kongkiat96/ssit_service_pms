@@ -134,17 +134,15 @@
                                         }
                                         ?>
                                     </td>
-                                    <?php if ($_SESSION['uclass'] != '2') { ?>
-                                        <td class="text-center">
-                                            <a href="index.php?p=guest_detail&key=<?php echo $guest_detail->key_guest; ?>" target="_blank" class="btn btn-outline-info btn-sm"><i class="fas fa-edit"></i></a>
-                                            <?php if ($guest_detail->status == '9' && $guest_detail->sys_procress == '2') { ?>
-                                                <button type="button" class="btn btn-danger btn-sm" onClick="javascript:delete_guest('<?php echo @$guest_detail->key_guest; ?>');" data-top="toptitle" data-placement="top" title="ลบรายการ"><i class="fa fa-trash-alt fa-fw"></i></button>
-                                            <?php } ?>
-                                            <!-- <button type="button" class="btn btn-outline-warning btn-sm" data-bs-toggle="modal" data-bs-target="#showSearch" data-whatever="<?php echo @$guest_detail->building . '_' . $guest_detail->floor . '_' . $guest_detail->room; ?>">
+                                    <td class="text-center">
+                                        <a href="index.php?p=guest_detail&key=<?php echo $guest_detail->key_guest; ?>" target="_blank" class="btn btn-outline-info btn-sm"><i class="fas fa-edit"></i></a>
+                                        <?php if ($guest_detail->status == '9' && $guest_detail->sys_procress == '2') { ?>
+                                            <button type="button" class="btn btn-danger btn-sm" onClick="javascript:delete_guest('<?php echo @$guest_detail->key_guest; ?>');" data-top="toptitle" data-placement="top" title="ลบรายการ"><i class="fa fa-trash-alt fa-fw"></i></button>
+                                        <?php } ?>
+                                        <!-- <button type="button" class="btn btn-outline-warning btn-sm" data-bs-toggle="modal" data-bs-target="#showSearch" data-whatever="<?php echo @$guest_detail->building . '_' . $guest_detail->floor . '_' . $guest_detail->room; ?>">
                                                 <i class="fas fa-search fa-lg"></i>
                                             </button> -->
-                                        </td>
-                                    <?php } ?>
+                                    </td>
 
                                 </tr>
 
